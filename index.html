@@ -32,6 +32,13 @@
         .btn-main { display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: 800; text-decoration: none; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4); transition: 0.3s; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6); }
 
+        /* Стили для калькулятора */
+        .calc-group { background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #FF6600; margin-bottom: 15px; }
+        .calc-group h3 { font-size: 18px; margin-bottom: 15px; color: #FF6600; }
+        .calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .calc-item label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 15px; color: #ddd; }
+        .calc-item input[type="number"] { display: none; width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: none; font-size: 16px; }
+
         /* Адаптация под телефоны */
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
@@ -40,6 +47,7 @@
             .phone { font-size: 14px; }
             .btn-tg { font-size: 12px; padding: 8px 12px; }
             .btn-main { font-size: 18px; padding: 15px 25px; width: 100%; }
+            .calc-row { grid-template-columns: 1fr; } /* На телефоне в одну колонку */
         }
     </style>
 </head>
@@ -59,41 +67,35 @@
         <div class="hero-content">
             <h1>Фулфилмент FBO/FBS <br><span>в Москве. Склад в Домодедово</span></h1>
             <p>Принимаем товар от 100 единиц. <strong>Первая приемка — БЕСПЛАТНО.</strong><br>Работаем в WMS «Целиком». Штрафы за просрочку — наша ответственность.</p>
-            <a href="#contact-form" class="btn-main">Рассчитать стоимость за 15 минут</a>
+            <a href="#calculator" class="btn-main">Рассчитать стоимость за 15 минут</a>
         </div>
     </section>
 
-    <!-- Блок с болями и решениями -->
+    <!-- Блок с болями -->
     <section style="padding: 60px 20px; background: #fff;">
         <div style="max-width: 1000px; margin: 0 auto;">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #111;">Знакомые проблемы?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Штрафы за просрочку</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">Склад не успел собрать заказы, а штраф от WB/Ozon прилетел вам. Мы фиксируем сроки в договоре и берем ответственность на себя.</p>
                 </div>
-
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Пересорт и возвраты</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">Вместо нужного SKU упаковали другой? Мы работаем в WMS «Целиком» и сканируем каждый штрихкод. Пересорт исключен.</p>
                 </div>
-
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Скрытые платежи</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">В прайсе было 30 ₽, а в счете — 70 ₽? У нас прозрачный прайс. Все услуги прописаны в договоре.</p>
                 </div>
-
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Нет ответственного</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">Менеджер пропадает на 3 дня? За каждым клиентом закрепляется личный менеджер. Оперативная связь в TG.</p>
                 </div>
-
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Боитесь пиковых нагрузок</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">Вышли в топ и не справляетесь? Наш склад рассчитан на обработку до 1000 заказов в день.</p>
                 </div>
-
                 <div style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
                     <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Товар стоит без дела</h3>
                     <p style="color: #555; line-height: 1.6; font-size: 16px;">Приемка за 24 часа. Сразу заводим в систему, чтобы товар начал продаваться, а не лежал мертвым грузом.</p>
@@ -102,47 +104,99 @@
         </div>
     </section>
 
-    <!-- Блок с тарифами -->
-    <section style="padding: 60px 20px; background: #111; color: #fff;">
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #fff;">Прозрачные тарифы</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px;">
-                
-                <div style="background: #222; border: 1px solid #333; padding: 30px; border-radius: 10px; width: 280px; text-align: center;">
-                    <h3 style="color: #FF6600; font-size: 24px; margin-bottom: 10px;">Обработка заказа</h3>
-                    <div style="font-size: 36px; font-weight: bold; margin-bottom: 10px;">от 30 ₽</div>
-                    <p style="color: #aaa; font-size: 14px;">Сборка, упаковка, маркировка</p>
-                </div>
-
-                <div style="background: #222; border: 1px solid #333; padding: 30px; border-radius: 10px; width: 280px; text-align: center;">
-                    <h3 style="color: #FF6600; font-size: 24px; margin-bottom: 10px;">Хранение</h3>
-                    <div style="font-size: 36px; font-weight: bold; margin-bottom: 10px;">до 50 ₽</div>
-                    <p style="color: #aaa; font-size: 14px;">за м³ в сутки</p>
-                </div>
-
-                <div style="background: #222; border: 1px solid #333; padding: 30px; border-radius: 10px; width: 280px; text-align: center;">
-                    <h3 style="color: #FF6600; font-size: 24px; margin-bottom: 10px;">Приемка</h3>
-                    <div style="font-size: 36px; font-weight: bold; margin-bottom: 10px;">от 5 ₽</div>
-                    <p style="color: #aaa; font-size: 14px;">за единицу товара</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; background: #222; border: 2px dashed #FF6600; padding: 30px; border-radius: 10px; max-width: 600px; margin: 0 auto;">
-                <h3 style="font-size: 24px; margin-bottom: 10px; color: #fff;">Первая приемка — БЕСПЛАТНО!</h3>
-                <p style="color: #ccc; font-size: 16px;">Принимаем первую партию до 200 единиц без оплаты за приемку. Убедитесь в качестве перед подписанием долгосрочного договора.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Блок с призывом к действию (Telegram) -->
-    <section id="contact-form" style="padding: 80px 20px; background: #f8f9fa; text-align: center;">
-        <div style="max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-            <h2 style="font-size: 32px; margin-bottom: 20px; color: #111;">Получите точный расчет за 15 минут</h2>
-            <p style="color: #555; margin-bottom: 30px; font-size: 18px;">Нажмите на кнопку ниже, чтобы написать нам в Telegram. Мы пришлем прайс-лист, видео склада и посчитаем юнит-экономику именно для вашего товара.</p>
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="calculator" style="padding: 60px 20px; background: #111; color: #fff;">
+        <div style="max-width: 900px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333;">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 10px; color: #fff;">Рассчитайте стоимость</h2>
+            <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Отметьте нужные услуги и укажите объемы. Калькулятор посчитает итог.</p>
             
-            <a href="https://t.me/F1rstFamilyFulFillment" style="display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: bold; text-decoration: none; border-radius: 8px; transition: 0.3s; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);">Написать в Telegram</a>
-            
-            <p style="margin-top: 20px; font-size: 14px; color: #999;">Или позвоните нам: <a href="tel:+79776946400" style="color: #FF6600; text-decoration: none; font-weight: bold;">+7 (977) 694-64-00</a></p>
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+
+                <!-- Блок 1: Приемка и проверка -->
+                <div class="calc-group">
+                    <h3>1. Приемка и проверка</h3>
+                    <div class="calc-row">
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-priemka" onchange="toggleInput('input-priemka', this.checked)"> Приемка и пересчет (5 ₽/шт)</label>
+                            <input type="number" id="input-priemka" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-brak" onchange="toggleInput('input-brak', this.checked)"> Проверка на брак (10 ₽/шт)</label>
+                            <input type="number" id="input-brak" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 2: Маркировка -->
+                <div class="calc-group">
+                    <h3>2. Маркировка</h3>
+                    <div class="calc-row">
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-etiketka" onchange="toggleInput('input-etiketka', this.checked)"> Этикетка 58×40 (5 ₽/шт)</label>
+                            <input type="number" id="input-etiketka" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-kiz" onchange="toggleInput('input-kiz', this.checked)"> КИЗ Честный Знак (9 ₽/шт)</label>
+                            <input type="number" id="input-kiz" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 3: Упаковка -->
+                <div class="calc-group">
+                    <h3>3. Упаковка</h3>
+                    <div class="calc-row">
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-paket" onchange="toggleInput('input-paket', this.checked)"> Пакет клиента (5 ₽/шт)</label>
+                            <input type="number" id="input-paket" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-bopp" onchange="toggleInput('input-bopp', this.checked)"> БОПП до 25 см (12 ₽/шт)</label>
+                            <input type="number" id="input-bopp" placeholder="Кол-во шт" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 4: Отгрузка -->
+                <div class="calc-group">
+                    <h3>4. Отгрузка</h3>
+                    <div class="calc-row">
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-korob" onchange="toggleInput('input-korob', this.checked)"> Формирование короба (150 ₽/шт)</label>
+                            <input type="number" id="input-korob" placeholder="Кол-во коробов" oninput="calculate()">
+                        </div>
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-pallet" onchange="toggleInput('input-pallet', this.checked)"> Паллетирование (750 ₽/шт)</label>
+                            <input type="number" id="input-pallet" placeholder="Кол-во паллет" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Блок 5: FBS и Хранение -->
+                <div class="calc-group">
+                    <h3>5. FBS и Хранение</h3>
+                    <div class="calc-row">
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-fbs" onchange="toggleInput('input-fbs', this.checked)"> Сборка FBS до 1 л (35 ₽/заказ)</label>
+                            <input type="number" id="input-fbs" placeholder="Кол-во заказов" oninput="calculate()">
+                        </div>
+                        <div class="calc-item">
+                            <label><input type="checkbox" id="chk-storage" onchange="toggleInput('input-storage', this.checked)"> Хранение (50 ₽/м³ в сутки)</label>
+                            <input type="number" id="input-storage" placeholder="Кол-во м³" step="0.1" oninput="calculate()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Итоговая сумма -->
+                <div style="background: #FF6600; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px;">
+                    <div style="font-size: 18px; margin-bottom: 5px;">Итого:</div>
+                    <div id="total-price" style="font-size: 42px; font-weight: bold; color: #fff;">0 ₽</div>
+                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.8;">* Ориентировочная стоимость. Финальная смета после согласования.</div>
+                </div>
+
+                <!-- Кнопка отправки -->
+                <a id="btn-tg-calc" href="https://t.me/F1rstFamilyFulFillment" style="display: block; text-align: center; background: #fff; color: #111; padding: 18px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 8px; margin-top: 10px;">Отправить расчет в Telegram</a>
+            </div>
         </div>
     </section>
 
@@ -151,5 +205,46 @@
         <p>© 2024 4F Fulfillment. Склад в Домодедово.</p>
         <p style="margin-top: 5px;">Фулфилмент для Wildberries и Ozon</p>
     </footer>
+
+    <!-- Скрипт калькулятора -->
+    <script>
+        function toggleInput(inputId, show) {
+            document.getElementById(inputId).style.display = show ? 'block' : 'none';
+            if (!show) {
+                document.getElementById(inputId).value = '';
+                calculate();
+            }
+        }
+
+        function calculate() {
+            let total = 0;
+            let summary = [];
+
+            function addItem(chkId, inputId, price, label) {
+                if (document.getElementById(chkId).checked) {
+                    let val = parseFloat(document.getElementById(inputId).value) || 0;
+                    total += val * price;
+                    if(val > 0) summary.push(`${label}: ${val}`);
+                }
+            }
+
+            addItem('chk-priemka', 'input-priemka', 5, 'Приемка');
+            addItem('chk-brak', 'input-brak', 10, 'Проверка на брак');
+            addItem('chk-etiketka', 'input-etiketka', 5, 'Этикетка');
+            addItem('chk-kiz', 'input-kiz', 9, 'КИЗ');
+            addItem('chk-paket', 'input-paket', 5, 'Пакет клиента');
+            addItem('chk-bopp', 'input-bopp', 12, 'БОПП');
+            addItem('chk-korob', 'input-korob', 150, 'Формирование короба');
+            addItem('chk-pallet', 'input-pallet', 750, 'Паллетирование');
+            addItem('chk-fbs', 'input-fbs', 35, 'Сборка FBS');
+            addItem('chk-storage', 'input-storage', 50, 'Хранение');
+
+            document.getElementById('total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
+
+            let msg = "Здравствуйте! Я рассчитал на сайте. Услуги: " + (summary.length > 0 ? summary.join(', ') : 'не выбраны') + ". Итого: " + total + " руб.";
+            let tgLink = "https://t.me/F1rstFamilyFulFillment?text=" + encodeURIComponent(msg);
+            document.getElementById('btn-tg-calc').href = tgLink;
+        }
+    </script>
 </body>
 </html>
