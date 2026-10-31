@@ -9,14 +9,15 @@
         /* Базовые настройки и плавная прокрутка */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: #f8f9fa; color: #333; }
+        body { background-color: #f8f9fa; color: #333; padding-bottom: 90px; /* Отступ для мобильной панели */ }
 
         /* Анимация для телефона */
         @keyframes vibrate {
             0% { transform: rotate(0deg); }
-            25% { transform: rotate(-10deg); }
-            50% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
+            20% { transform: rotate(-15deg); }
+            40% { transform: rotate(15deg); }
+            60% { transform: rotate(-15deg); }
+            80% { transform: rotate(15deg); }
             100% { transform: rotate(0deg); }
         }
 
@@ -27,10 +28,11 @@
         .header-contact { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         
         /* Стили контактов */
-        .contact-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; transition: 0.3s; }
+        .contact-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; transition: all 0.3s ease; }
         .phone { color: #fff; font-weight: 600; }
-        .phone:hover { color: #FF6600; }
-        .phone svg { width: 18px; height: 18px; fill: #FF6600; animation: vibrate 1.5s infinite; display: inline-block; }
+        .phone:hover { color: #25D366; }
+        .phone:hover svg { fill: #25D366; animation: vibrate 0.5s infinite; }
+        .phone svg { width: 18px; height: 18px; fill: #FF6600; transition: fill 0.3s ease; display: inline-block; }
         .email { color: #FF6600; font-weight: normal; }
         .email:hover { color: #fff; }
         .email svg { width: 18px; height: 18px; fill: #FF6600; }
@@ -50,19 +52,50 @@
         .btn-main { display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: 800; text-decoration: none; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4); transition: 0.3s; border: none; cursor: pointer; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6); }
 
-        /* Эффект парящих карточек */
-        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+        /* Карточки болей и решений */
+        .card-hover { transition: transform 0.3s, box-shadow 0.3s; background: #f8f9fa; padding: 25px; border-radius: 10px; border-top: 4px solid #f44336; display: flex; flex-direction: column; }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .pain { color: #333; font-size: 16px; margin-bottom: 15px; font-weight: 600; }
+        .pain::before { content: "❌ "; color: #f44336; }
+        .solution { color: #555; font-size: 15px; line-height: 1.5; background: #e8f5e9; padding: 10px; border-radius: 5px; border-left: 3px solid #4caf50; margin-top: auto; }
+        .solution::before { content: "✅ "; color: #4caf50; font-weight: bold; }
 
         /* Стили для калькулятора */
         .calc-wrapper { display: none; padding: 60px 20px; background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); color: #fff; }
         .calc-container { max-width: 900px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .calc-step { background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #FF6600; margin-bottom: 20px; }
         .calc-step h3 { font-size: 18px; margin-bottom: 15px; color: #FF6600; }
-        .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
+        .input-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 10px; }
         .input-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #333; color: #fff; font-size: 16px; transition: 0.3s; }
         .input-group input:focus { outline: none; border-color: #FF6600; box-shadow: 0 0 8px rgba(255, 102, 0, 0.4); }
-        .input-label { font-size: 14px; color: #aaa; margin-bottom: 5px; display: block; }
+        .input-label { font-size: 13px; color: #aaa; margin-bottom: 5px; display: block; }
+
+        /* Липкая панель итогов */
+        .sticky-summary {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #222;
+            border: 2px solid #FF6600;
+            border-radius: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none; /* Скрыто по умолчанию */
+            z-index: 9999;
+            min-width: 300px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .sticky-summary .sum-label { color: #aaa; font-size: 14px; margin-bottom: 5px; }
+        .sticky-summary .sum-price { color: #FF6600; font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+        .sticky-summary .btn-send {
+            display: flex; justify-content: center; align-items: center; gap: 8px;
+            background: #FF6600; color: #fff; padding: 12px 20px;
+            text-decoration: none; border-radius: 5px; font-weight: bold;
+            transition: 0.3s; font-size: 16px;
+        }
+        .sticky-summary .btn-send:hover { background: #e65c00; }
+        .sticky-summary .btn-send svg { width: 20px; height: 20px; fill: #fff; }
 
         /* Адаптация под телефоны */
         @media (max-width: 768px) {
@@ -72,8 +105,25 @@
             .contact-link { font-size: 14px; }
             .btn-tg { font-size: 12px; padding: 8px 12px; }
             .btn-main { font-size: 18px; padding: 15px 25px; width: 100%; }
-            .input-group { grid-template-columns: 1fr; }
             .calc-container { padding: 20px; }
+            
+            /* Мобильная версия липкой панели (на всю ширину внизу) */
+            .sticky-summary {
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                border-radius: 10px 10px 0 0;
+                border: none;
+                border-top: 2px solid #FF6600;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-sizing: border-box;
+            }
+            .sticky-summary .sum-price { font-size: 24px; margin-bottom: 0; }
+            .sticky-summary .sum-label { display: none; }
+            .sticky-summary .btn-send { padding: 10px 15px; font-size: 14px; }
         }
     </style>
 </head>
@@ -107,40 +157,46 @@
         <div class="hero-content">
             <h1>Фулфилмент FBO/FBS <br><span>в Москве. Склад в Домодедово</span></h1>
             <p>Принимаем товар от 100 единиц. <strong>Первая приемка — БЕСПЛАТНО.</strong><br>Работаем в WMS «Целиком». Штрафы за просрочку — наша ответственность.</p>
-            <!-- Кнопка, которая открывает калькулятор -->
             <button onclick="toggleCalculator()" class="btn-main" id="btn-open-calc">Открыть калькулятор</button>
         </div>
     </section>
 
-    <!-- Блок с болями -->
+    <!-- Блок с болями и решениями -->
     <section style="padding: 60px 20px; background: #fff;">
-        <div style="max-width: 1000px; margin: 0 auto;">
+        <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #111;">Знакомые проблемы?</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Штрафы за просрочку</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Склад не успел собрать заказы, а штраф от WB/Ozon прилетел вам. Мы фиксируем сроки в договоре и берем ответственность на себя.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
+                
+                <div class="card-hover">
+                    <div class="pain">Штрафы за просрочку</div>
+                    <div class="solution">Фиксируем сроки в договоре и берем ответственность на себя.</div>
                 </div>
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Пересорт и возвраты</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Вместо нужного SKU упаковали другой? Мы работаем в WMS «Целиком» и сканируем каждый штрихкод. Пересорт исключен.</p>
+                
+                <div class="card-hover">
+                    <div class="pain">Пересорт и возвраты</div>
+                    <div class="solution">Работаем в WMS «Целиком» и сканируем каждый штрихкод.</div>
                 </div>
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Скрытые платежи</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">В прайсе было 30 ₽, а в счете — 70 ₽? У нас прозрачный прайс. Все услуги прописаны в договоре.</p>
+                
+                <div class="card-hover">
+                    <div class="pain">Скрытые платежи</div>
+                    <div class="solution">Прозрачный прайс. Все услуги прописаны в договоре.</div>
                 </div>
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Нет ответственного</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Менеджер пропадает на 3 дня? За каждым клиентом закрепляется личный менеджер. Оперативная связь в TG.</p>
+                
+                <div class="card-hover">
+                    <div class="pain">Нет ответственного</div>
+                    <div class="solution">Личный менеджер. Оперативная связь в Telegram.</div>
                 </div>
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Боитесь пиковых нагрузок</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Вышли в топ и не справляетесь? Наш склад рассчитан на обработку до 1000 заказов в день.</p>
+                
+                <div class="card-hover">
+                    <div class="pain">Боитесь пиковых нагрузок</div>
+                    <div class="solution">Наш склад рассчитан на обработку до 1000 заказов в день.</div>
                 </div>
-                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
-                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Товар стоит без дела</h3>
-                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Приемка за 24 часа. Сразу заводим в систему, чтобы товар начал продаваться, а не лежал мертвым грузом.</p>
+                
+                <div class="card-hover">
+                    <div class="pain">Товар стоит без дела</div>
+                    <div class="solution">Приемка за 24 часа. Сразу заводим в систему.</div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -149,31 +205,25 @@
     <div id="calculator-wrapper" class="calc-wrapper">
         <div class="calc-container">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 10px; color: #fff;">Калькулятор обработки партии</h2>
-            <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Введите данные по партии, и калькулятор посчитает полную стоимость по вашему прайсу.</p>
+            <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Введите объемы по нужным услугам. Остальные поля оставьте пустыми. Итоговая сумма всегда видна на экране.</p>
             
             <form id="calc-form" oninput="calculate()">
-                <!-- Блок 1: Вводные данные -->
+                
+                <!-- Блок 1: Приемка -->
                 <div class="calc-step">
-                    <h3>1. Параметры вашей партии</h3>
-                    <div class="input-group">
-                        <div>
-                            <label class="input-label">Количество единиц товара (шт):</label>
-                            <input type="number" id="units" value="100" min="0">
-                        </div>
-                        <div>
-                            <label class="input-label">Общий объем партии (м³):</label>
-                            <input type="number" id="volume" value="1" step="0.1" min="0">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Блок 2: Приемка и проверка -->
-                <div class="calc-step">
-                    <h3>2. Приемка и проверка</h3>
+                    <h3>1. Приемка и проверка</h3>
                     <div class="input-group">
                         <div>
                             <label class="input-label">Приемка и пересчет (5 ₽/шт):</label>
                             <input type="number" id="q-priemka" value="0" min="0" placeholder="Кол-во шт">
+                        </div>
+                        <div>
+                            <label class="input-label">Сортировка (5 ₽/шт):</label>
+                            <input type="number" id="q-sort" value="0" min="0" placeholder="Кол-во шт">
+                        </div>
+                        <div>
+                            <label class="input-label">Визуальная проверка (5 ₽/шт):</label>
+                            <input type="number" id="q-viz" value="0" min="0" placeholder="Кол-во шт">
                         </div>
                         <div>
                             <label class="input-label">Проверка на брак (10 ₽/шт):</label>
@@ -182,9 +232,9 @@
                     </div>
                 </div>
 
-                <!-- Блок 3: Маркировка -->
+                <!-- Блок 2: Маркировка -->
                 <div class="calc-step">
-                    <h3>3. Маркировка и стикерование</h3>
+                    <h3>2. Маркировка и стикерование</h3>
                     <div class="input-group">
                         <div>
                             <label class="input-label">Этикетка 58×40 (5 ₽/шт):</label>
@@ -194,13 +244,25 @@
                             <label class="input-label">КИЗ «Честный Знак» (9 ₽/шт):</label>
                             <input type="number" id="q-kiz" value="0" min="0" placeholder="Кол-во шт">
                         </div>
+                        <div>
+                            <label class="input-label">Совмещенная ШК+ЧЗ (12 ₽/шт):</label>
+                            <input type="number" id="q-sovm" value="0" min="0" placeholder="Кол-во шт">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Блок 4: Упаковка -->
+                <!-- Блок 3: Комплектация и упаковка -->
                 <div class="calc-step">
-                    <h3>4. Упаковка</h3>
+                    <h3>3. Комплектация и упаковка</h3>
                     <div class="input-group">
+                        <div>
+                            <label class="input-label">Вложение вкладыша (5 ₽/шт):</label>
+                            <input type="number" id="q-vlozh" value="0" min="0" placeholder="Кол-во шт">
+                        </div>
+                        <div>
+                            <label class="input-label">Сборка комплекта до 3 ед. (10 ₽):</label>
+                            <input type="number" id="q-kompl" value="0" min="0" placeholder="Кол-во компл.">
+                        </div>
                         <div>
                             <label class="input-label">Пакет клиента (5 ₽/шт):</label>
                             <input type="number" id="q-paket" value="0" min="0" placeholder="Кол-во шт">
@@ -209,15 +271,19 @@
                             <label class="input-label">БОПП-пакет до 25 см (12 ₽/шт):</label>
                             <input type="number" id="q-bopp" value="0" min="0" placeholder="Кол-во шт">
                         </div>
+                        <div>
+                            <label class="input-label">ZIP-пакет 20×25 (16 ₽/шт):</label>
+                            <input type="number" id="q-zip" value="0" min="0" placeholder="Кол-во шт">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Блок 5: Отгрузка и хранение -->
+                <!-- Блок 4: Отгрузка и хранение -->
                 <div class="calc-step">
-                    <h3>5. Отгрузка и хранение</h3>
+                    <h3>4. Отгрузка и хранение</h3>
                     <div class="input-group">
                         <div>
-                            <label class="input-label">Формирование короба (150 ₽/шт):</label>
+                            <label class="input-label">Формирование короба 60×40×40 (150 ₽):</label>
                             <input type="number" id="q-korob" value="0" min="0" placeholder="Кол-во коробов">
                         </div>
                         <div>
@@ -225,42 +291,53 @@
                             <input type="number" id="q-pallet" value="0" min="0" placeholder="Кол-во паллет">
                         </div>
                         <div>
-                            <label class="input-label">Хранение (50 ₽/м³ в сутки):</label>
-                            <input type="number" id="q-storage" value="0" min="0" placeholder="Кол-во суток">
+                            <label class="input-label">Хранение короба (5 ₽/сутки):</label>
+                            <input type="number" id="q-stor-kor" value="0" min="0" placeholder="Кол-во суток">
+                        </div>
+                        <div>
+                            <label class="input-label">Хранение паллеты (50 ₽/сутки):</label>
+                            <input type="number" id="q-stor-pal" value="0" min="0" placeholder="Кол-во суток">
                         </div>
                     </div>
                 </div>
 
-                <!-- Дополнительные услуги -->
-                <div class="calc-step" style="border-left: 4px solid #555;">
-                    <h3 style="color: #ccc;">Дополнительные услуги (опционально)</h3>
+                <!-- Блок 5: FBS и Забор -->
+                <div class="calc-step">
+                    <h3>5. FBS и Забор товара</h3>
                     <div class="input-group">
                         <div>
-                            <label class="input-label">Забор товара до 1 м³ (1800 ₽):</label>
-                            <input type="number" id="q-zabor" value="0" min="0" placeholder="Кол-во рейсов">
+                            <label class="input-label">Сборка FBS до 1 л (35 ₽):</label>
+                            <input type="number" id="q-fbs-1" value="0" min="0" placeholder="Кол-во заказов">
                         </div>
                         <div>
-                            <label class="input-label">Сборка FBS до 1 л (35 ₽/заказ):</label>
-                            <input type="number" id="q-fbs" value="0" min="0" placeholder="Кол-во заказов">
+                            <label class="input-label">Сборка FBS 1-5 л (55 ₽):</label>
+                            <input type="number" id="q-fbs-5" value="0" min="0" placeholder="Кол-во заказов">
+                        </div>
+                        <div>
+                            <label class="input-label">Забор до 1 м³ (1800 ₽):</label>
+                            <input type="number" id="q-zabor-1" value="0" min="0" placeholder="Кол-во рейсов">
+                        </div>
+                        <div>
+                            <label class="input-label">Забор от 1 до 3 м³ (3000 ₽):</label>
+                            <input type="number" id="q-zabor-3" value="0" min="0" placeholder="Кол-во рейсов">
                         </div>
                     </div>
                 </div>
 
-                <!-- Итоговая сумма -->
-                <div style="background: #FF6600; padding: 25px; border-radius: 8px; text-align: center; margin-top: 25px;">
-                    <div style="font-size: 18px; margin-bottom: 5px;">Итого по смете:</div>
-                    <div id="total-price" style="font-size: 42px; font-weight: bold; color: #fff;">0 ₽</div>
-                    <div id="summary-text" style="font-size: 14px; margin-top: 10px; color: #fff; opacity: 0.9; text-align: left; display: none; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 5px;"></div>
-                    <div style="font-size: 12px; margin-top: 5px; opacity: 0.8;">* Ориентировочная стоимость. Финальная смета после согласования.</div>
-                </div>
-
-                <!-- Кнопка отправки -->
-                <a id="btn-tg-calc" href="https://t.me/F1rstFamilyFulFillment" style="display: flex; justify-content: center; align-items: center; gap: 10px; text-align: center; background: #fff; color: #111; padding: 18px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 8px; margin-top: 15px;">
-                    <svg viewBox="0 0 24 24" style="width: 24px; height: 24px; fill: #0088cc;"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-                    Отправить расчет в Telegram
-                </a>
             </form>
         </div>
+    </div>
+
+    <!-- ЛИПКАЯ ПАНЕЛЬ ИТОГОВ (Показывается только при открытом калькуляторе) -->
+    <div id="sticky-summary" class="sticky-summary">
+        <div>
+            <div class="sum-label">Итого по смете:</div>
+            <div id="sticky-total-price" class="sum-price">0 ₽</div>
+        </div>
+        <a id="btn-tg-calc" href="https://t.me/F1rstFamilyFulFillment" class="btn-send">
+            <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            Отправить
+        </a>
     </div>
 
     <!-- Подвал -->
@@ -285,18 +362,20 @@
 
     <!-- Скрипты -->
     <script>
-        // Открытие/закрытие калькулятора
+        // Открытие/закрытие калькулятора и липкой панели
         function toggleCalculator() {
             const wrapper = document.getElementById('calculator-wrapper');
+            const stickyPanel = document.getElementById('sticky-summary');
             const btn = document.getElementById('btn-open-calc');
             
             if (wrapper.style.display === 'none' || wrapper.style.display === '') {
                 wrapper.style.display = 'block';
+                stickyPanel.style.display = 'flex'; // Показываем панель
                 btn.innerText = 'Скрыть калькулятор';
-                // Плавная прокрутка к калькулятору
                 wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 wrapper.style.display = 'none';
+                stickyPanel.style.display = 'none'; // Скрываем панель
                 btn.innerText = 'Открыть калькулятор';
             }
         }
@@ -316,27 +395,34 @@
             }
 
             addItem('q-priemka', 5, 'Приемка');
+            addItem('q-sort', 5, 'Сортировка');
+            addItem('q-viz', 5, 'Визуальная проверка');
             addItem('q-brak', 10, 'Проверка на брак');
+            
             addItem('q-etiketka', 5, 'Этикетка 58x40');
             addItem('q-kiz', 9, 'КИЗ');
+            addItem('q-sovm', 12, 'Совмещенная маркировка');
+            
+            addItem('q-vlozh', 5, 'Вложение вкладыша');
+            addItem('q-kompl', 10, 'Сборка комплекта');
             addItem('q-paket', 5, 'Пакет клиента');
-            addItem('q-bopp', 12, 'БОПП');
+            addItem('q-bopp', 12, 'БОПП-пакет');
+            addItem('q-zip', 16, 'ZIP-пакет');
+            
             addItem('q-korob', 150, 'Формирование короба');
             addItem('q-pallet', 750, 'Паллетирование');
-            addItem('q-storage', 50, 'Хранение');
-            addItem('q-zabor', 1800, 'Забор товара');
-            addItem('q-fbs', 35, 'Сборка FBS');
+            addItem('q-stor-kor', 5, 'Хранение короба');
+            addItem('q-stor-pal', 50, 'Хранение паллеты');
+            
+            addItem('q-fbs-1', 35, 'Сборка FBS до 1л');
+            addItem('q-fbs-5', 55, 'Сборка FBS 1-5л');
+            addItem('q-zabor-1', 1800, 'Забор до 1м3');
+            addItem('q-zabor-3', 3000, 'Забор 1-3м3');
 
-            document.getElementById('total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
+            // Обновляем сумму в липкой панели
+            document.getElementById('sticky-total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
 
-            let sumDiv = document.getElementById('summary-text');
-            if (summary.length > 0) {
-                sumDiv.style.display = 'block';
-                sumDiv.innerHTML = summary.join('<br>');
-            } else {
-                sumDiv.style.display = 'none';
-            }
-
+            // Формируем сообщение для ТГ
             let msg = "Здравствуйте! Я рассчитал на сайте.\n" + (summary.length > 0 ? summary.join('\n') : 'Услуги не выбраны') + "\nИтого: " + total + " руб.";
             let tgLink = "https://t.me/F1rstFamilyFulFillment?text=" + encodeURIComponent(msg);
             document.getElementById('btn-tg-calc').href = tgLink;
