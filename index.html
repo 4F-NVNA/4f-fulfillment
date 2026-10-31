@@ -9,7 +9,7 @@
         /* Базовые настройки и плавная прокрутка */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         html { scroll-behavior: smooth; }
-        body { background-color: #f8f9fa; color: #333; padding-bottom: 90px; /* Отступ для мобильной панели */ }
+        body { background-color: #f8f9fa; color: #333; padding-bottom: 100px; }
 
         /* Анимация для телефона */
         @keyframes vibrate {
@@ -62,10 +62,10 @@
 
         /* Стили для калькулятора */
         .calc-wrapper { display: none; padding: 60px 20px; background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); color: #fff; }
-        .calc-container { max-width: 900px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .calc-container { max-width: 1000px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .calc-step { background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #FF6600; margin-bottom: 20px; }
         .calc-step h3 { font-size: 18px; margin-bottom: 15px; color: #FF6600; }
-        .input-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 10px; }
+        .input-group { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 10px; }
         .input-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #333; color: #fff; font-size: 16px; transition: 0.3s; }
         .input-group input:focus { outline: none; border-color: #FF6600; box-shadow: 0 0 8px rgba(255, 102, 0, 0.4); }
         .input-label { font-size: 13px; color: #aaa; margin-bottom: 5px; display: block; }
@@ -78,23 +78,23 @@
             background: #222;
             border: 2px solid #FF6600;
             border-radius: 10px;
-            padding: 15px 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: none; /* Скрыто по умолчанию */
+            padding: 15px 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: none;
             z-index: 9999;
-            min-width: 300px;
+            min-width: 320px;
             text-align: center;
             transition: all 0.3s ease;
         }
         .sticky-summary .sum-label { color: #aaa; font-size: 14px; margin-bottom: 5px; }
-        .sticky-summary .sum-price { color: #FF6600; font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+        .sticky-summary .sum-price { color: #FF6600; font-size: 36px; font-weight: bold; margin-bottom: 15px; }
         .sticky-summary .btn-send {
             display: flex; justify-content: center; align-items: center; gap: 8px;
-            background: #FF6600; color: #fff; padding: 12px 20px;
-            text-decoration: none; border-radius: 5px; font-weight: bold;
+            background: #25D366; color: #fff; padding: 14px 20px;
+            text-decoration: none; border-radius: 8px; font-weight: bold;
             transition: 0.3s; font-size: 16px;
         }
-        .sticky-summary .btn-send:hover { background: #e65c00; }
+        .sticky-summary .btn-send:hover { background: #128C7E; }
         .sticky-summary .btn-send svg { width: 20px; height: 20px; fill: #fff; }
 
         /* Адаптация под телефоны */
@@ -107,7 +107,6 @@
             .btn-main { font-size: 18px; padding: 15px 25px; width: 100%; }
             .calc-container { padding: 20px; }
             
-            /* Мобильная версия липкой панели (на всю ширину внизу) */
             .sticky-summary {
                 right: 0;
                 bottom: 0;
@@ -209,26 +208,16 @@
             
             <form id="calc-form" oninput="calculate()">
                 
-                <!-- Блок 1: Приемка -->
+                <!-- Блок 1: Приемка и проверка -->
                 <div class="calc-step">
                     <h3>1. Приемка и проверка</h3>
                     <div class="input-group">
-                        <div>
-                            <label class="input-label">Приемка и пересчет (5 ₽/шт):</label>
-                            <input type="number" id="q-priemka" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">Сортировка (5 ₽/шт):</label>
-                            <input type="number" id="q-sort" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">Визуальная проверка (5 ₽/шт):</label>
-                            <input type="number" id="q-viz" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">Проверка на брак (10 ₽/шт):</label>
-                            <input type="number" id="q-brak" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
+                        <div><label class="input-label">Приемка и пересчет (5 ₽):</label><input type="number" id="q-priemka" value="0" min="0"></div>
+                        <div><label class="input-label">Сортировка (5 ₽):</label><input type="number" id="q-sort" value="0" min="0"></div>
+                        <div><label class="input-label">Визуальная проверка (5 ₽):</label><input type="number" id="q-viz" value="0" min="0"></div>
+                        <div><label class="input-label">Проверка брак (прочие) (10 ₽):</label><input type="number" id="q-brak-pr" value="0" min="0"></div>
+                        <div><label class="input-label">Проверка брак (техника) (15 ₽):</label><input type="number" id="q-brak-teh" value="0" min="0"></div>
+                        <div><label class="input-label">Проверка брак (обувь) (10 ₽):</label><input type="number" id="q-brak-ob" value="0" min="0"></div>
                     </div>
                 </div>
 
@@ -236,18 +225,10 @@
                 <div class="calc-step">
                     <h3>2. Маркировка и стикерование</h3>
                     <div class="input-group">
-                        <div>
-                            <label class="input-label">Этикетка 58×40 (5 ₽/шт):</label>
-                            <input type="number" id="q-etiketka" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">КИЗ «Честный Знак» (9 ₽/шт):</label>
-                            <input type="number" id="q-kiz" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">Совмещенная ШК+ЧЗ (12 ₽/шт):</label>
-                            <input type="number" id="q-sovm" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
+                        <div><label class="input-label">Этикетка 58×40 (5 ₽):</label><input type="number" id="q-etiketka-58" value="0" min="0"></div>
+                        <div><label class="input-label">Этикетка 75×120 (7 ₽):</label><input type="number" id="q-etiketka-75" value="0" min="0"></div>
+                        <div><label class="input-label">КИЗ «Честный Знак» (9 ₽):</label><input type="number" id="q-kiz" value="0" min="0"></div>
+                        <div><label class="input-label">Совмещенная ШК+ЧЗ (12 ₽):</label><input type="number" id="q-sovm" value="0" min="0"></div>
                     </div>
                 </div>
 
@@ -255,26 +236,16 @@
                 <div class="calc-step">
                     <h3>3. Комплектация и упаковка</h3>
                     <div class="input-group">
-                        <div>
-                            <label class="input-label">Вложение вкладыша (5 ₽/шт):</label>
-                            <input type="number" id="q-vlozh" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">Сборка комплекта до 3 ед. (10 ₽):</label>
-                            <input type="number" id="q-kompl" value="0" min="0" placeholder="Кол-во компл.">
-                        </div>
-                        <div>
-                            <label class="input-label">Пакет клиента (5 ₽/шт):</label>
-                            <input type="number" id="q-paket" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">БОПП-пакет до 25 см (12 ₽/шт):</label>
-                            <input type="number" id="q-bopp" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
-                        <div>
-                            <label class="input-label">ZIP-пакет 20×25 (16 ₽/шт):</label>
-                            <input type="number" id="q-zip" value="0" min="0" placeholder="Кол-во шт">
-                        </div>
+                        <div><label class="input-label">Вложение вкладыша (5 ₽):</label><input type="number" id="q-vlozh" value="0" min="0"></div>
+                        <div><label class="input-label">Сборка комплекта до 3 ед. (10 ₽):</label><input type="number" id="q-kompl-3" value="0" min="0"></div>
+                        <div><label class="input-label">Сборка комплекта свыше 3 ед. (3 ₽):</label><input type="number" id="q-kompl-3plus" value="0" min="0"></div>
+                        <div><label class="input-label">Пакет клиента (5 ₽):</label><input type="number" id="q-paket" value="0" min="0"></div>
+                        <div><label class="input-label">БОПП до 25 см (12 ₽):</label><input type="number" id="q-bopp-25" value="0" min="0"></div>
+                        <div><label class="input-label">БОПП до 45 см (14 ₽):</label><input type="number" id="q-bopp-45" value="0" min="0"></div>
+                        <div><label class="input-label">ZIP 20×25 (16 ₽):</label><input type="number" id="q-zip-20" value="0" min="0"></div>
+                        <div><label class="input-label">ZIP 25×30 (17 ₽):</label><input type="number" id="q-zip-25" value="0" min="0"></div>
+                        <div><label class="input-label">ПВД до 20 см (16 ₽):</label><input type="number" id="q-pvd-20" value="0" min="0"></div>
+                        <div><label class="input-label">ВПП до 20 см (16 ₽):</label><input type="number" id="q-vpp-20" value="0" min="0"></div>
                     </div>
                 </div>
 
@@ -282,22 +253,11 @@
                 <div class="calc-step">
                     <h3>4. Отгрузка и хранение</h3>
                     <div class="input-group">
-                        <div>
-                            <label class="input-label">Формирование короба 60×40×40 (150 ₽):</label>
-                            <input type="number" id="q-korob" value="0" min="0" placeholder="Кол-во коробов">
-                        </div>
-                        <div>
-                            <label class="input-label">Паллетирование (750 ₽/шт):</label>
-                            <input type="number" id="q-pallet" value="0" min="0" placeholder="Кол-во паллет">
-                        </div>
-                        <div>
-                            <label class="input-label">Хранение короба (5 ₽/сутки):</label>
-                            <input type="number" id="q-stor-kor" value="0" min="0" placeholder="Кол-во суток">
-                        </div>
-                        <div>
-                            <label class="input-label">Хранение паллеты (50 ₽/сутки):</label>
-                            <input type="number" id="q-stor-pal" value="0" min="0" placeholder="Кол-во суток">
-                        </div>
+                        <div><label class="input-label">Короб 60×40×40 (150 ₽):</label><input type="number" id="q-korob-60" value="0" min="0"></div>
+                        <div><label class="input-label">Короб клиента (100 ₽):</label><input type="number" id="q-korob-cl" value="0" min="0"></div>
+                        <div><label class="input-label">Паллетирование (750 ₽):</label><input type="number" id="q-pallet" value="0" min="0"></div>
+                        <div><label class="input-label">Хранение короба (5 ₽/сутки):</label><input type="number" id="q-stor-kor" value="0" min="0"></div>
+                        <div><label class="input-label">Хранение паллеты (50 ₽/сутки):</label><input type="number" id="q-stor-pal" value="0" min="0"></div>
                     </div>
                 </div>
 
@@ -305,30 +265,18 @@
                 <div class="calc-step">
                     <h3>5. FBS и Забор товара</h3>
                     <div class="input-group">
-                        <div>
-                            <label class="input-label">Сборка FBS до 1 л (35 ₽):</label>
-                            <input type="number" id="q-fbs-1" value="0" min="0" placeholder="Кол-во заказов">
-                        </div>
-                        <div>
-                            <label class="input-label">Сборка FBS 1-5 л (55 ₽):</label>
-                            <input type="number" id="q-fbs-5" value="0" min="0" placeholder="Кол-во заказов">
-                        </div>
-                        <div>
-                            <label class="input-label">Забор до 1 м³ (1800 ₽):</label>
-                            <input type="number" id="q-zabor-1" value="0" min="0" placeholder="Кол-во рейсов">
-                        </div>
-                        <div>
-                            <label class="input-label">Забор от 1 до 3 м³ (3000 ₽):</label>
-                            <input type="number" id="q-zabor-3" value="0" min="0" placeholder="Кол-во рейсов">
-                        </div>
+                        <div><label class="input-label">Сборка FBS до 1 л (35 ₽):</label><input type="number" id="q-fbs-1" value="0" min="0"></div>
+                        <div><label class="input-label">Сборка FBS 1-5 л (55 ₽):</label><input type="number" id="q-fbs-5" value="0" min="0"></div>
+                        <div><label class="input-label">Забор до 1 м³ (1800 ₽):</label><input type="number" id="q-zabor-1" value="0" min="0"></div>
+                        <div><label class="input-label">Забор 1-3 м³ (3000 ₽):</label><input type="number" id="q-zabor-3" value="0" min="0"></div>
+                        <div><label class="input-label">Забор свыше 3 м³ (6000 ₽):</label><input type="number" id="q-zabor-3plus" value="0" min="0"></div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 
-    <!-- ЛИПКАЯ ПАНЕЛЬ ИТОГОВ (Показывается только при открытом калькуляторе) -->
+    <!-- ЛИПКАЯ ПАНЕЛЬ ИТОГОВ -->
     <div id="sticky-summary" class="sticky-summary">
         <div>
             <div class="sum-label">Итого по смете:</div>
@@ -336,7 +284,7 @@
         </div>
         <a id="btn-tg-calc" href="https://t.me/F1rstFamilyFulFillment" class="btn-send">
             <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-            Отправить
+            Отправить в Telegram
         </a>
     </div>
 
@@ -362,7 +310,6 @@
 
     <!-- Скрипты -->
     <script>
-        // Открытие/закрытие калькулятора и липкой панели
         function toggleCalculator() {
             const wrapper = document.getElementById('calculator-wrapper');
             const stickyPanel = document.getElementById('sticky-summary');
@@ -370,17 +317,16 @@
             
             if (wrapper.style.display === 'none' || wrapper.style.display === '') {
                 wrapper.style.display = 'block';
-                stickyPanel.style.display = 'flex'; // Показываем панель
+                stickyPanel.style.display = 'flex';
                 btn.innerText = 'Скрыть калькулятор';
                 wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else {
                 wrapper.style.display = 'none';
-                stickyPanel.style.display = 'none'; // Скрываем панель
+                stickyPanel.style.display = 'none';
                 btn.innerText = 'Открыть калькулятор';
             }
         }
 
-        // Расчет в калькуляторе
         function calculate() {
             let total = 0;
             let summary = [];
@@ -394,39 +340,40 @@
                 }
             }
 
+            // Приемка
             addItem('q-priemka', 5, 'Приемка');
             addItem('q-sort', 5, 'Сортировка');
             addItem('q-viz', 5, 'Визуальная проверка');
-            addItem('q-brak', 10, 'Проверка на брак');
+            addItem('q-brak-pr', 10, 'Проверка брак (прочие)');
+            addItem('q-brak-teh', 15, 'Проверка брак (техника)');
+            addItem('q-brak-ob', 10, 'Проверка брак (обувь)');
             
-            addItem('q-etiketka', 5, 'Этикетка 58x40');
+            // Маркировка
+            addItem('q-etiketka-58', 5, 'Этикетка 58x40');
+            addItem('q-etiketka-75', 7, 'Этикетка 75x120');
             addItem('q-kiz', 9, 'КИЗ');
             addItem('q-sovm', 12, 'Совмещенная маркировка');
             
+            // Комплектация и упаковка
             addItem('q-vlozh', 5, 'Вложение вкладыша');
-            addItem('q-kompl', 10, 'Сборка комплекта');
+            addItem('q-kompl-3', 10, 'Сборка комплекта до 3 ед.');
+            addItem('q-kompl-3plus', 3, 'Сборка комплекта свыше 3 ед.');
             addItem('q-paket', 5, 'Пакет клиента');
-            addItem('q-bopp', 12, 'БОПП-пакет');
-            addItem('q-zip', 16, 'ZIP-пакет');
+            addItem('q-bopp-25', 12, 'БОПП до 25 см');
+            addItem('q-bopp-45', 14, 'БОПП до 45 см');
+            addItem('q-zip-20', 16, 'ZIP 20x25');
+            addItem('q-zip-25', 17, 'ZIP 25x30');
+            addItem('q-pvd-20', 16, 'ПВД до 20 см');
+            addItem('q-vpp-20', 16, 'ВПП до 20 см');
             
-            addItem('q-korob', 150, 'Формирование короба');
+            // Отгрузка и хранение
+            addItem('q-korob-60', 150, 'Короб 60x40x40');
+            addItem('q-korob-cl', 100, 'Короб клиента');
             addItem('q-pallet', 750, 'Паллетирование');
             addItem('q-stor-kor', 5, 'Хранение короба');
             addItem('q-stor-pal', 50, 'Хранение паллеты');
             
+            // FBS и Забор
             addItem('q-fbs-1', 35, 'Сборка FBS до 1л');
             addItem('q-fbs-5', 55, 'Сборка FBS 1-5л');
-            addItem('q-zabor-1', 1800, 'Забор до 1м3');
-            addItem('q-zabor-3', 3000, 'Забор 1-3м3');
-
-            // Обновляем сумму в липкой панели
-            document.getElementById('sticky-total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
-
-            // Формируем сообщение для ТГ
-            let msg = "Здравствуйте! Я рассчитал на сайте.\n" + (summary.length > 0 ? summary.join('\n') : 'Услуги не выбраны') + "\nИтого: " + total + " руб.";
-            let tgLink = "https://t.me/F1rstFamilyFulFillment?text=" + encodeURIComponent(msg);
-            document.getElementById('btn-tg-calc').href = tgLink;
-        }
-    </script>
-</body>
-</html>
+            addItem('q-z
