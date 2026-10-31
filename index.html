@@ -72,28 +72,11 @@
 
         /* Липкая панель итогов */
         .sticky-summary {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #222;
-            border: 2px solid #FF6600;
-            border-radius: 10px;
-            padding: 15px 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            display: none;
-            z-index: 9999;
-            min-width: 320px;
-            text-align: center;
-            transition: all 0.3s ease;
+            position: fixed; bottom: 20px; right: 20px; background: #222; border: 2px solid #FF6600; border-radius: 10px; padding: 15px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: none; z-index: 9999; min-width: 320px; text-align: center; transition: all 0.3s ease;
         }
         .sticky-summary .sum-label { color: #aaa; font-size: 14px; margin-bottom: 5px; }
         .sticky-summary .sum-price { color: #FF6600; font-size: 36px; font-weight: bold; margin-bottom: 15px; }
-        .sticky-summary .btn-send {
-            display: flex; justify-content: center; align-items: center; gap: 8px;
-            background: #25D366; color: #fff; padding: 14px 20px;
-            text-decoration: none; border-radius: 8px; font-weight: bold;
-            transition: 0.3s; font-size: 16px;
-        }
+        .sticky-summary .btn-send { display: flex; justify-content: center; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; font-size: 16px; }
         .sticky-summary .btn-send:hover { background: #128C7E; }
         .sticky-summary .btn-send svg { width: 20px; height: 20px; fill: #fff; }
 
@@ -106,20 +89,7 @@
             .btn-tg { font-size: 12px; padding: 8px 12px; }
             .btn-main { font-size: 18px; padding: 15px 25px; width: 100%; }
             .calc-container { padding: 20px; }
-            
-            .sticky-summary {
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                border-radius: 10px 10px 0 0;
-                border: none;
-                border-top: 2px solid #FF6600;
-                padding: 15px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                box-sizing: border-box;
-            }
+            .sticky-summary { right: 0; bottom: 0; width: 100%; border-radius: 10px 10px 0 0; border: none; border-top: 2px solid #FF6600; padding: 15px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; }
             .sticky-summary .sum-price { font-size: 24px; margin-bottom: 0; }
             .sticky-summary .sum-label { display: none; }
             .sticky-summary .btn-send { padding: 10px 15px; font-size: 14px; }
@@ -207,8 +177,6 @@
             <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Введите объемы по нужным услугам. Остальные поля оставьте пустыми. Итоговая сумма всегда видна на экране.</p>
             
             <form id="calc-form" oninput="calculate()">
-                
-                <!-- Блок 1: Приемка и проверка -->
                 <div class="calc-step">
                     <h3>1. Приемка и проверка</h3>
                     <div class="input-group">
@@ -221,7 +189,6 @@
                     </div>
                 </div>
 
-                <!-- Блок 2: Маркировка -->
                 <div class="calc-step">
                     <h3>2. Маркировка и стикерование</h3>
                     <div class="input-group">
@@ -232,7 +199,6 @@
                     </div>
                 </div>
 
-                <!-- Блок 3: Комплектация и упаковка -->
                 <div class="calc-step">
                     <h3>3. Комплектация и упаковка</h3>
                     <div class="input-group">
@@ -249,7 +215,6 @@
                     </div>
                 </div>
 
-                <!-- Блок 4: Отгрузка и хранение -->
                 <div class="calc-step">
                     <h3>4. Отгрузка и хранение</h3>
                     <div class="input-group">
@@ -261,7 +226,6 @@
                     </div>
                 </div>
 
-                <!-- Блок 5: FBS и Забор -->
                 <div class="calc-step">
                     <h3>5. FBS и Забор товара</h3>
                     <div class="input-group">
@@ -276,7 +240,6 @@
         </div>
     </div>
 
-    <!-- ЛИПКАЯ ПАНЕЛЬ ИТОГОВ -->
     <div id="sticky-summary" class="sticky-summary">
         <div>
             <div class="sum-label">Итого по смете:</div>
@@ -288,7 +251,6 @@
         </a>
     </div>
 
-    <!-- Подвал -->
     <footer style="background: #111; color: #777; text-align: center; padding: 30px 20px; font-size: 14px;">
         <p style="margin-bottom: 10px;">© 2024 4F Fulfillment. Склад в Домодедово.</p>
         <p style="margin-bottom: 10px;">Фулфилмент для Wildberries и Ozon</p>
@@ -306,10 +268,7 @@
                 dmd.4f@yandex.ru
             </a>
         </div>
-    </footer>
-
-    <!-- Скрипты -->
-    <script>
+    </footer>    <script>
         function toggleCalculator() {
             const wrapper = document.getElementById('calculator-wrapper');
             const stickyPanel = document.getElementById('sticky-summary');
@@ -377,4 +336,5 @@
             addItem('q-fbs-1', 35, 'Сборка FBS до 1л');
             addItem('q-fbs-5', 55, 'Сборка FBS 1-5л');
             addItem('q-zabor-1', 1800, 'Забор до 1м3');
-            addItem('q-zabor-3', 3000, 'Забор 1-3м
+            addItem('q-zabor-3', 3000, 'Забор 1-3м3');
+            addItem('q-zabor-3plus', 6000, 'Забор свыше 3м3');
