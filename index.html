@@ -6,12 +6,10 @@
     <title>Фулфилмент для маркетплейсов в Москве | Склад в Домодедово | 4F</title>
     <meta name="description" content="Фулфилмент FBO/FBS для Wildberries и Ozon. Свой склад в Домодедово (Москва). Приемка за 24 часа. Первая приемка бесплатно. Работаем в WMS «Целиком». Без скрытых платежей.">
     <style>
-        /* Базовые настройки и плавная прокрутка */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         html { scroll-behavior: smooth; }
         body { background-color: #f8f9fa; color: #333; padding-bottom: 100px; }
 
-        /* Анимация для телефона */
         @keyframes vibrate {
             0% { transform: rotate(0deg); }
             20% { transform: rotate(-15deg); }
@@ -21,13 +19,11 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Липкая шапка */
         header { position: sticky; top: 0; z-index: 1000; background: #111; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .logo { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
         .logo span { color: #FF6600; }
         .header-contact { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         
-        /* Стили контактов */
         .contact-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; transition: all 0.3s ease; }
         .phone { color: #fff; font-weight: 600; }
         .phone:hover { color: #25D366; }
@@ -40,7 +36,6 @@
         .btn-tg:hover { background: #006699; }
         .btn-tg svg { width: 18px; height: 18px; fill: #fff; }
 
-        /* Первый экран (Hero) */
         .hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 20px; background-image: url('sklad.png'); background-size: cover; background-position: center; }
         .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); z-index: 1; }
         .hero-content { position: relative; z-index: 2; max-width: 900px; }
@@ -48,11 +43,9 @@
         .hero h1 span { color: #FF6600; }
         .hero p { font-size: 20px; color: #ddd; margin-bottom: 40px; line-height: 1.5; }
         
-        /* Главная кнопка */
         .btn-main { display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: 800; text-decoration: none; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4); transition: 0.3s; border: none; cursor: pointer; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6); }
 
-        /* Карточки болей и решений */
         .card-hover { transition: transform 0.3s, box-shadow 0.3s; background: #f8f9fa; padding: 25px; border-radius: 10px; border-top: 4px solid #f44336; display: flex; flex-direction: column; }
         .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .pain { color: #333; font-size: 16px; margin-bottom: 15px; font-weight: 600; }
@@ -60,7 +53,6 @@
         .solution { color: #555; font-size: 15px; line-height: 1.5; background: #e8f5e9; padding: 10px; border-radius: 5px; border-left: 3px solid #4caf50; margin-top: auto; }
         .solution::before { content: "✅ "; color: #4caf50; font-weight: bold; }
 
-        /* Стили для калькулятора */
         .calc-wrapper { display: none; padding: 60px 20px; background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); color: #fff; }
         .calc-container { max-width: 1000px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .calc-step { background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #FF6600; margin-bottom: 20px; }
@@ -70,17 +62,13 @@
         .input-group input:focus { outline: none; border-color: #FF6600; box-shadow: 0 0 8px rgba(255, 102, 0, 0.4); }
         .input-label { font-size: 13px; color: #aaa; margin-bottom: 5px; display: block; }
 
-        /* Липкая панель итогов */
-        .sticky-summary {
-            position: fixed; bottom: 20px; right: 20px; background: #222; border: 2px solid #FF6600; border-radius: 10px; padding: 15px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: none; z-index: 9999; min-width: 320px; text-align: center; transition: all 0.3s ease;
-        }
+        .sticky-summary { position: fixed; bottom: 20px; right: 20px; background: #222; border: 2px solid #FF6600; border-radius: 10px; padding: 15px 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.6); display: none; z-index: 9999; min-width: 320px; text-align: center; transition: all 0.3s ease; }
         .sticky-summary .sum-label { color: #aaa; font-size: 14px; margin-bottom: 5px; }
         .sticky-summary .sum-price { color: #FF6600; font-size: 36px; font-weight: bold; margin-bottom: 15px; }
         .sticky-summary .btn-send { display: flex; justify-content: center; align-items: center; gap: 8px; background: #25D366; color: #fff; padding: 14px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; font-size: 16px; }
         .sticky-summary .btn-send:hover { background: #128C7E; }
         .sticky-summary .btn-send svg { width: 20px; height: 20px; fill: #fff; }
 
-        /* Адаптация под телефоны */
         @media (max-width: 768px) {
             .hero h1 { font-size: 32px; }
             .hero p { font-size: 16px; }
@@ -98,7 +86,6 @@
 </head>
 <body>
 
-    <!-- Шапка сайта -->
     <header>
         <div class="logo">4F<span>FULFILLMENT</span></div>
         <div class="header-contact">
@@ -121,7 +108,6 @@
         </div>
     </header>
 
-    <!-- Первый экран -->
     <section class="hero">
         <div class="hero-content">
             <h1>Фулфилмент FBO/FBS <br><span>в Москве. Склад в Домодедово</span></h1>
@@ -130,47 +116,38 @@
         </div>
     </section>
 
-    <!-- Блок с болями и решениями -->
     <section style="padding: 60px 20px; background: #fff;">
         <div style="max-width: 1200px; margin: 0 auto;">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #111;">Знакомые проблемы?</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px;">
-                
                 <div class="card-hover">
                     <div class="pain">Штрафы за просрочку</div>
                     <div class="solution">Фиксируем сроки в договоре и берем ответственность на себя.</div>
                 </div>
-                
                 <div class="card-hover">
                     <div class="pain">Пересорт и возвраты</div>
                     <div class="solution">Работаем в WMS «Целиком» и сканируем каждый штрихкод.</div>
                 </div>
-                
                 <div class="card-hover">
                     <div class="pain">Скрытые платежи</div>
                     <div class="solution">Прозрачный прайс. Все услуги прописаны в договоре.</div>
                 </div>
-                
                 <div class="card-hover">
                     <div class="pain">Нет ответственного</div>
                     <div class="solution">Личный менеджер. Оперативная связь в Telegram.</div>
                 </div>
-                
                 <div class="card-hover">
                     <div class="pain">Боитесь пиковых нагрузок</div>
                     <div class="solution">Наш склад рассчитан на обработку до 1000 заказов в день.</div>
                 </div>
-                
                 <div class="card-hover">
                     <div class="pain">Товар стоит без дела</div>
                     <div class="solution">Приемка за 24 часа. Сразу заводим в систему.</div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Скрытый калькулятор -->
     <div id="calculator-wrapper" class="calc-wrapper">
         <div class="calc-container">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 10px; color: #fff;">Калькулятор обработки партии</h2>
@@ -268,7 +245,9 @@
                 dmd.4f@yandex.ru
             </a>
         </div>
-    </footer>    <script>
+    </footer>
+
+    <script>
         function toggleCalculator() {
             const wrapper = document.getElementById('calculator-wrapper');
             const stickyPanel = document.getElementById('sticky-summary');
@@ -295,11 +274,10 @@
                 if (val > 0) {
                     let cost = val * price;
                     total += cost;
-                    summary.push(`${label}: ${val} ед. = ${cost} ₽`);
+                    summary.push(label + ": " + val + " ед. = " + cost + " руб.");
                 }
             }
 
-            // Приемка
             addItem('q-priemka', 5, 'Приемка');
             addItem('q-sort', 5, 'Сортировка');
             addItem('q-viz', 5, 'Визуальная проверка');
@@ -307,13 +285,11 @@
             addItem('q-brak-teh', 15, 'Проверка брак (техника)');
             addItem('q-brak-ob', 10, 'Проверка брак (обувь)');
             
-            // Маркировка
             addItem('q-etiketka-58', 5, 'Этикетка 58x40');
             addItem('q-etiketka-75', 7, 'Этикетка 75x120');
             addItem('q-kiz', 9, 'КИЗ');
             addItem('q-sovm', 12, 'Совмещенная маркировка');
             
-            // Комплектация и упаковка
             addItem('q-vlozh', 5, 'Вложение вкладыша');
             addItem('q-kompl-3', 10, 'Сборка комплекта до 3 ед.');
             addItem('q-kompl-3plus', 3, 'Сборка комплекта свыше 3 ед.');
@@ -325,16 +301,24 @@
             addItem('q-pvd-20', 16, 'ПВД до 20 см');
             addItem('q-vpp-20', 16, 'ВПП до 20 см');
             
-            // Отгрузка и хранение
             addItem('q-korob-60', 150, 'Короб 60x40x40');
             addItem('q-korob-cl', 100, 'Короб клиента');
             addItem('q-pallet', 750, 'Паллетирование');
             addItem('q-stor-kor', 5, 'Хранение короба');
             addItem('q-stor-pal', 50, 'Хранение паллеты');
             
-            // FBS и Забор
             addItem('q-fbs-1', 35, 'Сборка FBS до 1л');
             addItem('q-fbs-5', 55, 'Сборка FBS 1-5л');
             addItem('q-zabor-1', 1800, 'Забор до 1м3');
             addItem('q-zabor-3', 3000, 'Забор 1-3м3');
             addItem('q-zabor-3plus', 6000, 'Забор свыше 3м3');
+
+            document.getElementById('sticky-total-price').innerText = total.toLocaleString('ru-RU') + ' ₽';
+
+            let msg = "Здравствуйте! Я рассчитал на сайте.\n" + (summary.length > 0 ? summary.join('\n') : 'Услуги не выбраны') + "\nИтого: " + total + " руб.";
+            let tgLink = "https://t.me/F1rstFamilyFulFillment?text=" + encodeURIComponent(msg);
+            document.getElementById('btn-tg-calc').href = tgLink;
+        }
+    </script>
+</body>
+</html>
