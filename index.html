@@ -6,10 +6,11 @@
     <title>Фулфилмент для маркетплейсов в Москве | Склад в Домодедово | 4F</title>
     <meta name="description" content="Фулфилмент FBO/FBS для Wildberries и Ozon. Свой склад в Домодедово (Москва). Приемка за 24 часа. Первая приемка бесплатно. Работаем в WMS «Целиком». Без скрытых платежей.">
     <style>
-        /* Базовые настройки */
+        /* Базовые настройки и плавная прокрутка */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        html { scroll-behavior: smooth; }
         body { background-color: #f8f9fa; color: #333; }
-        
+
         /* Анимация для телефона */
         @keyframes vibrate {
             0% { transform: rotate(0deg); }
@@ -19,27 +20,20 @@
             100% { transform: rotate(0deg); }
         }
 
-        /* Шапка */
-        header { background: #111; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        /* Липкая шапка */
+        header { position: sticky; top: 0; z-index: 1000; background: #111; color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .logo { font-size: 20px; font-weight: 800; letter-spacing: 1px; }
         .logo span { color: #FF6600; }
-        
         .header-contact { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
         
         /* Стили контактов */
         .contact-link { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 15px; transition: 0.3s; }
-        
-        /* Телефон */
         .phone { color: #fff; font-weight: 600; }
         .phone:hover { color: #FF6600; }
-        .phone svg { width: 18px; height: 18px; fill: #FF6600; animation: vibrate 1s infinite; display: inline-block; }
-        
-        /* Почта */
+        .phone svg { width: 18px; height: 18px; fill: #FF6600; animation: vibrate 1.5s infinite; display: inline-block; }
         .email { color: #FF6600; font-weight: normal; }
         .email:hover { color: #fff; }
         .email svg { width: 18px; height: 18px; fill: #FF6600; }
-        
-        /* Кнопка ТГ */
         .btn-tg { background: #0088cc; color: #fff; padding: 10px 15px; border-radius: 5px; font-weight: bold; font-size: 14px; display: flex; align-items: center; gap: 8px; white-space: nowrap; }
         .btn-tg:hover { background: #006699; }
         .btn-tg svg { width: 18px; height: 18px; fill: #fff; }
@@ -53,17 +47,21 @@
         .hero p { font-size: 20px; color: #ddd; margin-bottom: 40px; line-height: 1.5; }
         
         /* Главная кнопка */
-        .btn-main { display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: 800; text-decoration: none; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4); transition: 0.3s; }
+        .btn-main { display: inline-block; background: #FF6600; color: #fff; padding: 20px 40px; font-size: 20px; font-weight: 800; text-decoration: none; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4); transition: 0.3s; border: none; cursor: pointer; }
         .btn-main:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6); }
 
+        /* Эффект парящих карточек */
+        .card-hover { transition: transform 0.3s, box-shadow 0.3s; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
         /* Стили для калькулятора */
-        .calc-section { padding: 60px 20px; background: #111; color: #fff; }
-        .calc-container { max-width: 900px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; }
+        .calc-wrapper { display: none; padding: 60px 20px; background: linear-gradient(180deg, #111 0%, #1a1a1a 100%); color: #fff; }
+        .calc-container { max-width: 900px; margin: 0 auto; background: #222; padding: 40px; border-radius: 10px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         .calc-step { background: #1a1a1a; padding: 20px; border-radius: 8px; border-left: 4px solid #FF6600; margin-bottom: 20px; }
         .calc-step h3 { font-size: 18px; margin-bottom: 15px; color: #FF6600; }
         .input-group { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px; }
-        .input-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #333; color: #fff; font-size: 16px; }
-        .input-group input:focus { outline: none; border-color: #FF6600; }
+        .input-group input { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #333; color: #fff; font-size: 16px; transition: 0.3s; }
+        .input-group input:focus { outline: none; border-color: #FF6600; box-shadow: 0 0 8px rgba(255, 102, 0, 0.4); }
         .input-label { font-size: 14px; color: #aaa; margin-bottom: 5px; display: block; }
 
         /* Адаптация под телефоны */
@@ -85,22 +83,18 @@
     <header>
         <div class="logo">4F<span>FULFILLMENT</span></div>
         <div class="header-contact">
-            <!-- Телефон 1 с анимацией -->
             <a href="tel:+79776946400" class="contact-link phone">
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 Позвонить: +7 (977) 694-64-00
             </a>
-            <!-- Телефон 2 с анимацией -->
             <a href="tel:+79999906400" class="contact-link phone">
                 <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
                 Позвонить: +7 (999) 990-64-00
             </a>
-            <!-- Почта с конвертом -->
             <a href="mailto:dmd.4f@yandex.ru" class="contact-link email">
                 <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 dmd.4f@yandex.ru
             </a>
-            <!-- ТГ с логотипом -->
             <a href="https://t.me/F1rstFamilyFulFillment" class="contact-link btn-tg">
                 <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
                 Telegram
@@ -113,12 +107,46 @@
         <div class="hero-content">
             <h1>Фулфилмент FBO/FBS <br><span>в Москве. Склад в Домодедово</span></h1>
             <p>Принимаем товар от 100 единиц. <strong>Первая приемка — БЕСПЛАТНО.</strong><br>Работаем в WMS «Целиком». Штрафы за просрочку — наша ответственность.</p>
-            <a href="#calculator" class="btn-main">Рассчитать стоимость за 15 минут</a>
+            <!-- Кнопка, которая открывает калькулятор -->
+            <button onclick="toggleCalculator()" class="btn-main" id="btn-open-calc">Открыть калькулятор</button>
         </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР -->
-    <section id="calculator" class="calc-section">
+    <!-- Блок с болями -->
+    <section style="padding: 60px 20px; background: #fff;">
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px; color: #111;">Знакомые проблемы?</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Штрафы за просрочку</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Склад не успел собрать заказы, а штраф от WB/Ozon прилетел вам. Мы фиксируем сроки в договоре и берем ответственность на себя.</p>
+                </div>
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Пересорт и возвраты</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Вместо нужного SKU упаковали другой? Мы работаем в WMS «Целиком» и сканируем каждый штрихкод. Пересорт исключен.</p>
+                </div>
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Скрытые платежи</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">В прайсе было 30 ₽, а в счете — 70 ₽? У нас прозрачный прайс. Все услуги прописаны в договоре.</p>
+                </div>
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Нет ответственного</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Менеджер пропадает на 3 дня? За каждым клиентом закрепляется личный менеджер. Оперативная связь в TG.</p>
+                </div>
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Боитесь пиковых нагрузок</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Вышли в топ и не справляетесь? Наш склад рассчитан на обработку до 1000 заказов в день.</p>
+                </div>
+                <div class="card-hover" style="background: #f8f9fa; padding: 30px; border-radius: 10px; border-left: 5px solid #FF6600;">
+                    <h3 style="font-size: 22px; margin-bottom: 15px; color: #111;">❌ Товар стоит без дела</h3>
+                    <p style="color: #555; line-height: 1.6; font-size: 16px;">Приемка за 24 часа. Сразу заводим в систему, чтобы товар начал продаваться, а не лежал мертвым грузом.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Скрытый калькулятор -->
+    <div id="calculator-wrapper" class="calc-wrapper">
         <div class="calc-container">
             <h2 style="text-align: center; font-size: 36px; margin-bottom: 10px; color: #fff;">Калькулятор обработки партии</h2>
             <p style="text-align: center; color: #aaa; margin-bottom: 30px;">Введите данные по партии, и калькулятор посчитает полную стоимость по вашему прайсу.</p>
@@ -233,7 +261,7 @@
                 </a>
             </form>
         </div>
-    </section>
+    </div>
 
     <!-- Подвал -->
     <footer style="background: #111; color: #777; text-align: center; padding: 30px 20px; font-size: 14px;">
@@ -255,8 +283,25 @@
         </div>
     </footer>
 
-    <!-- Скрипт калькулятора -->
+    <!-- Скрипты -->
     <script>
+        // Открытие/закрытие калькулятора
+        function toggleCalculator() {
+            const wrapper = document.getElementById('calculator-wrapper');
+            const btn = document.getElementById('btn-open-calc');
+            
+            if (wrapper.style.display === 'none' || wrapper.style.display === '') {
+                wrapper.style.display = 'block';
+                btn.innerText = 'Скрыть калькулятор';
+                // Плавная прокрутка к калькулятору
+                wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                wrapper.style.display = 'none';
+                btn.innerText = 'Открыть калькулятор';
+            }
+        }
+
+        // Расчет в калькуляторе
         function calculate() {
             let total = 0;
             let summary = [];
