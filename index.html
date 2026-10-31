@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Фулфилмент для маркетплейсов в Москве | Склад в Домодедово | 4F</title>
     <meta name="description" content="Фулфилмент FBO/FBS для Wildberries и Ozon. Свой склад в Домодедово (Москва). Приемка за 24 часа. Первая приемка бесплатно. Работаем в WMS «Целиком». Без скрытых платежей.">
+
     <style>
         * {
             margin: 0;
@@ -15,12 +16,19 @@
 
         html {
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
         }
 
         body {
             background-color: #f8f9fa;
             color: #333;
-            padding-bottom: 100px;
+            padding-bottom: 110px;
+            overflow-x: hidden;
+        }
+
+        img,
+        svg {
+            max-width: 100%;
         }
 
         @keyframes vibrate {
@@ -38,12 +46,12 @@
             z-index: 1000;
             background: #111;
             color: #fff;
-            padding: 15px 20px;
+            padding: 12px 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 12px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
@@ -51,6 +59,7 @@
             font-size: 20px;
             font-weight: 800;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .logo span {
@@ -60,12 +69,13 @@
         .header-contact {
             display: flex;
             align-items: center;
-            gap: 20px;
+            justify-content: flex-end;
+            gap: 14px;
             flex-wrap: wrap;
         }
 
         .contact-link {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             text-decoration: none;
@@ -82,22 +92,21 @@
             color: #25D366;
         }
 
+        .phone svg {
+            width: 18px;
+            height: 18px;
+            fill: #FF6600;
+            flex-shrink: 0;
+            transition: fill 0.3s ease;
+        }
+
         .phone:hover svg {
             fill: #25D366;
             animation: vibrate 0.5s infinite;
         }
 
-        .phone svg {
-            width: 18px;
-            height: 18px;
-            fill: #FF6600;
-            transition: fill 0.3s ease;
-            display: inline-block;
-        }
-
         .email {
             color: #FF6600;
-            font-weight: normal;
         }
 
         .email:hover {
@@ -108,20 +117,22 @@
             width: 18px;
             height: 18px;
             fill: #FF6600;
+            flex-shrink: 0;
         }
 
         .btn-tg,
         .btn-wa {
             background: #0088cc;
             color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: bold;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: 700;
             font-size: 14px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
             white-space: nowrap;
+            text-decoration: none;
         }
 
         .btn-tg:hover {
@@ -141,17 +152,18 @@
             width: 18px;
             height: 18px;
             fill: #fff;
+            flex-shrink: 0;
         }
 
         .hero {
             position: relative;
-            min-height: 80vh;
+            min-height: 82vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 16px;
             background-image: url('sklad.png');
             background-size: cover;
             background-position: center;
@@ -160,24 +172,22 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.72);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            width: 100%;
             max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 42px;
+            font-size: clamp(28px, 5vw, 44px);
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             line-height: 1.2;
             text-transform: uppercase;
         }
@@ -187,37 +197,70 @@
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: clamp(16px, 2.4vw, 20px);
             color: #ddd;
-            margin-bottom: 40px;
+            margin-bottom: 32px;
             line-height: 1.5;
         }
 
         .btn-main {
             display: inline-block;
+            width: 100%;
+            max-width: 420px;
             background: #FF6600;
             color: #fff;
-            padding: 20px 40px;
-            font-size: 20px;
+            padding: 18px 32px;
+            font-size: 18px;
             font-weight: 800;
             text-decoration: none;
             border-radius: 8px;
             text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
-            transition: 0.3s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.4);
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease,
+                background-color 0.2s ease;
+            will-change: transform;
         }
 
         .btn-main:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.6);
+            box-shadow: 0 8px 24px rgba(255, 102, 0, 0.55);
+        }
+
+        .btn-main:active {
+            transform: scale(0.97);
+        }
+
+        .problems {
+            padding: 60px 16px;
+            background: #fff;
+        }
+
+        .problems-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(26px, 4vw, 36px);
+            margin-bottom: 36px;
+            color: #111;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .card-hover {
             transition: transform 0.3s, box-shadow 0.3s;
             background: #f8f9fa;
-            padding: 25px;
+            padding: 24px;
             border-radius: 10px;
             border-top: 4px solid #f44336;
             display: flex;
@@ -232,8 +275,8 @@
         .pain {
             color: #333;
             font-size: 16px;
-            margin-bottom: 15px;
-            font-weight: 600;
+            margin-bottom: 14px;
+            font-weight: 700;
         }
 
         .pain::before {
@@ -246,8 +289,8 @@
             font-size: 15px;
             line-height: 1.5;
             background: #e8f5e9;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 6px;
             border-left: 3px solid #4caf50;
             margin-top: auto;
         }
@@ -255,102 +298,159 @@
         .solution::before {
             content: "✅ ";
             color: #4caf50;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .calc-wrapper {
             display: none;
-            padding: 60px 20px;
+            padding: 50px 16px;
             background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
             color: #fff;
+            opacity: 0;
+            transform: translate3d(0, 16px, 0);
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .calc-wrapper.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
         }
 
         .calc-container {
             max-width: 1000px;
             margin: 0 auto;
             background: #222;
-            padding: 40px;
-            border-radius: 10px;
+            padding: clamp(18px, 4vw, 40px);
+            border-radius: 12px;
             border: 1px solid #333;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
+        .calc-title {
+            text-align: center;
+            font-size: clamp(24px, 4vw, 36px);
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .calc-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 28px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
         .calc-step {
             background: #1a1a1a;
-            padding: 20px;
+            padding: 18px;
             border-radius: 8px;
             border-left: 4px solid #FF6600;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .calc-step h3 {
             font-size: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
             color: #FF6600;
         }
 
         .input-group {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-bottom: 10px;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: 14px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px;
-            border-radius: 5px;
+            min-height: 48px;
+            padding: 12px 14px;
+            border-radius: 6px;
             border: 1px solid #444;
             background: #333;
             color: #fff;
             font-size: 16px;
-            transition: 0.3s;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .input-group input:hover {
+            border-color: #666;
         }
 
         .input-group input:focus {
             outline: none;
             border-color: #FF6600;
-            box-shadow: 0 0 8px rgba(255, 102, 0, 0.4);
+            box-shadow: 0 0 0 3px rgba(255, 102, 0, 0.18);
         }
 
         .input-label {
             font-size: 13px;
             color: #aaa;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             display: block;
+            line-height: 1.4;
         }
 
         .sticky-summary {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            bottom: 16px;
+            right: 16px;
             background: #222;
             border: 2px solid #FF6600;
             border-radius: 10px;
-            padding: 15px 25px;
+            padding: 14px 20px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             display: none;
             z-index: 9999;
             min-width: 320px;
+            max-width: calc(100vw - 32px);
             text-align: center;
-            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translate3d(0, 16px, 0);
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
         }
 
-        .sticky-summary .sum-label {
+        .sticky-summary.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .sum-label {
             color: #aaa;
             font-size: 14px;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
-        .sticky-summary .sum-price {
+        .sum-price {
             color: #FF6600;
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 15px;
+            font-size: clamp(26px, 5vw, 36px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            transition: opacity 0.2s ease;
         }
 
-        .sticky-summary .btn-send {
-            display: flex;
+        .sum-price.animate {
+            animation: totalFade 0.25s ease;
+        }
+
+        @keyframes totalFade {
+            0% {
+                opacity: 0.45;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .btn-send {
+            display: inline-flex;
             justify-content: center;
             align-items: center;
             gap: 8px;
@@ -359,90 +459,691 @@
             padding: 14px 20px;
             text-decoration: none;
             border-radius: 8px;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 700;
             font-size: 16px;
+            transition:
+                transform 0.2s ease,
+                opacity 0.2s ease,
+                background-color 0.2s ease;
+            will-change: transform;
         }
 
-        .sticky-summary .btn-send:hover {
+        .btn-send:hover {
             background: #128C7E;
         }
 
-        .sticky-summary .btn-send svg {
+        .btn-send:active {
+            transform: scale(0.97);
+        }
+
+        .btn-send svg {
             width: 20px;
             height: 20px;
             fill: #fff;
+            flex-shrink: 0;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 32px;
+        .reveal {
+            opacity: 0;
+            transform: translate3d(0, 24px, 0);
+            transition:
+                opacity 0.5s ease,
+                transform 0.5s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.05s; }
+        .reveal-delay-2 { transition-delay: 0.10s; }
+        .reveal-delay-3 { transition-delay: 0.15s; }
+        .reveal-delay-4 { transition-delay: 0.20s; }
+        .reveal-delay-5 { transition-delay: 0.25s; }
+        .reveal-delay-6 { transition-delay: 0.30s; }
+
+        @media (max-width: 900px) {
+            .header-contact {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding-bottom: 130px;
             }
 
-            .hero p {
-                font-size: 16px;
+            header {
+                padding: 10px 12px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
             }
 
             .header-contact {
-                flex-direction: column;
-                align-items: flex-end;
-                gap: 10px;
+                width: 100%;
+                justify-content: center;
+                gap: 8px;
             }
 
             .contact-link {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .btn-tg,
             .btn-wa {
                 font-size: 12px;
-                padding: 8px 12px;
+                padding: 8px 10px;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 48px 14px;
             }
 
             .btn-main {
-                font-size: 18px;
-                padding: 15px 25px;
-                width: 100%;
+                font-size: 16px;
+                padding: 16px 20px;
             }
 
-            .calc-container {
-                padding: 20px;
+            .btn-main:hover,
+            .btn-send:hover,
+            .btn-tg:hover,
+            .btn-wa:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .card-hover:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .problems {
+                padding: 45px 14px;
+            }
+
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calc-wrapper {
+                padding: 35px 12px;
+            }
+
+            .calc-step {
+                padding: 14px;
+            }
+
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .input-group input:focus {
+                transform: none;
+                box-shadow: none;
             }
 
             .sticky-summary {
+                left: 0;
                 right: 0;
                 bottom: 0;
                 width: 100%;
-                border-radius: 10px 10px 0 0;
+                min-width: 0;
+                max-width: none;
+                border-radius: 12px 12px 0 0;
                 border: none;
-                border-top: 2px solid #FF6600;
-                padding: 15px;
-                display: flex;
+                border-top: 3px solid #FF6600;
+                padding: 12px 14px;
+                display: none;
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
+                gap: 12px;
             }
 
-            .sticky-summary .sum-price {
-                font-size: 24px;
-                margin-bottom: 0;
-            }
-
-            .sticky-summary .sum-label {
+            .sum-label {
                 display: none;
             }
 
-            .sticky-summary .btn-send {
-                padding: 10px 15px;
+            .sum-price {
+                margin-bottom: 0;
+                font-size: 22px;
+            }
+
+            .btn-send {
+                padding: 12px 14px;
                 font-size: 14px;
+            }
+
+            .reveal {
+                transform: translate3d(0, 14px, 0);
+                transition-duration: 0.4s;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .phone,
+            .email {
+                font-size: 12px;
+            }
+
+            .btn-send {
+                font-size: 13px;
+                padding: 10px 12px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
             }
         }
     </style>
 </head>
+
 <body>
+    <header>
+        <div class="logo">4F<span>FULFILLMENT</span></div>
 
-<header>
-    <div class="logo">4F<span>FULFILLMENT</span></div>
+        <div class="header-contact">
+            <a href="tel:+79776946400" class="contact-link phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Позвонить: +7 (977) 694-64-00
+            </a>
 
-    <div class="header-contact">
-        <a href="tel:+79776946400" class="contact-link phone">
-            <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44
+            <a href="tel:+79999906400" class="contact-link phone">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Позвонить: +7 (999) 990-64-00
+            </a>
+
+            <a href="mailto:dmd.4f@yandex.ru" class="contact-link email">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                dmd.4f@yandex.ru
+            </a>
+
+            <a href="https://t.me/F1rstFamilyFulFillment" class="contact-link btn-tg" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+                Telegram
+            </a>
+
+            <a href="https://wa.me/79776946400" class="btn-msg btn-wa" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Фулфилмент FBO/FBS<br>
+                <span>в Москве. Склад в Домодедово</span>
+            </h1>
+
+            <p>
+                Принимаем товар от 100 единиц.<br>
+                <strong>Первая приемка — БЕСПЛАТНО.</strong><br>
+                Работаем в WMS «Целиком». Штрафы за просрочку — наша ответственность.
+            </p>
+
+            <button type="button" id="btn-open-calc" class="btn-main">Открыть калькулятор</button>
+        </div>
+    </section>
+
+    <section class="problems">
+        <div class="problems-inner">
+            <h2 class="section-title reveal">Знакомые проблемы?</h2>
+
+            <div class="problems-grid">
+                <div class="card-hover reveal reveal-delay-1">
+                    <div class="pain">Штрафы за просрочку</div>
+                    <div class="solution">Фиксируем сроки в договоре и берем ответственность на себя.</div>
+                </div>
+
+                <div class="card-hover reveal reveal-delay-2">
+                    <div class="pain">Пересорт и возвраты</div>
+                    <div class="solution">Работаем в WMS «Целиком» и сканируем каждый штрихкод.</div>
+                </div>
+
+                <div class="card-hover reveal reveal-delay-3">
+                    <div class="pain">Скрытые платежи</div>
+                    <div class="solution">Прозрачный прайс. Все услуги прописаны в договоре.</div>
+                </div>
+
+                <div class="card-hover reveal reveal-delay-4">
+                    <div class="pain">Нет ответственного</div>
+                    <div class="solution">Личный менеджер. Оперативная связь в Telegram.</div>
+                </div>
+
+                <div class="card-hover reveal reveal-delay-5">
+                    <div class="pain">Боитесь пиковых нагрузок</div>
+                    <div class="solution">Наш склад рассчитан на обработку до 1000 заказов в день.</div>
+                </div>
+
+                <div class="card-hover reveal reveal-delay-6">
+                    <div class="pain">Товар стоит без дела</div>
+                    <div class="solution">Приемка за 24 часа. Сразу заводим в систему.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="calculator-wrapper" class="calc-wrapper">
+        <div class="calc-container">
+            <h2 class="calc-title">Калькулятор обработки партии</h2>
+
+            <p class="calc-subtitle">
+                Введите объемы по нужным услугам. Остальные поля оставьте пустыми.
+                Итоговая сумма всегда видна на экране.
+            </p>
+
+            <form id="calc-form">
+                <div class="calc-step">
+                    <h3>1. Приемка и проверка</h3>
+
+                    <div class="input-group">
+                        <div>
+                            <label class="input-label" for="q-priemka">Приемка и пересчет — 5 ₽</label>
+                            <input type="number" id="q-priemka" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-sort">Сортировка — 5 ₽</label>
+                            <input type="number" id="q-sort" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-viz">Визуальная проверка — 5 ₽</label>
+                            <input type="number" id="q-viz" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-brak-pr">Проверка брака, прочие — 10 ₽</label>
+                            <input type="number" id="q-brak-pr" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-brak-teh">Проверка брака, техника — 15 ₽</label>
+                            <input type="number" id="q-brak-teh" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-brak-ob">Проверка брака, обувь — 10 ₽</label>
+                            <input type="number" id="q-brak-ob" min="0" step="1" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-step">
+                    <h3>2. Маркировка и стикерование</h3>
+
+                    <div class="input-group">
+                        <div>
+                            <label class="input-label" for="q-etiketka-58">Этикетка 58×40 — 5 ₽</label>
+                            <input type="number" id="q-etiketka-58" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-etiketka-75">Этикетка 75×120 — 7 ₽</label>
+                            <input type="number" id="q-etiketka-75" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-kiz">КИЗ «Честный Знак» — 9 ₽</label>
+                            <input type="number" id="q-kiz" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-sovm">Совмещенная ШК + ЧЗ — 12 ₽</label>
+                            <input type="number" id="q-sovm" min="0" step="1" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-step">
+                    <h3>3. Комплектация и упаковка</h3>
+
+                    <div class="input-group">
+                        <div>
+                            <label class="input-label" for="q-vlozh">Вложение вкладыша — 5 ₽</label>
+                            <input type="number" id="q-vlozh" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-kompl-3">Сборка комплекта до 3 ед. — 10 ₽</label>
+                            <input type="number" id="q-kompl-3" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-kompl-3plus">Сборка комплекта свыше 3 ед. — 3 ₽</label>
+                            <input type="number" id="q-kompl-3plus" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-paket">Пакет клиента — 5 ₽</label>
+                            <input type="number" id="q-paket" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-bopp-25">БОПП до 25 см — 12 ₽</label>
+                            <input type="number" id="q-bopp-25" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-bopp-45">БОПП до 45 см — 14 ₽</label>
+                            <input type="number" id="q-bopp-45" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-zip-20">ZIP 20×25 — 16 ₽</label>
+                            <input type="number" id="q-zip-20" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-zip-25">ZIP 25×30 — 17 ₽</label>
+                            <input type="number" id="q-zip-25" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-pvd-20">ПВД до 20 см — 16 ₽</label>
+                            <input type="number" id="q-pvd-20" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-vpp-20">ВПП до 20 см — 16 ₽</label>
+                            <input type="number" id="q-vpp-20" min="0" step="1" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-step">
+                    <h3>4. Отгрузка и хранение</h3>
+
+                    <div class="input-group">
+                        <div>
+                            <label class="input-label" for="q-korob-60">Короб 60×40×40 — 150 ₽</label>
+                            <input type="number" id="q-korob-60" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-korob-cl">Короб клиента — 100 ₽</label>
+                            <input type="number" id="q-korob-cl" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-pallet">Паллетирование — 750 ₽</label>
+                            <input type="number" id="q-pallet" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-stor-kor">Хранение короба — 5 ₽/сутки</label>
+                            <input type="number" id="q-stor-kor" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-stor-pal">Хранение паллеты — 50 ₽/сутки</label>
+                            <input type="number" id="q-stor-pal" min="0" step="1" value="0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-step">
+                    <h3>5. FBS и забор товара</h3>
+
+                    <div class="input-group">
+                        <div>
+                            <label class="input-label" for="q-fbs-1">Сборка FBS до 1 л — 35 ₽</label>
+                            <input type="number" id="q-fbs-1" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-fbs-5">Сборка FBS 1–5 л — 55 ₽</label>
+                            <input type="number" id="q-fbs-5" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-zabor-1">Забор до 1 м³ — 1 800 ₽</label>
+                            <input type="number" id="q-zabor-1" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-zabor-3">Забор 1–3 м³ — 3 000 ₽</label>
+                            <input type="number" id="q-zabor-3" min="0" step="1" value="0">
+                        </div>
+
+                        <div>
+                            <label class="input-label" for="q-zabor-3plus">Забор свыше 3 м³ — 6 000 ₽</label>
+                            <input type="number" id="q-zabor-3plus" min="0" step="1" value="0">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="sticky-summary" class="sticky-summary">
+        <div>
+            <div class="sum-label">Итого по смете:</div>
+            <div id="sticky-total-price" class="sum-price">0 ₽</div>
+        </div>
+
+        <a id="btn-tg-calc" href="https://t.me/F1rstFamilyFulFillment" class="btn-send" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+            Отправить в Telegram
+        </a>
+    </div>
+
+    <footer style="background: #111; color: #777; text-align: center; padding: 30px 20px; font-size: 14px;">
+        <p style="margin-bottom: 10px;">© 2024 4F Fulfillment. Склад в Домодедово.</p>
+        <p style="margin-bottom: 10px;">Фулфилмент для Wildberries и Ozon</p>
+
+        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 15px;">
+            <a href="tel:+79776946400" class="contact-link phone" style="color: #ccc;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #ccc;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Позвонить: +7 (977) 694-64-00
+            </a>
+
+            <a href="tel:+79999906400" class="contact-link phone" style="color: #ccc;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #ccc;"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                Позвонить: +7 (999) 990-64-00
+            </a>
+
+            <a href="mailto:dmd.4f@yandex.ru" class="contact-link email" style="color: #FF6600;">
+                <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: #FF6600;"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                dmd.4f@yandex.ru
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        const calculatorWrapper = document.getElementById('calculator-wrapper');
+        const stickySummary = document.getElementById('sticky-summary');
+        const openCalcButton = document.getElementById('btn-open-calc');
+        const calcForm = document.getElementById('calc-form');
+        const totalPriceElement = document.getElementById('sticky-total-price');
+        const telegramButton = document.getElementById('btn-tg-calc');
+
+        const prices = [
+            { id: 'q-priemka', price: 5, label: 'Приемка и пересчет' },
+            { id: 'q-sort', price: 5, label: 'Сортировка' },
+            { id: 'q-viz', price: 5, label: 'Визуальная проверка' },
+            { id: 'q-brak-pr', price: 10, label: 'Проверка брака, прочие' },
+            { id: 'q-brak-teh', price: 15, label: 'Проверка брака, техника' },
+            { id: 'q-brak-ob', price: 10, label: 'Проверка брака, обувь' },
+
+            { id: 'q-etiketka-58', price: 5, label: 'Этикетка 58×40' },
+            { id: 'q-etiketka-75', price: 7, label: 'Этикетка 75×120' },
+            { id: 'q-kiz', price: 9, label: 'КИЗ «Честный Знак»' },
+            { id: 'q-sovm', price: 12, label: 'Совмещенная ШК + ЧЗ' },
+
+            { id: 'q-vlozh', price: 5, label: 'Вложение вкладыша' },
+            { id: 'q-kompl-3', price: 10, label: 'Сборка комплекта до 3 ед.' },
+            { id: 'q-kompl-3plus', price: 3, label: 'Сборка комплекта свыше 3 ед.' },
+            { id: 'q-paket', price: 5, label: 'Пакет клиента' },
+            { id: 'q-bopp-25', price: 12, label: 'БОПП до 25 см' },
+            { id: 'q-bopp-45', price: 14, label: 'БОПП до 45 см' },
+            { id: 'q-zip-20', price: 16, label: 'ZIP 20×25' },
+            { id: 'q-zip-25', price: 17, label: 'ZIP 25×30' },
+            { id: 'q-pvd-20', price: 16, label: 'ПВД до 20 см' },
+            { id: 'q-vpp-20', price: 16, label: 'ВПП до 20 см' },
+
+            { id: 'q-korob-60', price: 150, label: 'Короб 60×40×40' },
+            { id: 'q-korob-cl', price: 100, label: 'Короб клиента' },
+            { id: 'q-pallet', price: 750, label: 'Паллетирование' },
+            { id: 'q-stor-kor', price: 5, label: 'Хранение короба' },
+            { id: 'q-stor-pal', price: 50, label: 'Хранение паллеты' },
+
+            { id: 'q-fbs-1', price: 35, label: 'Сборка FBS до 1 л' },
+            { id: 'q-fbs-5', price: 55, label: 'Сборка FBS 1–5 л' },
+            { id: 'q-zabor-1', price: 1800, label: 'Забор до 1 м³' },
+            { id: 'q-zabor-3', price: 3000, label: 'Забор 1–3 м³' },
+            { id: 'q-zabor-3plus', price: 6000, label: 'Забор свыше 3 м³' }
+        ];
+
+        function formatMoney(value) {
+            return value.toLocaleString('ru-RU') + ' ₽';
+        }
+
+        let currentTotal = 0;
+        let totalAnimation = null;
+
+        function updateTotal(targetTotal) {
+            if (totalAnimation) {
+                cancelAnimationFrame(totalAnimation);
+            }
+
+            totalPriceElement.classList.remove('animate');
+            void totalPriceElement.offsetWidth;
+            totalPriceElement.classList.add('animate');
+
+            const startTotal = currentTotal;
+            const difference = targetTotal - startTotal;
+            const duration = window.matchMedia('(max-width: 640px)').matches ? 250 : 400;
+            const startTime = performance.now();
+
+            function animate(currentTime) {
+                const progress = Math.min((currentTime - startTime) / duration, 1);
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+                currentTotal = startTotal + difference * easedProgress;
+                totalPriceElement.textContent = formatMoney(Math.round(currentTotal));
+
+                if (progress < 1) {
+                    totalAnimation = requestAnimationFrame(animate);
+                } else {
+                    currentTotal = targetTotal;
+                    totalPriceElement.textContent = formatMoney(targetTotal);
+                    totalAnimation = null;
+                }
+            }
+
+            totalAnimation = requestAnimationFrame(animate);
+        }
+
+        function calculate() {
+            let newTotal = 0;
+            const summary = [];
+
+            prices.forEach(function (item) {
+                const input = document.getElementById(item.id);
+                const quantity = Number(input.value) || 0;
+
+                if (quantity > 0) {
+                    const cost = quantity * item.price;
+                    newTotal += cost;
+
+                    summary.push(
+                        item.label + ': ' + quantity + ' ед. — ' + formatMoney(cost)
+                    );
+                }
+            });
+
+            updateTotal(newTotal);
+
+            const message = [
+                'Здравствуйте! Я рассчитал стоимость на сайте.',
+                summary.length ? summary.join('\n') : 'Услуги не выбраны.',
+                'Итого: ' + formatMoney(newTotal)
+            ].join('\n');
+
+            telegramButton.href =
+                'https://t.me/F1rstFamilyFulFillment?text=' + encodeURIComponent(message);
+        }
+
+        openCalcButton.addEventListener('click', function () {
+            const isOpen = calculatorWrapper.classList.contains('visible');
+
+            if (isOpen) {
+                calculatorWrapper.classList.remove('visible');
+                stickySummary.classList.remove('visible');
+
+                setTimeout(function () {
+                    calculatorWrapper.style.display = 'none';
+                    stickySummary.style.display = 'none';
+                }, 300);
+
+                openCalcButton.textContent = 'Открыть калькулятор';
+            } else {
+                calculatorWrapper.style.display = 'block';
+                stickySummary.style.display = 'flex';
+
+                requestAnimationFrame(function () {
+                    calculatorWrapper.classList.add('visible');
+                    stickySummary.classList.add('visible');
+                });
+
+                openCalcButton.textContent = 'Скрыть калькулятор';
+                calculatorWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+
+        calcForm.addEventListener('input', calculate);
+        calcForm.addEventListener('change', calculate);
+
+        const revealElements = document.querySelectorAll('.reveal');
+
+        if ('IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver(
+                function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -30px 0px'
+                }
+            );
+
+            revealElements.forEach(function (element) {
+                revealObserver.observe(element);
+            });
+        } else {
+            revealElements.forEach(function (element) {
+                element.classList.add('visible');
+            });
+        }
+
+        calculate();
+    </script>
+</body>
+</html>
