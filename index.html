@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
-<title>Фулфилмент для Wildberries и Ozon | Склад в Домодедово | 4F</title>
+<title>Фулфилмент для Wildberries и Ozon | 4F Домодедово</title>
 <meta name="description" content="Фулфилмент для Wildberries и Ozon. Склад в Домодедово. Работаем с продавцами России и СНГ. Приёмка, маркировка, упаковка, хранение и сборка FBS.">
 
 <style>
 :root {
     --orange: #ff6600;
-    --orange-light: #ff944d;
-    --panel-height: 210px;
+    --accent: #ff944d;
     --header-height: 130px;
+    --panel-height: 210px;
 }
 
 * { box-sizing: border-box; }
@@ -26,23 +25,22 @@ html {
 
 body {
     margin: 0;
-    background: #f8f9fa;
-    color: #252525;
     font-family: "Segoe UI", Tahoma, Arial, sans-serif;
     font-size: 16px;
     line-height: 1.6;
+    color: #252525;
+    background: #f8f9fa;
 }
 
 button, input { font: inherit; }
 a { color: inherit; }
 button, a { touch-action: manipulation; }
+[hidden] { display: none !important; }
 
 a:focus-visible, button:focus-visible {
-    outline: 3px solid var(--orange-light);
+    outline: 3px solid var(--accent);
     outline-offset: 4px;
 }
-
-[hidden] { display: none !important; }
 
 .container {
     width: 100%;
@@ -59,14 +57,32 @@ h2 {
     text-align: center;
 }
 
-/* Шапка и меню */
+.svg-library {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
 
+.icon {
+    display: block;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Шапка */
 .site-header {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: #111;
     color: #fff;
+    background: #111;
     box-shadow: 0 2px 8px #0003;
 }
 
@@ -76,7 +92,7 @@ h2 {
     justify-content: space-between;
     gap: 20px;
     max-width: 1440px;
-    margin-inline: auto;
+    margin: auto;
     padding: 12px 20px;
 }
 
@@ -87,7 +103,6 @@ h2 {
     text-decoration: none;
     white-space: nowrap;
 }
-
 .logo span { color: var(--orange); }
 
 .contacts {
@@ -98,10 +113,10 @@ h2 {
     gap: 10px;
 }
 
-.contacts a {
+.phone {
     display: inline-flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     min-height: 44px;
     padding: 8px 12px;
@@ -109,6 +124,7 @@ h2 {
     font-weight: 600;
     text-decoration: none;
 }
+.phone .icon { width: 19px; height: 19px; color: var(--accent); }
 
 .site-menu {
     display: flex;
@@ -130,7 +146,7 @@ h2 {
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    transition: color 220ms ease, background-color 220ms ease;
+    transition: color .22s ease, background-color .22s ease;
 }
 
 .site-menu a::after {
@@ -141,24 +157,20 @@ h2 {
     bottom: 3px;
     height: 2px;
     border-radius: 2px;
-    background: var(--orange-light);
+    background: var(--accent);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 260ms ease;
+    transition: transform .26s ease;
 }
 
 .site-menu a.is-active {
-    color: var(--orange-light);
+    color: var(--accent);
     background: #ff660012;
 }
-
 .site-menu a.is-active::after,
-.site-menu a:focus-visible::after {
-    transform: scaleX(1);
-}
+.site-menu a:focus-visible::after { transform: scaleX(1); }
 
 /* Кнопки */
-
 .button, .messenger {
     display: inline-flex;
     align-items: center;
@@ -174,83 +186,29 @@ h2 {
     text-align: center;
     text-decoration: none;
     cursor: pointer;
-    transition:
-        transform 240ms cubic-bezier(.22, 1, .36, 1),
-        opacity 240ms ease;
+    transition: transform .24s ease, opacity .24s ease;
 }
 
-.button { background: var(--orange); color: #111; }
+.button { color: #111; background: var(--orange); }
+.secondary { color: #fff; background: #383838; }
 .telegram { background: #006b9f; }
 .whatsapp { background: #106b3c; }
-.secondary { background: #383838; color: #fff; }
-
+.button .icon { width: 21px; height: 21px; }
 .button:active, .messenger:active { transform: scale(.97); }
 
-/* SVG */
-
-.icon {
-    display: inline-grid;
-    place-items: center;
-    flex-shrink: 0;
-}
-
-.icon svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.section-icon {
-    display: grid;
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 14px;
-    padding: 14px;
-    border: 1px solid #ff660026;
-    border-radius: 16px;
-    background: #fff0e5;
-    color: #c64b00;
-}
-
-.feature-icon {
-    width: 52px;
-    height: 52px;
-    margin-bottom: 18px;
-    padding: 12px;
-    border-radius: 14px;
-    background: #fff0e5;
-    color: #c64b00;
-    transition: transform 250ms ease;
-}
-
-.contact-icon {
-    width: 19px;
-    height: 19px;
-    color: var(--orange-light);
-}
-
-.button-icon { width: 20px; height: 20px; }
-
-/* Первый экран */
-
+/* Главный экран */
 .hero {
     display: grid;
     place-items: center;
     min-height: 70vh;
     padding: 72px 20px;
+    color: #fff;
+    text-align: center;
     background:
         linear-gradient(#000b, #000b),
         url("sklad.png") center / cover,
         #292929;
-    color: #fff;
-    text-align: center;
 }
-
 .hero-inner { width: 100%; max-width: 940px; }
 
 .hero h1 {
@@ -261,10 +219,9 @@ h2 {
 
 .hero-location {
     margin: 0 0 20px;
-    color: var(--orange-light);
+    color: var(--accent);
     font-size: clamp(20px, 2.6vw, 27px);
     font-weight: 700;
-    line-height: 1.4;
 }
 
 .hero-description {
@@ -286,10 +243,9 @@ h2 {
 }
 
 .hero-trust {
-    margin: 0 auto 28px;
     max-width: 760px;
+    margin: 0 auto 28px;
     color: #ddd;
-    font-size: 16px;
 }
 
 .hero .button { width: 100%; max-width: 420px; font-size: 18px; }
@@ -298,19 +254,17 @@ h2 {
     from { opacity: 0; transform: translateY(18px); }
     to { opacity: 1; transform: none; }
 }
-
-.hero h1 { animation: heroEnter 700ms ease both; }
-.hero-location { animation: heroEnter 700ms ease 80ms both; }
-.hero-description { animation: heroEnter 700ms ease 160ms both; }
-.hero-offer { animation: heroEnter 700ms ease 240ms both; }
-.hero-trust { animation: heroEnter 700ms ease 320ms both; }
-.hero .button { animation: heroEnter 700ms ease 400ms backwards; }
+.hero h1 { animation: heroEnter .7s ease both; }
+.hero-location { animation: heroEnter .7s ease .08s both; }
+.hero-description { animation: heroEnter .7s ease .16s both; }
+.hero-offer { animation: heroEnter .7s ease .24s both; }
+.hero-trust { animation: heroEnter .7s ease .32s both; }
+.hero .button { animation: heroEnter .7s ease .4s backwards; }
 
 /* Боли */
-
 .problems { padding: 60px 20px; background: #fff; }
 
-.problems-grid {
+.problems-grid, .info-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
@@ -324,7 +278,7 @@ h2 {
     border-top: 3px solid var(--orange);
     border-radius: 12px;
     background: #f7f8fa;
-    transition: transform 260ms ease;
+    transition: transform .26s ease;
 }
 
 .card h3 {
@@ -339,66 +293,61 @@ h2 {
     padding: 14px;
     border-left: 3px solid #4caf50;
     border-radius: 8px;
-    background: #e8f5e9;
     color: #34463a;
+    background: #e8f5e9;
     font-size: 16px;
     line-height: 1.65;
 }
-
 .solution-check { color: #18753a; font-weight: 700; }
 
-.pain-icon {
-    position: relative;
-    overflow: hidden;
+.pain-icon, .feature-icon, .section-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
     width: 56px;
     height: 56px;
     margin-bottom: 18px;
-    padding: 13px;
     border: 1px solid #ff660026;
     border-radius: 16px;
-    background: #fff0e5;
     color: #c64b00;
-    pointer-events: none;
+    background: #fff0e5;
 }
 
-.pain-icon svg { transform-origin: center; }
+.pain-icon { position: relative; overflow: hidden; }
+.pain-icon .icon { transform-origin: center; }
+.section-icon { margin: 0 auto 14px; }
+.feature-icon { transition: transform .25s ease; }
 
 @keyframes painClock {
-    0%, 100% { transform: rotate(0); }
+    0%,100% { transform: rotate(0); }
     25% { transform: rotate(-12deg); }
     60% { transform: rotate(10deg); }
     80% { transform: rotate(-4deg); }
 }
-
 @keyframes painReceipt {
-    0%, 100% { transform: translateY(0) rotate(0); }
+    0%,100% { transform: translateY(0) rotate(0); }
     30% { transform: translateY(-3px) rotate(-7deg); }
     65% { transform: translateY(-1px) rotate(5deg); }
 }
-
 @keyframes painMessage {
-    0%, 100% { transform: translateY(0); }
+    0%,100% { transform: translateY(0); }
     35% { transform: translateY(-5px); }
     65% { transform: translateY(1px); }
     85% { transform: translateY(-2px); }
 }
-
 @keyframes painChart {
-    0%, 100% { transform: translateY(0) scale(1); }
+    0%,100% { transform: scale(1); }
     45% { transform: translateY(-3px) scale(1.08); }
-    75% { transform: translateY(-1px) scale(1.03); }
 }
-
 @keyframes painBox {
-    0%, 100% { transform: rotate(0); }
+    0%,100% { transform: rotate(0); }
     25% { transform: rotate(-8deg); }
     60% { transform: rotate(7deg); }
     80% { transform: rotate(-3deg); }
 }
-
 @keyframes painScan {
     0% { opacity: 0; transform: translateY(-12px); }
-    15%, 85% { opacity: 1; }
+    15%,85% { opacity: 1; }
     100% { opacity: 0; transform: translateY(12px); }
 }
 
@@ -409,20 +358,18 @@ h2 {
     right: 12px;
     top: 50%;
     height: 2px;
-    border-radius: 2px;
     background: #c64b00;
     opacity: 0;
 }
 
-.card.icon-playing[data-motion="clock"] svg { animation: painClock 700ms ease-in-out; }
-.card.icon-playing[data-motion="scan"] .pain-icon::after { animation: painScan 700ms ease-in-out; }
-.card.icon-playing[data-motion="receipt"] svg { animation: painReceipt 700ms ease-in-out; }
-.card.icon-playing[data-motion="message"] svg { animation: painMessage 700ms ease-in-out; }
-.card.icon-playing[data-motion="chart"] svg { animation: painChart 700ms ease-in-out; }
-.card.icon-playing[data-motion="box"] svg { animation: painBox 700ms ease-in-out; }
+.card.icon-playing[data-motion="clock"] .icon { animation: painClock .7s ease; }
+.card.icon-playing[data-motion="scan"] .pain-icon::after { animation: painScan .7s ease; }
+.card.icon-playing[data-motion="receipt"] .icon { animation: painReceipt .7s ease; }
+.card.icon-playing[data-motion="message"] .icon { animation: painMessage .7s ease; }
+.card.icon-playing[data-motion="chart"] .icon { animation: painChart .7s ease; }
+.card.icon-playing[data-motion="box"] .icon { animation: painBox .7s ease; }
 
-/* Информационные разделы */
-
+/* Разделы */
 .info-section { padding: 56px 20px; background: #fff; }
 .info-section-alt { background: #f0f2f4; }
 .narrow { max-width: 800px; }
@@ -435,19 +382,13 @@ h2 {
     text-align: center;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-}
-
 .info-card {
     min-width: 0;
     padding: 24px;
     border: 1px solid #e3e6e9;
     border-radius: 12px;
     background: #f8f9fa;
-    transition: transform 260ms ease;
+    transition: transform .26s ease;
 }
 
 .info-card h3, .workflow-list h3 {
@@ -455,13 +396,7 @@ h2 {
     font-size: 19px;
     line-height: 1.4;
 }
-
-.info-card p, .workflow-list p {
-    margin: 0;
-    color: #444;
-    font-size: 16px;
-    line-height: 1.65;
-}
+.info-card p, .workflow-list p { margin: 0; color: #444; line-height: 1.65; }
 
 .workflow-list {
     display: grid;
@@ -472,23 +407,21 @@ h2 {
     list-style: none;
     counter-reset: workflow;
 }
-
 .workflow-list li {
     min-width: 0;
     padding: 22px;
     border-radius: 12px;
     background: #f5f6f7;
     counter-increment: workflow;
-    transition: transform 260ms ease;
+    transition: transform .26s ease;
 }
-
 .step-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    color: #c64b00;
 }
-
 .step-heading::before {
     content: counter(workflow);
     display: grid;
@@ -498,32 +431,20 @@ h2 {
     border-radius: 50%;
     background: var(--orange);
     color: #111;
-    font-size: 18px;
     font-weight: 800;
 }
-
-.step-icon { width: 30px; height: 30px; color: #c64b00; }
-
-/* Появление при прокрутке */
 
 .reveal-pending {
     opacity: 0;
     transform: translateY(22px);
     transition:
-        opacity 600ms ease var(--delay, 0ms),
-        transform 600ms cubic-bezier(.22, 1, .36, 1) var(--delay, 0ms);
+        opacity .6s ease var(--delay, 0ms),
+        transform .6s ease var(--delay, 0ms);
 }
-
 .reveal-pending.shown { opacity: 1; transform: none; }
 
 /* Калькулятор */
-
-.calculator {
-    padding: 50px 20px;
-    background: #141414;
-    color: #fff;
-}
-
+.calculator { padding: 50px 20px; background: #141414; color: #fff; }
 .calc-container {
     width: 100%;
     max-width: 1000px;
@@ -533,27 +454,16 @@ h2 {
     border-radius: 14px;
     background: #222;
 }
-
 .calc-container h2 { margin-bottom: 12px; }
 
 .calculator .section-icon, footer .section-icon {
     border-color: #ff944d40;
+    color: var(--accent);
     background: #ff944d14;
-    color: var(--orange-light);
 }
 
-.intro {
-    margin: 0 0 24px;
-    color: #dedede;
-    font-size: 16px;
-    text-align: center;
-}
-
-.notes, .group-note {
-    color: #dedede;
-    font-size: 14px;
-    line-height: 1.6;
-}
+.intro { margin: 0 0 24px; color: #dedede; text-align: center; }
+.notes, .group-note { color: #dedede; font-size: 14px; line-height: 1.6; }
 
 .notes {
     margin: 0 0 24px;
@@ -561,7 +471,6 @@ h2 {
     border-radius: 8px;
     background: #303030;
 }
-
 .notes p { margin: 6px 0; }
 
 fieldset {
@@ -573,24 +482,22 @@ fieldset {
     border-radius: 10px;
     background: #191919;
 }
-
 legend {
     float: left;
     width: 100%;
     margin: 0 0 18px;
     padding: 0;
-    color: var(--orange-light);
+    color: var(--accent);
     font-size: 18px;
     font-weight: 700;
 }
-
 .calc-group-icon {
+    display: inline-block;
     width: 25px;
     height: 25px;
     margin-right: 9px;
     vertical-align: -5px;
 }
-
 .group-note { clear: both; margin: 0 0 18px; }
 
 .inputs {
@@ -599,22 +506,14 @@ legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
 }
-
-/* Подсветка заполненной услуги */
 .field {
     min-width: 0;
     padding: 12px;
     border: 1px solid transparent;
     border-radius: 10px;
-    transition:
-        border-color 220ms ease,
-        background-color 220ms ease;
+    transition: border-color .22s ease, background-color .22s ease;
 }
-
-.field.is-filled {
-    border-color: #ff944d70;
-    background: #ff66000d;
-}
+.field.is-filled { border-color: #ff944d70; background: #ff66000d; }
 
 .field label {
     display: block;
@@ -622,9 +521,7 @@ legend {
     color: #e4e4e4;
     font-size: 15px;
     line-height: 1.5;
-    transition: color 220ms ease;
 }
-
 .field.is-filled label { color: #ffd2b5; }
 
 .field input {
@@ -638,38 +535,27 @@ legend {
     color: #fff;
     font-size: 18px;
     font-variant-numeric: tabular-nums;
-    transition: border-color 220ms ease, background-color 220ms ease;
+    transition: border-color .22s ease, background-color .22s ease;
 }
-
 .field input::placeholder { color: #bdbdbd; opacity: 1; }
-
-.field.is-filled input { border-color: #ff944d; }
-
+.field.is-filled input { border-color: var(--accent); }
 .field input:focus {
     border-color: var(--orange);
     outline: 2px solid #ff660066;
     outline-offset: 1px;
     background: #383838;
 }
-
 .field input:invalid { border-color: #ff8080; }
-
-.field-hint {
-    margin: 8px 0 0;
-    color: #c8c8c8;
-    font-size: 14px;
-    line-height: 1.5;
-}
+.field-hint { margin: 8px 0 0; color: #c8c8c8; font-size: 14px; line-height: 1.5; }
 
 .calc-actions {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-    flex-wrap: wrap;
 }
 
-/* Панель итога */
-
+/* Итог */
 .summary {
     position: fixed;
     right: 16px;
@@ -684,91 +570,42 @@ legend {
     color: #fff;
     box-shadow: 0 4px 20px #0004;
 }
-
 .amount {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
 }
-
 .amount-label { color: #ddd; font-size: 14px; }
-
 .price {
     min-width: 0;
-    color: var(--orange-light);
+    color: var(--accent);
     font-size: 28px;
     font-weight: 800;
     font-variant-numeric: tabular-nums;
     text-align: right;
     overflow-wrap: anywhere;
 }
-
-.summary-note {
-    margin: 8px 0;
-    color: #c8c8c8;
-    font-size: 12px;
-    line-height: 1.5;
-}
-
+.summary-note { margin: 8px 0; color: #c8c8c8; font-size: 12px; line-height: 1.5; }
 .send-label { margin: 10px 0 8px; color: #dedede; font-size: 14px; }
-
-.send-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-}
-
+.send-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .send-actions a { min-width: 0; padding: 12px 8px; }
-
-.status {
-    margin: 8px 0 0;
-    color: #ffd1b3;
-    font-size: 13px;
-    line-height: 1.4;
-}
-
+.status { margin: 8px 0 0; color: #ffd1b3; font-size: 13px; line-height: 1.4; }
 .calc-open { padding-bottom: calc(var(--panel-height) + 24px); }
 
-/* Открытие и закрытие */
 .calculator, .summary {
     opacity: 0;
     transform: translateY(14px);
-    transition:
-        opacity 320ms ease,
-        transform 320ms cubic-bezier(.22, 1, .36, 1);
+    transition: opacity .32s ease, transform .32s ease;
 }
-
-.calculator.is-visible, .summary.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.calculator.is-closing, .summary.is-closing {
-    pointer-events: none;
-}
+.calculator.is-visible, .summary.is-visible { opacity: 1; transform: none; }
+.is-closing { pointer-events: none; }
 
 /* Подвал */
-
-footer {
-    padding: 36px 20px;
-    background: #111;
-    color: #bbb;
-    font-size: 15px;
-    text-align: center;
-}
-
+footer { padding: 36px 20px; background: #111; color: #bbb; font-size: 15px; text-align: center; }
 footer h2 { margin-bottom: 18px; color: #fff; font-size: 26px; }
 footer p { margin: 6px 0; }
-
-footer nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 16px;
-}
-
+footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
 footer nav a {
     display: inline-flex;
     align-items: center;
@@ -778,28 +615,25 @@ footer nav a {
     padding: 8px;
     text-decoration: none;
 }
-
-.contact-text { overflow-wrap: anywhere; min-width: 0; }
+footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
+.contact-text { min-width: 0; overflow-wrap: anywhere; }
 .copyright { margin-top: 24px; font-size: 14px; }
 
 @media (hover: hover) and (pointer: fine) {
     .card:not(.reveal-pending):hover,
     .info-card:not(.reveal-pending):hover,
-    .workflow-list li:not(.reveal-pending):hover {
-        transform: translateY(-4px);
-    }
+    .workflow-list li:not(.reveal-pending):hover { transform: translateY(-4px); }
 
     .info-card:hover .feature-icon { transform: translateY(-3px); }
     .button:hover, .messenger:hover { transform: translateY(-2px); opacity: .94; }
     .button:active, .messenger:active { transform: scale(.97); }
-    .site-menu a:hover { color: var(--orange-light); }
+    .site-menu a:hover { color: var(--accent); }
     .site-menu a:hover::after { transform: scaleX(1); }
 }
 
 @media (max-width: 960px) {
     .header-main { flex-wrap: wrap; justify-content: center; }
     .contacts { justify-content: center; }
-
     .problems-grid, .info-grid, .workflow-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -809,34 +643,10 @@ footer nav a {
     html { scroll-padding-top: 16px; }
     .site-header { position: relative; }
     .header-main { display: block; padding: 16px; }
-
-    .logo {
-        display: block;
-        margin-bottom: 14px;
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .contacts {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .contacts a {
-        min-width: 0;
-        padding: 10px 6px;
-        font-size: 15px;
-        line-height: 1.4;
-    }
-
-    .contacts .phone {
-        grid-column: 1 / -1;
-        border-radius: 8px;
-        background: #242424;
-        font-size: 16px;
-    }
-
+    .logo { display: block; margin-bottom: 14px; font-size: 22px; text-align: center; }
+    .contacts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .contacts .phone { grid-column: 1 / -1; border-radius: 8px; background: #242424; font-size: 16px; }
+    .contacts .messenger { padding: 10px 6px; font-size: 15px; }
     .site-menu { gap: 2px 6px; padding: 8px 12px; }
     .site-menu a { min-height: 42px; padding: 8px; font-size: 14px; }
     .hero { min-height: 0; padding: 44px 20px; }
@@ -846,44 +656,21 @@ footer nav a {
     .hero-offer { padding: 12px; font-size: 16px; }
     .hero-trust { font-size: 15px; }
     .hero .button { font-size: 16px; }
-
-    .hero h1, .hero-location, .hero-description,
-    .hero-offer, .hero-trust, .hero .button {
-        animation-duration: 480ms;
-        animation-delay: 0ms;
+    .hero h1, .hero-location, .hero-description, .hero-offer, .hero-trust, .hero .button {
+        animation-duration: .48s;
+        animation-delay: 0s;
     }
-
     .problems, .info-section { padding: 36px 16px; }
     .problems .container, .info-section .container { max-width: 460px; }
-
-    .problems-grid, .info-grid, .workflow-list {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 14px;
-    }
-
+    .problems-grid, .info-grid, .workflow-list { grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .card { padding: 18px; }
     .card h3 { min-height: 0; font-size: 17px; margin-bottom: 14px; }
-    .card p { padding: 12px; font-size: 16px; }
-
-    .pain-icon {
-        width: 48px;
-        height: 48px;
-        padding: 11px;
-        margin-bottom: 14px;
-        border-radius: 13px;
-    }
-
-    .section-icon { width: 50px; height: 50px; padding: 12px; border-radius: 14px; }
-    .feature-icon { width: 46px; height: 46px; padding: 10px; margin-bottom: 14px; }
+    .card p { padding: 12px; }
+    .pain-icon, .feature-icon, .section-icon { width: 48px; height: 48px; border-radius: 13px; }
+    .pain-icon .icon, .feature-icon .icon, .section-icon .icon { width: 25px; height: 25px; }
     .info-card, .workflow-list li { padding: 20px; }
     .section-description { font-size: 16px; text-align: left; }
-
-    .reveal-pending {
-        transform: translateY(12px);
-        transition-duration: 420ms;
-        transition-delay: 0ms;
-    }
-
+    .reveal-pending { transform: translateY(12px); transition-duration: .42s; transition-delay: 0s; }
     .reveal-pending.shown { transform: none; }
     h2 { font-size: 26px; }
     .calculator { padding: 28px 12px; }
@@ -891,7 +678,6 @@ footer nav a {
     fieldset { margin-bottom: 14px; padding: 16px 10px; }
     .inputs { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .field { padding: 10px; }
-
     .summary {
         left: 0;
         right: 0;
@@ -903,15 +689,13 @@ footer nav a {
         border-top: 2px solid var(--orange);
         border-radius: 16px 16px 0 0;
     }
-
     .summary-inner { max-width: 460px; margin-inline: auto; }
     .price { font-size: 26px; }
     .summary-note { margin: 5px 0; }
     .send-label { margin: 6px 0; font-size: 13px; }
     .send-actions a { font-size: 16px; }
     .calc-actions .button { width: 100%; }
-
-    .calculator, .summary { transition-duration: 260ms; }
+    .calculator, .summary { transition-duration: .26s; }
     footer nav { flex-direction: column; gap: 4px; }
 }
 
@@ -925,19 +709,12 @@ footer nav a {
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-
-    *, *::before, *::after {
-        animation: none !important;
-        transition: none !important;
-    }
-
+    *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal-pending { opacity: 1; transform: none; }
-
     .card:hover, .info-card:hover, .workflow-list li:hover,
     .button:hover, .messenger:hover, .info-card:hover .feature-icon {
         transform: none !important;
     }
-
     .card[data-motion="scan"] .pain-icon::after { display: none; }
 }
 </style>
@@ -945,26 +722,69 @@ footer nav a {
 
 <body>
 
+<!-- Библиотека встроенных SVG: иконки не создаются JavaScript -->
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>
+    </symbol>
+    <symbol id="i-barcode" viewBox="0 0 24 24">
+        <path d="M4 7V4h4M16 4h4v3M20 17v3h-4M8 20H4v-3M7 8v8M10 8v8M14 8v8M17 8v8"></path>
+    </symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24">
+        <path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 7h6M9 11h6M9 15h3"></path>
+    </symbol>
+    <symbol id="i-message" viewBox="0 0 24 24">
+        <path d="M20 11.5a8 8 0 0 1-8 8H8l-5 2 1.8-5A8 8 0 1 1 20 11.5ZM8 10h8M8 14h5"></path>
+    </symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24">
+        <path d="M4 4v16h16M7 15l4-5 4 2 5-7M16 5h4v4"></path>
+    </symbol>
+    <symbol id="i-box" viewBox="0 0 24 24">
+        <path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5"></path>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+        <rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M8 12l3 3 5-6"></path>
+    </symbol>
+    <symbol id="i-tag" viewBox="0 0 24 24">
+        <path d="M3 3h8l10 10-8 8L3 11V3Z"></path><circle cx="7.5" cy="7.5" r="1"></circle>
+    </symbol>
+    <symbol id="i-warehouse" viewBox="0 0 24 24">
+        <path d="M3 21V8l9-5 9 5v13M3 21h18M7 21V11h10v10M7 15h10M7 18h10"></path>
+    </symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24">
+        <path d="M3 6h11v11H3V6ZM14 10h4l3 4v3h-7"></path>
+        <circle cx="7" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle>
+    </symbol>
+    <symbol id="i-document" viewBox="0 0 24 24">
+        <path d="M6 3h8l4 4v14H6V3ZM14 3v5h4M9 12h6M9 16h6"></path>
+    </symbol>
+    <symbol id="i-calculator" viewBox="0 0 24 24">
+        <rect x="5" y="2" width="14" height="20" rx="2"></rect>
+        <path d="M8 6h8v4H8V6ZM8 14h1M12 14h1M16 14h.01M8 18h1M12 18h1M16 18h.01"></path>
+    </symbol>
+    <symbol id="i-steps" viewBox="0 0 24 24">
+        <path d="M4 6h2M4 12h2M4 18h2M10 6h10M10 12h10M10 18h10"></path>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+        <path d="M8 3H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-4l-5-2-2 2a13 13 0 0 1-6-6l2-2-2-5Z"></path>
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path>
+    </symbol>
+</svg>
+
 <header class="site-header" id="site-header">
     <div class="header-main">
         <a class="logo" href="#home">4F<span>FULFILLMENT</span></a>
-
         <div class="contacts">
             <a class="phone" href="tel:+79776946400">
-                <span data-icon="phone" class="icon contact-icon"></span>
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
                 +7 (977) 694-64-00
             </a>
-
-            <a class="messenger telegram"
-               href="https://t.me/F1rstFamilyFulFillment"
-               target="_blank" rel="noopener noreferrer">Telegram</a>
-
-            <a class="messenger whatsapp"
-               href="https://wa.me/79776946400"
-               target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="messenger telegram" href="https://t.me/F1rstFamilyFulFillment" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a class="messenger whatsapp" href="https://wa.me/79776946400" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
     </div>
-
     <nav class="site-menu" aria-label="Основное меню">
         <a href="#services">Услуги</a>
         <a href="#calculator-wrapper" id="menu-prices">Тарифы</a>
@@ -975,300 +795,195 @@ footer nav a {
 </header>
 
 <main id="home">
-
-<section class="hero">
-    <div class="hero-inner">
-        <h1>Фулфилмент для Wildberries и Ozon</h1>
-        <p class="hero-location">Склад в Домодедово</p>
-
-        <p class="hero-description">
-            Работаем с продавцами из России и стран СНГ.<br>
-            Приёмка, маркировка, упаковка, хранение и подготовка
-            к отгрузке по схемам FBO и FBS.<br>
-            Принимаем партии от 100 единиц.
-        </p>
-
-        <p class="hero-offer">
-            Первая приёмка — бесплатно<br>
-            при поставке более 1 000 единиц товара.
-        </p>
-
-        <p class="hero-trust">
-            Работаем в WMS «Целиком».
-            Сроки обработки и ответственность за их нарушение
-            фиксируем в договоре.
-        </p>
-
-        <button class="button" id="btn-open-calc" type="button"
-                aria-controls="calculator-wrapper" aria-expanded="false">
-            <span data-icon="calculator" class="icon button-icon"></span>
-            <span id="calc-button-text">Рассчитать стоимость</span>
-        </button>
-
-        <noscript>
-            <p>
-                Для работы калькулятора включите JavaScript.
-                Для заявки используйте контакты в шапке.
+    <section class="hero">
+        <div class="hero-inner">
+            <h1>Фулфилмент для Wildberries и Ozon</h1>
+            <p class="hero-location">Склад в Домодедово</p>
+            <p class="hero-description">
+                Работаем с продавцами из России и стран СНГ.<br>
+                Приёмка, маркировка, упаковка, хранение и подготовка
+                к отгрузке по схемам FBO и FBS.<br>
+                Принимаем партии от 100 единиц.
             </p>
-        </noscript>
-    </div>
-</section>
-
-<section class="problems" aria-labelledby="pain-title">
-    <div class="container">
-        <h2 id="pain-title" data-reveal>
-            Что мешает продажам — и как мы помогаем
-        </h2>
-
-        <div class="problems-grid">
-            <article class="card" data-reveal data-motion="clock">
-                <span class="icon pain-icon" data-icon="clock"></span>
-                <h3>Срываются сроки обработки</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    Согласуем сроки до начала работ и фиксируем
-                    ответственность за их нарушение в договоре.
-                </p>
-            </article>
-
-            <article class="card" data-reveal data-motion="scan">
-                <span class="icon pain-icon" data-icon="barcode"></span>
-                <h3>Пересорт и ошибки комплектации</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    Используем WMS «Целиком» и сканирование
-                    штрихкодов при обработке товара.
-                </p>
-            </article>
-
-            <article class="card" data-reveal data-motion="receipt">
-                <span class="icon pain-icon" data-icon="receipt"></span>
-                <h3>Непонятная итоговая стоимость</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    Согласуем перечень работ и стоимость
-                    до начала обработки.
-                </p>
-            </article>
-
-            <article class="card" data-reveal data-motion="message">
-                <span class="icon pain-icon" data-icon="message"></span>
-                <h3>Некому задать вопрос</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    По вопросам поставок, обработки и отгрузки
-                    товара можно связаться с менеджером.
-                </p>
-            </article>
-
-            <article class="card" data-reveal data-motion="chart">
-                <span class="icon pain-icon" data-icon="chart"></span>
-                <h3>Не хватает мощности в сезон</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    Объём партии и сроки обработки
-                    согласуем перед поставкой.
-                </p>
-            </article>
-
-            <article class="card" data-reveal data-motion="box">
-                <span class="icon pain-icon" data-icon="box"></span>
-                <h3>Долгая приёмка задерживает отгрузку</h3>
-                <p>
-                    <span class="solution-check" aria-hidden="true">✓</span>
-                    Принимаем товар и отражаем его в WMS
-                    для дальнейшей обработки.
-                </p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section id="services" class="info-section">
-    <div class="container">
-        <h2 data-reveal>
-            <span class="icon section-icon" data-icon="box"></span>
-            Услуги фулфилмента
-        </h2>
-
-        <div class="info-grid">
-            <article class="info-card" data-reveal>
-                <span class="icon feature-icon" data-icon="check"></span>
-                <h3>Приёмка и проверка</h3>
-                <p>
-                    Пересчёт, сортировка, визуальная проверка
-                    и проверка на брак по согласованному заданию.
-                </p>
-            </article>
-
-            <article class="info-card" data-reveal>
-                <span class="icon feature-icon" data-icon="tag"></span>
-                <h3>Маркировка и упаковка</h3>
-                <p>
-                    Этикетки, маркировка «Честный знак»,
-                    комплектация и упаковка товара.
-                </p>
-            </article>
-
-            <article class="info-card" data-reveal>
-                <span class="icon feature-icon" data-icon="warehouse"></span>
-                <h3>Хранение и подготовка к отгрузке</h3>
-                <p>
-                    Хранение коробов и паллет, сборка заказов FBS
-                    и подготовка партий к отгрузке.
-                </p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<section id="warehouse" class="info-section info-section-alt">
-    <div class="container narrow">
-        <h2 data-reveal>
-            <span class="icon section-icon" data-icon="warehouse"></span>
-            Склад в Домодедово
-        </h2>
-
-        <p class="section-description" data-reveal>
-            Работаем с продавцами из России и стран СНГ,
-            которые продают товары на Wildberries и Ozon.
-            Используем WMS «Целиком» для складского учёта.
-        </p>
-
-        <p class="section-description" data-reveal>
-            Перед поставкой согласуйте с менеджером время прибытия,
-            объём партии и перечень работ. Адрес склада и инструкции
-            для заезда направим при согласовании поставки.
-        </p>
-    </div>
-</section>
-
-<section id="workflow" class="info-section">
-    <div class="container">
-        <h2 data-reveal>
-            <span class="icon section-icon" data-icon="steps"></span>
-            Как работаем
-        </h2>
-
-        <ol class="workflow-list">
-            <li data-reveal>
-                <div class="step-heading">
-                    <span class="icon step-icon" data-icon="message"></span>
-                </div>
-                <h3>Согласуем задачу</h3>
-                <p>
-                    Уточняем характеристики товара,
-                    объём партии и необходимые услуги.
-                </p>
-            </li>
-
-            <li data-reveal>
-                <div class="step-heading">
-                    <span class="icon step-icon" data-icon="document"></span>
-                </div>
-                <h3>Подтверждаем условия</h3>
-                <p>Согласуем стоимость, сроки и порядок поставки.</p>
-            </li>
-
-            <li data-reveal>
-                <div class="step-heading">
-                    <span class="icon step-icon" data-icon="box"></span>
-                </div>
-                <h3>Принимаем и обрабатываем</h3>
-                <p>
-                    Принимаем товар, отражаем его в складской
-                    системе и выполняем согласованные работы.
-                </p>
-            </li>
-
-            <li data-reveal>
-                <div class="step-heading">
-                    <span class="icon step-icon" data-icon="truck"></span>
-                </div>
-                <h3>Готовим к отгрузке</h3>
-                <p>
-                    Комплектуем, маркируем и упаковываем
-                    товар по согласованному заданию.
-                </p>
-            </li>
-        </ol>
-    </div>
-</section>
-
-<section id="calculator-wrapper" class="calculator"
-         aria-labelledby="calc-title" hidden inert>
-    <div class="calc-container">
-        <h2 id="calc-title">
-            <span class="icon section-icon" data-icon="calculator"></span>
-            Калькулятор обработки партии
-        </h2>
-
-        <p class="intro">
-            Выберите нужные услуги и укажите количество.
-            Стоимость пересчитывается автоматически.
-            Ненужные поля оставьте пустыми.
-        </p>
-
-        <div class="notes" id="quantity-note">
-            <p>
-                Расчёт предварительный. Менеджер подтвердит
-                состав работ и итоговую стоимость.
+            <p class="hero-offer">
+                Первая приёмка — бесплатно<br>
+                при поставке более 1 000 единиц товара.
             </p>
-            <p>
-                Первая приёмка партии более 1 000 единиц — бесплатно.
-                В калькуляторе приёмка рассчитана по стандартному тарифу;
-                применение акции подтвердит менеджер.
+            <p class="hero-trust">
+                Работаем в WMS «Целиком».
+                Сроки обработки и ответственность за их нарушение фиксируем в договоре.
             </p>
-            <p>
-                Указывайте целое неотрицательное количество
-                в единицах, обозначенных у выбранной услуги.
-                Заполненные услуги выделяются оранжевым.
-            </p>
-        </div>
-
-        <form id="calc-form">
-            <div id="service-fields"></div>
-        </form>
-
-        <div class="calc-actions">
-            <button id="btn-reset-calc" class="button secondary" type="button">
-                Очистить поля
+            <button class="button" id="btn-open-calc" type="button" aria-controls="calculator-wrapper" aria-expanded="false">
+                <svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg>
+                <span id="calc-button-text">Рассчитать стоимость</span>
             </button>
-
-            <button id="btn-close-calc" class="button secondary" type="button">
-                Закрыть калькулятор
-            </button>
+            <noscript>
+                <p>Для работы калькулятора включите JavaScript. Для заявки используйте контакты в шапке.</p>
+            </noscript>
         </div>
-    </div>
-</section>
+    </section>
 
+    <section class="problems">
+        <div class="container">
+            <h2 data-reveal>Что мешает продажам — и как мы помогаем</h2>
+            <div class="problems-grid">
+                <article class="card" data-reveal data-motion="clock">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></div>
+                    <h3>Срываются сроки обработки</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        Согласуем сроки до начала работ и фиксируем ответственность за их нарушение в договоре.</p>
+                </article>
+                <article class="card" data-reveal data-motion="scan">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-barcode"></use></svg></div>
+                    <h3>Пересорт и ошибки комплектации</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        Используем WMS «Целиком» и сканирование штрихкодов при обработке товара.</p>
+                </article>
+                <article class="card" data-reveal data-motion="receipt">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></div>
+                    <h3>Непонятная итоговая стоимость</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        Согласуем перечень работ и стоимость до начала обработки.</p>
+                </article>
+                <article class="card" data-reveal data-motion="message">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
+                    <h3>Некому задать вопрос</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        По вопросам поставок, обработки и отгрузки товара можно связаться с менеджером.</p>
+                </article>
+                <article class="card" data-reveal data-motion="chart">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></div>
+                    <h3>Не хватает мощности в сезон</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        Объём партии и сроки обработки согласуем перед поставкой.</p>
+                </article>
+                <article class="card" data-reveal data-motion="box">
+                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
+                    <h3>Долгая приёмка задерживает отгрузку</h3>
+                    <p><span class="solution-check" aria-hidden="true">✓</span>
+                        Принимаем товар и отражаем его в WMS для дальнейшей обработки.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="info-section">
+        <div class="container">
+            <h2 data-reveal>
+                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></span>
+                Услуги фулфилмента
+            </h2>
+            <div class="info-grid">
+                <article class="info-card" data-reveal>
+                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                    <h3>Приёмка и проверка</h3>
+                    <p>Пересчёт, сортировка, визуальная проверка и проверка на брак по согласованному заданию.</p>
+                </article>
+                <article class="info-card" data-reveal>
+                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                    <h3>Маркировка и упаковка</h3>
+                    <p>Этикетки, маркировка «Честный знак», комплектация и упаковка товара.</p>
+                </article>
+                <article class="info-card" data-reveal>
+                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
+                    <h3>Хранение и подготовка к отгрузке</h3>
+                    <p>Хранение коробов и паллет, сборка заказов FBS и подготовка партий к отгрузке.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="warehouse" class="info-section info-section-alt">
+        <div class="container narrow">
+            <h2 data-reveal>
+                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
+                Склад в Домодедово
+            </h2>
+            <p class="section-description" data-reveal>
+                Работаем с продавцами из России и стран СНГ, которые продают товары
+                на Wildberries и Ozon. Используем WMS «Целиком» для складского учёта.
+            </p>
+            <p class="section-description" data-reveal>
+                Перед поставкой согласуйте с менеджером время прибытия,
+                объём партии и перечень работ. Адрес склада и инструкции
+                для заезда направим при согласовании поставки.
+            </p>
+        </div>
+    </section>
+
+    <section id="workflow" class="info-section">
+        <div class="container">
+            <h2 data-reveal>
+                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-steps"></use></svg></span>
+                Как работаем
+            </h2>
+            <ol class="workflow-list">
+                <li data-reveal>
+                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
+                    <h3>Согласуем задачу</h3>
+                    <p>Уточняем характеристики товара, объём партии и необходимые услуги.</p>
+                </li>
+                <li data-reveal>
+                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-document"></use></svg></div>
+                    <h3>Подтверждаем условия</h3>
+                    <p>Согласуем стоимость, сроки и порядок поставки.</p>
+                </li>
+                <li data-reveal>
+                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
+                    <h3>Принимаем и обрабатываем</h3>
+                    <p>Принимаем товар, отражаем его в складской системе и выполняем согласованные работы.</p>
+                </li>
+                <li data-reveal>
+                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-truck"></use></svg></div>
+                    <h3>Готовим к отгрузке</h3>
+                    <p>Комплектуем, маркируем и упаковываем товар по согласованному заданию.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section id="calculator-wrapper" class="calculator" aria-labelledby="calc-title" hidden inert>
+        <div class="calc-container">
+            <h2 id="calc-title">
+                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg></span>
+                Калькулятор обработки партии
+            </h2>
+            <p class="intro">
+                Выберите нужные услуги и укажите количество.
+                Стоимость пересчитывается автоматически.
+                Ненужные поля оставьте пустыми.
+            </p>
+            <div class="notes" id="quantity-note">
+                <p>Расчёт предварительный. Менеджер подтвердит состав работ и итоговую стоимость.</p>
+                <p>Первая приёмка партии более 1 000 единиц — бесплатно.
+                    В калькуляторе приёмка рассчитана по стандартному тарифу;
+                    применение акции подтвердит менеджер.</p>
+                <p>Указывайте целое неотрицательное количество в единицах выбранной услуги.
+                    Заполненные услуги выделяются оранжевым.</p>
+            </div>
+            <form id="calc-form">
+                <div id="service-fields"></div>
+            </form>
+            <div class="calc-actions">
+                <button id="btn-reset-calc" class="button secondary" type="button">Очистить поля</button>
+                <button id="btn-close-calc" class="button secondary" type="button">Закрыть калькулятор</button>
+            </div>
+        </div>
+    </section>
 </main>
 
-<aside id="sticky-summary" class="summary"
-       aria-label="Итог расчёта и отправка" hidden inert>
+<aside id="sticky-summary" class="summary" aria-label="Итог расчёта и отправка" hidden inert>
     <div class="summary-inner">
         <div class="amount">
             <span class="amount-label">Итого по выбранным услугам</span>
             <span id="sticky-total-price" class="price">0 ₽</span>
         </div>
-
-        <p class="summary-note">
-            Предварительный расчёт. Состав работ и итоговую
-            стоимость подтвердит менеджер.
-        </p>
-
+        <p class="summary-note">Предварительный расчёт. Состав работ и итоговую стоимость подтвердит менеджер.</p>
         <p class="send-label">Обсудить расчёт с менеджером:</p>
-
         <div class="send-actions">
-            <a id="btn-tg-calc" class="messenger telegram"
-               href="https://t.me/F1rstFamilyFulFillment"
-               target="_blank" rel="noopener noreferrer">Telegram</a>
-
-            <a id="btn-wa-calc" class="messenger whatsapp"
-               href="https://wa.me/79776946400"
-               target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a id="btn-tg-calc" class="messenger telegram" href="https://t.me/F1rstFamilyFulFillment" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a id="btn-wa-calc" class="messenger whatsapp" href="https://wa.me/79776946400" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </div>
-
         <p id="calc-status" class="status" role="status" hidden></p>
     </div>
 </aside>
@@ -1276,44 +991,30 @@ footer nav a {
 <footer id="contacts">
     <div class="container">
         <h2>
-            <span class="icon section-icon" data-icon="message"></span>
+            <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></span>
             Контакты
         </h2>
-
         <p>4F Fulfillment · Склад в Домодедово</p>
-        <p>
-            Фулфилмент для Wildberries и Ozon.<br>
-            Работаем с продавцами из России и стран СНГ.
-        </p>
-
+        <p>Фулфилмент для Wildberries и Ozon.<br>Работаем с продавцами из России и стран СНГ.</p>
         <nav aria-label="Телефоны и электронная почта">
             <a href="tel:+79776946400">
-                <span class="icon contact-icon" data-icon="phone"></span>
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
                 <span class="contact-text">Основной: +7 (977) 694-64-00</span>
             </a>
-
             <a href="tel:+79999906400">
-                <span class="icon contact-icon" data-icon="phone"></span>
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
                 <span class="contact-text">Дополнительный: +7 (999) 990-64-00</span>
             </a>
-
             <a href="mailto:dmd.4f@yandex.ru">
-                <span class="icon contact-icon" data-icon="mail"></span>
+                <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
                 <span class="contact-text">dmd.4f@yandex.ru</span>
             </a>
         </nav>
-
         <nav aria-label="Мессенджеры">
-            <a href="https://t.me/F1rstFamilyFulFillment"
-               target="_blank" rel="noopener noreferrer">Telegram</a>
-
-            <a href="https://wa.me/79776946400"
-               target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://t.me/F1rstFamilyFulFillment" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a href="https://wa.me/79776946400" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </nav>
-
-        <p class="copyright">
-            © <span id="copyright-year">2026</span> 4F Fulfillment
-        </p>
+        <p class="copyright">© <span id="copyright-year">2026</span> 4F Fulfillment</p>
     </div>
 </footer>
 
@@ -1321,569 +1022,665 @@ footer nav a {
 (function () {
     'use strict';
 
-    /* Иконки */
-    const icons = {
-        clock: '<circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>',
-        barcode: '<path d="M4 7V4h4M16 4h4v3M20 17v3h-4M8 20H4v-3M7 8v8M10 8v8M14 8v8M17 8v8"></path>',
-        receipt: '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3ZM9 7h6M9 11h6M9 15h3"></path>',
-        message: '<path d="M20 11.5a8 8 0 0 1-8 8H8l-5 2 1.8-5A8 8 0 1 1 20 11.5ZM8 10h8M8 14h5"></path>',
-        chart: '<path d="M4 4v16h16M7 15l4-5 4 2 5-7M16 5h4v4"></path>',
-        box: '<path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5"></path>',
-        check: '<rect x="5" y="4" width="14" height="17" rx="2"></rect><path d="M9 4V3h6v1M8 12l3 3 5-6"></path>',
-        tag: '<path d="M3 3h8l10 10-8 8L3 11V3Z"></path><circle cx="7.5" cy="7.5" r="1"></circle>',
-        warehouse: '<path d="M3 21V8l9-5 9 5v13M3 21h18M7 21V11h10v10M7 15h10M7 18h10"></path>',
-        truck: '<path d="M3 6h11v11H3V6ZM14 10h4l3 4v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="18" cy="18" r="2"></circle>',
-        document: '<path d="M6 3h8l4 4v14H6V3ZM14 3v5h4M9 12h6M9 16h6"></path>',
-        calculator: '<rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M8 6h8v4H8V6ZM8 14h1M12 14h1M16 14h.01M8 18h1M12 18h1M16 18h.01"></path>',
-        steps: '<path d="M4 6h2M4 12h2M4 18h2M10 6h10M10 12h10M10 18h10"></path>',
-        phone: '<path d="M8 3H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-4l-5-2-2 2a13 13 0 0 1-6-6l2-2-2-5Z"></path>',
-        mail: '<rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path>'
-    };
+    function startSite() {
+        var get = function (id) { return document.getElementById(id); };
 
-    function fillIcon(element, name) {
-        if (!icons[name]) return;
+        var wrapper = get('calculator-wrapper');
+        var panel = get('sticky-summary');
+        var openButton = get('btn-open-calc');
+        var form = get('calc-form');
+        var fieldsContainer = get('service-fields');
+        var priceElement = get('sticky-total-price');
+        var telegramButton = get('btn-tg-calc');
+        var whatsappButton = get('btn-wa-calc');
+        var statusElement = get('calc-status');
+        var header = get('site-header');
 
-        element.setAttribute('aria-hidden', 'true');
-        element.innerHTML =
-            '<svg viewBox="0 0 24 24" focusable="false">' +
-            icons[name] + '</svg>';
-    }
-
-    document.querySelectorAll('[data-icon]').forEach(function (element) {
-        fillIcon(element, element.dataset.icon);
-    });
-
-    /*
-     * Формат услуги:
-     * [идентификатор, название, цена, единица, пояснение]
-     */
-    const services = [
-        {
-            title: 'Приёмка и проверка',
-            icon: 'check',
-            note: '',
-            items: [
-                ['priemka', 'Приёмка и пересчёт', 5, 'шт.',
-                    'Стандартный тариф. Применение акции на первую приёмку подтвердит менеджер.'],
-                ['sort', 'Сортировка', 5, 'шт.', ''],
-                ['viz', 'Визуальная проверка', 5, 'шт.', ''],
-                ['brak-pr', 'Проверка на брак: другие категории товаров', 10, 'шт.',
-                    'Состав проверки и применимость тарифа уточните у менеджера.'],
-                ['brak-teh', 'Проверка на брак: техника', 15, 'шт.', '']
-            ]
-        },
-        {
-            title: 'Маркировка и стикерование',
-            icon: 'tag',
-            note: 'Печать, этикетка и нанесение включены в стоимость. Подготовку и передачу кодов «Честный знак» согласуйте с менеджером.',
-            items: [
-                ['etiketka-58', 'Печать и нанесение этикетки 58×40 мм', 5, 'шт.', ''],
-                ['etiketka-75', 'Печать и нанесение этикетки 75×120 мм', 7, 'шт.', ''],
-                ['kiz', 'Печать и нанесение кода «Честный знак»', 9, 'шт.', ''],
-                ['sovm', 'Совмещённая этикетка: штрихкод и «Честный знак»', 12, 'шт.',
-                    'Печать и нанесение включены в стоимость.']
-            ]
-        },
-        {
-            title: 'Комплектация и упаковка',
-            icon: 'box',
-            note: 'Пакеты и упаковочные материалы включены в стоимость, кроме упаковки в пакет клиента. При подборе упаковки учитываем длину, ширину и высоту товара.',
-            items: [
-                ['vlozh', 'Вложение вкладыша', 5, 'шт.', ''],
-                ['kompl-3', 'Сборка комплекта до 3 единиц', 10, 'комплект',
-                    'Укажите общее количество комплектов, в том числе комплектов более чем из 3 товаров.'],
-                ['kompl-3plus', 'Дополнительная единица в комплекте сверх 3', 3, 'шт.',
-                    'Комплект из 5 товаров: 10 ₽ + 2 × 3 ₽ = 16 ₽. Для 10 таких комплектов введите 10 в поле комплектов и 20 в этом поле.'],
-                ['paket', 'Упаковка в пакет клиента', 5, 'шт.', ''],
-                ['bopp-25', 'Упаковка в БОПП-пакет до 25 см', 12, 'шт.', ''],
-                ['bopp-45', 'Упаковка в БОПП-пакет до 45 см', 14, 'шт.', ''],
-                ['zip-20', 'Упаковка в ZIP-пакет 20×25 см', 16, 'шт.', ''],
-                ['zip-25', 'Упаковка в ZIP-пакет 25×30 см', 17, 'шт.', ''],
-                ['pvd-20', 'Упаковка в ПВД-пакет до 20 см', 16, 'шт.', ''],
-                ['vpp-20', 'Упаковка в воздушно-пузырчатый материал до 20 см', 16, 'шт.', '']
-            ]
-        },
-        {
-            title: 'Короба, паллетирование и хранение',
-            icon: 'warehouse',
-            note: 'Для хранения укажите количество мест × количество суток. Например: 10 коробов на 3 суток — введите 30.',
-            items: [
-                ['korob-60', 'Упаковка в короб 60×40×40 см', 150, 'короб',
-                    'Короб включён в стоимость.'],
-                ['korob-cl', 'Упаковка в короб клиента', 100, 'короб', ''],
-                ['pallet', 'Паллетирование', 750, 'паллету',
-                    'Расходные материалы включены. Сама паллета оплачивается отдельно и не включена в итог калькулятора.'],
-                ['stor-kor', 'Хранение коробов', 5, 'коробо-сутки',
-                    'Введите количество коробов × количество суток хранения.'],
-                ['stor-pal', 'Хранение паллет', 50, 'паллето-сутки',
-                    'Введите количество паллет × количество суток хранения.']
-            ]
-        },
-        {
-            title: 'Сборка FBS и забор товара',
-            icon: 'truck',
-            note: 'Тариф FBS применяется к одной единице товара. Объём определяется по её длине, ширине и высоте. Забор рассчитывается за рейс; маршрут и условия согласуйте с менеджером. Для партии более 6 м³ стоимость рассчитывается отдельно.',
-            items: [
-                ['fbs-1', 'Сборка FBS: товар до 1 л включительно', 35, 'шт.', ''],
-                ['fbs-5', 'Сборка FBS: товар свыше 1 до 5 л включительно', 55, 'шт.', ''],
-                ['zabor-1', 'Забор партии до 1 м³ включительно', 1800, 'рейс',
-                    'Укажите количество рейсов.'],
-                ['zabor-3', 'Забор партии свыше 1 до 3 м³ включительно', 3000, 'рейс',
-                    'Укажите количество рейсов.'],
-                ['zabor-6', 'Забор партии свыше 3 до 6 м³ включительно', 6000, 'рейс',
-                    'Укажите количество рейсов.']
-            ]
-        }
-    ];
-
-    const get = id => document.getElementById(id);
-
-    const header = get('site-header');
-    const wrapper = get('calculator-wrapper');
-    const panel = get('sticky-summary');
-    const openButton = get('btn-open-calc');
-    const buttonText = get('calc-button-text');
-    const form = get('calc-form');
-    const priceElement = get('sticky-total-price');
-    const statusElement = get('calc-status');
-    const telegramButton = get('btn-tg-calc');
-    const whatsappButton = get('btn-wa-calc');
-
-    const formatter = new Intl.NumberFormat('ru-RU', {
-        maximumFractionDigits: 0
-    });
-
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    const mobileScreen = matchMedia('(max-width: 640px)');
-    const money = value => formatter.format(value) + ' ₽';
-
-    let displayedTotal = 0;
-    let targetTotal = 0;
-    let totalFrame = null;
-
-    let calculatorIsOpen = false;
-    let closeTimer = null;
-    let openFrame = null;
-    let operationVersion = 0;
-    let pendingCloseScroll = false;
-
-    /* Формирование полей */
-    services.forEach(function (group, index) {
-        const fieldset = document.createElement('fieldset');
-        const legend = document.createElement('legend');
-        const icon = document.createElement('span');
-        const grid = document.createElement('div');
-        const noteId = 'group-note-' + index;
-
-        icon.className = 'icon calc-group-icon';
-        fillIcon(icon, group.icon);
-
-        legend.append(
-            icon,
-            document.createTextNode((index + 1) + '. ' + group.title)
-        );
-
-        fieldset.appendChild(legend);
-
-        if (group.note) {
-            const note = document.createElement('p');
-
-            note.id = noteId;
-            note.className = 'group-note';
-            note.textContent = group.note;
-
-            fieldset.appendChild(note);
-        }
-
-        grid.className = 'inputs';
-
-        group.items.forEach(function (item) {
-            const [key, title, price, unit, hintText] = item;
-            const id = 'q-' + key;
-
-            const field = document.createElement('div');
-            const label = document.createElement('label');
-            const input = document.createElement('input');
-            const descriptions = ['quantity-note'];
-
-            field.className = 'field';
-            label.htmlFor = id;
-            label.textContent = title + ' — ' + money(price) + '/' + unit;
-
-            input.id = id;
-            input.name = id;
-            input.type = 'number';
-            input.min = '0';
-            input.max = '1000000000';
-            input.step = '1';
-            input.placeholder = '0';
-            input.setAttribute('inputmode', 'numeric');
-
-            input.dataset.price = String(price);
-            input.dataset.label = title;
-            input.dataset.unit = unit;
-
-            if (group.note) descriptions.push(noteId);
-
-            field.append(label, input);
-
-            if (hintText) {
-                const hint = document.createElement('p');
-
-                hint.id = id + '-hint';
-                hint.className = 'field-hint';
-                hint.textContent = hintText;
-
-                descriptions.push(hint.id);
-                field.appendChild(hint);
-            }
-
-            input.setAttribute('aria-describedby', descriptions.join(' '));
-
-            input.addEventListener('focus', function () {
-                if (input.value === '0') input.select();
-            });
-
-            grid.appendChild(field);
-        });
-
-        fieldset.appendChild(grid);
-        get('service-fields').appendChild(fieldset);
-    });
-
-    const inputs = Array.from(form.querySelectorAll('input[data-price]'));
-
-    /* Плавная сумма */
-    function updateTotal(value) {
-        targetTotal = value;
-
-        if (totalFrame !== null) {
-            cancelAnimationFrame(totalFrame);
-            totalFrame = null;
-        }
-
-        if (
-            reducedMotion.matches ||
-            !calculatorIsOpen ||
-            Math.abs(displayedTotal - value) < .01
-        ) {
-            displayedTotal = value;
-            priceElement.textContent = money(value);
+        if (!wrapper || !panel || !openButton || !form ||
+            !fieldsContainer || !priceElement ||
+            !telegramButton || !whatsappButton) {
+            console.error('4F: HTML страницы вставлен не полностью.');
             return;
         }
 
-        const startValue = displayedTotal;
-        const startTime = performance.now();
-        const duration = mobileScreen.matches ? 220 : 350;
+        if (openButton.getAttribute('data-site-ready') === 'true') return;
 
-        function tick(now) {
-            const progress = Math.min((now - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - progress, 3);
+        var reduced = window.matchMedia
+            ? window.matchMedia('(prefers-reduced-motion: reduce)')
+            : { matches: false };
 
-            displayedTotal = startValue + (value - startValue) * eased;
-            priceElement.textContent = money(Math.round(displayedTotal));
+        var mobile = window.matchMedia
+            ? window.matchMedia('(max-width: 640px)')
+            : { matches: false };
 
-            if (progress < 1) {
-                totalFrame = requestAnimationFrame(tick);
-            } else {
-                displayedTotal = value;
-                totalFrame = null;
-                priceElement.textContent = money(value);
+        /* [id, название, цена, единица, пояснение] */
+        var services = [
+            {
+                title: 'Приёмка и проверка',
+                icon: 'check',
+                note: '',
+                items: [
+                    ['priemka', 'Приёмка и пересчёт', 5, 'шт.',
+                        'Стандартный тариф. Применение акции на первую приёмку подтвердит менеджер.'],
+                    ['sort', 'Сортировка', 5, 'шт.', ''],
+                    ['viz', 'Визуальная проверка', 5, 'шт.', ''],
+                    ['brak-pr', 'Проверка на брак: другие категории товаров', 10, 'шт.',
+                        'Состав проверки и применимость тарифа уточните у менеджера.'],
+                    ['brak-teh', 'Проверка на брак: техника', 15, 'шт.', '']
+                ]
+            },
+            {
+                title: 'Маркировка и стикерование',
+                icon: 'tag',
+                note: 'Печать, этикетка и нанесение включены в стоимость. Подготовку и передачу кодов «Честный знак» согласуйте с менеджером.',
+                items: [
+                    ['etiketka-58', 'Печать и нанесение этикетки 58×40 мм', 5, 'шт.', ''],
+                    ['etiketka-75', 'Печать и нанесение этикетки 75×120 мм', 7, 'шт.', ''],
+                    ['kiz', 'Печать и нанесение кода «Честный знак»', 9, 'шт.', ''],
+                    ['sovm', 'Совмещённая этикетка: штрихкод и «Честный знак»', 12, 'шт.', '']
+                ]
+            },
+            {
+                title: 'Комплектация и упаковка',
+                icon: 'box',
+                note: 'Пакеты и упаковочные материалы включены в стоимость, кроме упаковки в пакет клиента. При подборе упаковки учитываем длину, ширину и высоту товара.',
+                items: [
+                    ['vlozh', 'Вложение вкладыша', 5, 'шт.', ''],
+                    ['kompl-3', 'Сборка комплекта до 3 единиц', 10, 'комплект',
+                        'Укажите количество всех комплектов, в том числе комплектов более чем из 3 товаров.'],
+                    ['kompl-3plus', 'Дополнительная единица в комплекте сверх 3', 3, 'шт.',
+                        'Для 10 комплектов по 5 товаров укажите 10 комплектов и 20 дополнительных единиц.'],
+                    ['paket', 'Упаковка в пакет клиента', 5, 'шт.', ''],
+                    ['bopp-25', 'Упаковка в БОПП-пакет до 25 см', 12, 'шт.', ''],
+                    ['bopp-45', 'Упаковка в БОПП-пакет до 45 см', 14, 'шт.', ''],
+                    ['zip-20', 'Упаковка в ZIP-пакет 20×25 см', 16, 'шт.', ''],
+                    ['zip-25', 'Упаковка в ZIP-пакет 25×30 см', 17, 'шт.', ''],
+                    ['pvd-20', 'Упаковка в ПВД-пакет до 20 см', 16, 'шт.', ''],
+                    ['vpp-20', 'Упаковка в воздушно-пузырчатый материал до 20 см', 16, 'шт.', '']
+                ]
+            },
+            {
+                title: 'Короба, паллетирование и хранение',
+                icon: 'warehouse',
+                note: 'Для хранения укажите количество мест × количество суток. Например: 10 коробов на 3 суток — введите 30.',
+                items: [
+                    ['korob-60', 'Упаковка в короб 60×40×40 см', 150, 'короб',
+                        'Короб включён в стоимость.'],
+                    ['korob-cl', 'Упаковка в короб клиента', 100, 'короб', ''],
+                    ['pallet', 'Паллетирование', 750, 'паллету',
+                        'Расходные материалы включены. Сама паллета оплачивается отдельно и не включена в итог калькулятора.'],
+                    ['stor-kor', 'Хранение коробов', 5, 'коробо-сутки', ''],
+                    ['stor-pal', 'Хранение паллет', 50, 'паллето-сутки', '']
+                ]
+            },
+            {
+                title: 'Сборка FBS и забор товара',
+                icon: 'truck',
+                note: 'FBS рассчитывается за единицу товара, литраж относится к ней же. Забор — за рейс. Маршрут согласуйте с менеджером. Объём более 6 м³ рассчитывается отдельно.',
+                items: [
+                    ['fbs-1', 'Сборка FBS: товар до 1 л включительно', 35, 'шт.', ''],
+                    ['fbs-5', 'Сборка FBS: товар свыше 1 до 5 л включительно', 55, 'шт.', ''],
+                    ['zabor-1', 'Забор партии до 1 м³ включительно', 1800, 'рейс', ''],
+                    ['zabor-3', 'Забор партии свыше 1 до 3 м³ включительно', 3000, 'рейс', ''],
+                    ['zabor-6', 'Забор партии свыше 3 до 6 м³ включительно', 6000, 'рейс', '']
+                ]
             }
+        ];
+
+        var inputs = [];
+        var isOpen = false;
+        var closeTimer = null;
+        var openFrame = null;
+        var operation = 0;
+        var totalFrame = null;
+        var currentTotal = 0;
+        var targetTotal = 0;
+        var pendingReturn = false;
+
+        function money(value) {
+            return Math.round(value).toLocaleString('ru-RU') + ' ₽';
         }
 
-        totalFrame = requestAnimationFrame(tick);
-    }
+        function makeIcon(name) {
+            var namespace = 'http://www.w3.org/2000/svg';
+            var svg = document.createElementNS(namespace, 'svg');
+            var use = document.createElementNS(namespace, 'use');
 
-    /* Расчёт и выделение выбранных услуг */
-    function calculate() {
-        let total = 0;
-        let invalid = false;
-        const lines = [];
+            svg.setAttribute('class', 'icon calc-group-icon');
+            svg.setAttribute('aria-hidden', 'true');
+            use.setAttribute('href', '#i-' + name);
+            svg.appendChild(use);
+            return svg;
+        }
 
-        inputs.forEach(function (input) {
-            const field = input.closest('.field');
+        /* Формирование полей */
+        fieldsContainer.textContent = '';
 
-            input.setCustomValidity('');
-            input.removeAttribute('aria-invalid');
-            field.classList.remove('is-filled');
+        services.forEach(function (group, groupIndex) {
+            var fieldset = document.createElement('fieldset');
+            var legend = document.createElement('legend');
+            var grid = document.createElement('div');
+            var groupNoteId = 'group-note-' + groupIndex;
 
-            if (input.value === '' && !input.validity.badInput) return;
+            legend.appendChild(makeIcon(group.icon));
+            legend.appendChild(document.createTextNode(
+                (groupIndex + 1) + '. ' + group.title
+            ));
+            fieldset.appendChild(legend);
 
-            const quantity = input.valueAsNumber;
-            const price = Number(input.dataset.price);
+            if (group.note) {
+                var note = document.createElement('p');
+                note.id = groupNoteId;
+                note.className = 'group-note';
+                note.textContent = group.note;
+                fieldset.appendChild(note);
+            }
 
-            if (
-                !Number.isSafeInteger(quantity) ||
-                quantity < 0 ||
-                quantity > 1000000000
-            ) {
-                input.setCustomValidity(
-                    'Введите целое число от 0 до 1 000 000 000.'
-                );
+            grid.className = 'inputs';
 
-                input.setAttribute('aria-invalid', 'true');
-                invalid = true;
+            group.items.forEach(function (item) {
+                var field = document.createElement('div');
+                var label = document.createElement('label');
+                var input = document.createElement('input');
+                var id = 'q-' + item[0];
+                var descriptions = ['quantity-note'];
+
+                field.className = 'field';
+                label.htmlFor = id;
+                label.textContent =
+                    item[1] + ' — ' + money(item[2]) + '/' + item[3];
+
+                input.id = id;
+                input.name = id;
+                input.type = 'number';
+                input.min = '0';
+                input.max = '1000000000';
+                input.step = '1';
+                input.placeholder = '0';
+                input.setAttribute('inputmode', 'numeric');
+                input.setAttribute('data-price', String(item[2]));
+                input.setAttribute('data-label', item[1]);
+                input.setAttribute('data-unit', item[3]);
+
+                if (group.note) descriptions.push(groupNoteId);
+
+                field.appendChild(label);
+                field.appendChild(input);
+
+                if (item[4]) {
+                    var hint = document.createElement('p');
+                    hint.id = id + '-hint';
+                    hint.className = 'field-hint';
+                    hint.textContent = item[4];
+                    descriptions.push(hint.id);
+                    field.appendChild(hint);
+                }
+
+                input.setAttribute('aria-describedby', descriptions.join(' '));
+
+                input.addEventListener('focus', function () {
+                    if (input.value === '0') input.select();
+                });
+
+                inputs.push(input);
+                grid.appendChild(field);
+            });
+
+            fieldset.appendChild(grid);
+            fieldsContainer.appendChild(fieldset);
+        });
+
+        function stopTotal() {
+            if (totalFrame !== null) {
+                cancelAnimationFrame(totalFrame);
+                totalFrame = null;
+            }
+            currentTotal = targetTotal;
+            priceElement.textContent = money(targetTotal);
+        }
+
+        function updateTotal(value) {
+            targetTotal = value;
+
+            if (totalFrame !== null) {
+                cancelAnimationFrame(totalFrame);
+                totalFrame = null;
+            }
+
+            if (!isOpen || reduced.matches ||
+                Math.abs(currentTotal - value) < 0.01) {
+                currentTotal = value;
+                priceElement.textContent = money(value);
                 return;
             }
 
-            if (quantity === 0) return;
+            var startValue = currentTotal;
+            var started = null;
+            var duration = mobile.matches ? 220 : 350;
 
-            field.classList.add('is-filled');
+            function tick(time) {
+                if (started === null) started = time;
 
-            const cost = quantity * price;
-            total += cost;
+                var progress = Math.min((time - started) / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
 
-            lines.push(
-                input.dataset.label + ': ' +
-                formatter.format(quantity) + ' × ' +
-                money(price) + '/' + input.dataset.unit +
-                ' = ' + money(cost)
-            );
-        });
+                currentTotal = startValue + (value - startValue) * eased;
+                priceElement.textContent = money(currentTotal);
 
-        updateTotal(total);
-
-        statusElement.hidden = !invalid;
-        statusElement.textContent = invalid
-            ? 'Введите целое неотрицательное количество в выделенных полях.'
-            : '';
-
-        const message = [
-            'Здравствуйте! Прошу проверить расчёт обработки партии и подтвердить стоимость.',
-            '',
-            'Выбранные услуги:',
-            lines.length ? lines.join('\n') : 'Услуги пока не выбраны.',
-            '',
-            'Итого по калькулятору: ' + money(total) + '.',
-            '',
-            'Подскажите, какие данные о товаре и поставке нужно направить.'
-        ].join('\n');
-
-        const encoded = encodeURIComponent(message);
-
-        telegramButton.href =
-            'https://t.me/F1rstFamilyFulFillment?text=' + encoded;
-
-        whatsappButton.href =
-            'https://wa.me/79776946400?text=' + encoded;
-    }
-
-    /* Активный раздел меню */
-    const menuLinks = Array.from(
-        document.querySelectorAll('.site-menu a')
-    );
-
-    const menuSections = menuLinks.map(function (link) {
-        return {
-            link: link,
-            section: get(link.getAttribute('href').slice(1))
-        };
-    }).filter(item => item.section);
-
-    let navigationFrame = null;
-
-    function updateActiveMenu() {
-        navigationFrame = null;
-
-        const headerOffset = mobileScreen.matches
-            ? 0
-            : header.getBoundingClientRect().height;
-
-        const marker = headerOffset + 90;
-        let activeId = null;
-
-        const visibleSections = menuSections.filter(function (item) {
-            return !item.section.hidden &&
-                !(item.section === wrapper && !calculatorIsOpen);
-        }).map(function (item) {
-            return {
-                id: item.section.id,
-                rect: item.section.getBoundingClientRect()
-            };
-        }).sort((a, b) => a.rect.top - b.rect.top);
-
-        visibleSections.forEach(function (item) {
-            if (item.rect.top <= marker) activeId = item.id;
-        });
-
-        const documentHeight = document.documentElement.scrollHeight;
-        const atBottom =
-            window.scrollY + window.innerHeight >= documentHeight - 6;
-
-        if (atBottom) activeId = 'contacts';
-
-        menuLinks.forEach(function (link) {
-            const selected =
-                link.getAttribute('href') === '#' + activeId;
-
-            link.classList.toggle('is-active', selected);
-
-            if (selected) {
-                link.setAttribute('aria-current', 'location');
-            } else {
-                link.removeAttribute('aria-current');
+                if (progress < 1) {
+                    totalFrame = requestAnimationFrame(tick);
+                } else {
+                    currentTotal = value;
+                    totalFrame = null;
+                    priceElement.textContent = money(value);
+                }
             }
-        });
-    }
+            totalFrame = requestAnimationFrame(tick);
+        }
 
-    function scheduleMenuUpdate() {
-        if (navigationFrame !== null) return;
+        function calculate() {
+            var total = 0;
+            var invalid = false;
+            var lines = [];
 
-        navigationFrame = requestAnimationFrame(updateActiveMenu);
-    }
+            inputs.forEach(function (input) {
+                var field = input.parentNode;
+                var quantity = Number(input.value);
 
-    /* Размеры шапки и нижней панели */
-    function syncLayout() {
-        document.documentElement.style.setProperty(
-            '--header-height',
-            Math.ceil(header.getBoundingClientRect().height) + 'px'
+                input.setCustomValidity('');
+                input.removeAttribute('aria-invalid');
+                field.classList.remove('is-filled');
+
+                if (input.value === '' && !input.validity.badInput) return;
+
+                if (input.validity.badInput || !isFinite(quantity) ||
+                    Math.floor(quantity) !== quantity ||
+                    quantity < 0 || quantity > 1000000000) {
+                    input.setCustomValidity(
+                        'Введите целое число от 0 до 1 000 000 000.'
+                    );
+                    input.setAttribute('aria-invalid', 'true');
+                    invalid = true;
+                    return;
+                }
+
+                if (quantity === 0) return;
+
+                field.classList.add('is-filled');
+
+                var price = Number(input.getAttribute('data-price'));
+                var cost = quantity * price;
+                total += cost;
+
+                lines.push(
+                    input.getAttribute('data-label') + ': ' +
+                    quantity.toLocaleString('ru-RU') + ' × ' +
+                    money(price) + '/' + input.getAttribute('data-unit') +
+                    ' = ' + money(cost)
+                );
+            });
+
+            updateTotal(total);
+            statusElement.hidden = !invalid;
+            statusElement.textContent = invalid
+                ? 'Исправьте количество в выделенных полях.' : '';
+
+            var message = [
+                'Здравствуйте! Прошу проверить расчёт обработки партии и подтвердить стоимость.',
+                '',
+                'Выбранные услуги:',
+                lines.length ? lines.join('\n') : 'Услуги пока не выбраны.',
+                '',
+                'Итого по калькулятору: ' + money(total) + '.',
+                '',
+                'Подскажите, какие данные о товаре и поставке нужно направить.'
+            ].join('\n');
+
+            var encoded = encodeURIComponent(message);
+            telegramButton.href =
+                'https://t.me/F1rstFamilyFulFillment?text=' + encoded;
+            whatsappButton.href =
+                'https://wa.me/79776946400?text=' + encoded;
+        }
+
+        /* Меню */
+        var menuLinks = Array.prototype.slice.call(
+            document.querySelectorAll('.site-menu a')
         );
 
-        if (!panel.hidden) {
-            document.body.style.setProperty(
-                '--panel-height',
-                Math.ceil(panel.getBoundingClientRect().height) + 'px'
-            );
-        }
+        function updateMenu() {
+            var marker = mobile.matches
+                ? 80 : header.getBoundingClientRect().height + 80;
+            var activeId = '';
+            var sections = [];
 
-        scheduleMenuUpdate();
-    }
+            menuLinks.forEach(function (link) {
+                var href = link.getAttribute('href');
+                var section = href ? get(href.slice(1)) : null;
 
-    let layoutFrame = null;
+                if (!section || section.hidden ||
+                    (section === wrapper && !isOpen)) return;
 
-    function scheduleLayout() {
-        if (layoutFrame !== null) return;
-
-        layoutFrame = requestAnimationFrame(function () {
-            layoutFrame = null;
-            syncLayout();
-        });
-    }
-
-    function scrollToCalculator() {
-        wrapper.scrollIntoView({
-            behavior: reducedMotion.matches ? 'instant' : 'smooth',
-            block: 'start'
-        });
-    }
-
-    function stopTotalAnimation() {
-        if (totalFrame !== null) {
-            cancelAnimationFrame(totalFrame);
-            totalFrame = null;
-        }
-
-        displayedTotal = targetTotal;
-        priceElement.textContent = money(targetTotal);
-    }
-
-    function finishClosing(version) {
-        if (version !== operationVersion || calculatorIsOpen) return;
-
-        clearTimeout(closeTimer);
-        closeTimer = null;
-
-        wrapper.hidden = true;
-        panel.hidden = true;
-
-        wrapper.classList.remove('is-closing', 'is-visible');
-        panel.classList.remove('is-closing', 'is-visible');
-
-        document.body.classList.remove('calc-open');
-        document.body.style.removeProperty('--panel-height');
-
-        if (pendingCloseScroll) {
-            pendingCloseScroll = false;
-
-            openButton.scrollIntoView({
-                behavior: reducedMotion.matches ? 'instant' : 'smooth',
-                block: 'center'
-            });
-        }
-
-        scheduleLayout();
-    }
-
-    /* Открытие и плавное закрытие без конфликтующих таймеров */
-    function setCalculatorOpen(nextState, returnToButton) {
-        operationVersion += 1;
-        const version = operationVersion;
-
-        clearTimeout(closeTimer);
-        closeTimer = null;
-
-        if (openFrame !== null) {
-            cancelAnimationFrame(openFrame);
-            openFrame = null;
-        }
-
-        calculatorIsOpen = nextState;
-        pendingCloseScroll = !nextState && Boolean(returnToButton);
-
-        openButton.setAttribute('aria-expanded', String(nextState));
-        buttonText.textContent = nextState
-            ? 'Скрыть расчёт'
-            : 'Рассчитать стоимость';
-
-        if (nextState) {
-            wrapper.hidden = false;
-            panel.hidden = false;
-
-            wrapper.removeAttribute('inert');
-            panel.removeAttribute('inert');
-
-            wrapper.classList.remove('is-closing');
-            panel.classList.remove('is-closing');
-
-            document.body.classList.add('calc-open');
-            syncLayout();
-
-            openFrame = requestAnimationFrame(function () {
-                openFrame = requestAnimationFrame(function () {
-                    openFrame = null;
-
-                    if (
-                        version !== operationVersion ||
-                        !calculatorIsOpen
-                    ) return;
-
-                    wrapper.classList.add('is-visible');
-                    panel.classList.add('is-visible');
-
-                    scrollToCalculator();
-                    scheduleMenuUpdate();
+                sections.push({
+                    id: section.id,
+                    top: section.getBoundingClientRect().top
                 });
             });
-        } else {
-            if (
-                wrapper.contains(document.activeElement) ||
-                panel.contains(document.activeElement)
-            ) {
-                openButton.focus({ preventScroll: true });
+
+            sections.sort(function (a, b) { return a.top - b.top; });
+
+            sections.forEach(function (section) {
+                if (section.top <= marker) activeId = section.id;
+            });
+
+            if (window.scrollY + window.innerHeight >=
+                document.documentElement.scrollHeight - 6) {
+                activeId = 'contacts';
             }
 
-            wrapper.setAttribute('inert', '');
-            panel.setAttribute('inert', '');
+            menuLinks.forEach(function (link) {
+                var active = link.getAttribute('href') === '#' + activeId;
+                link.classList.toggle('is-active', active);
+                if (active) link.setAttribute('aria-current', 'location');
+                else link.removeAttribute('aria-current');
+            });
+        }
 
-            wrapper.classList.add('is-closing');
-            panel.classList.add('is-closing');
+        function syncLayout() {
+            document.documentElement.style.setProperty(
+                '--header-height',
+                Math.ceil(header.getBoundingClientRect().height) + 'px'
+            );
+            if (!panel.hidden) {
+                document.body.style.setProperty(
+                    '--panel-height',
+                    Math.ceil(panel.getBoundingClientRect().height) + 'px'
+                );
+            }
+            updateMenu();
+        }
 
-            wrapper.classList.remove('is-visible');
-            panel.classList.remove('is-visible');
+        function scrollToCalculator() {
+            wrapper.scrollIntoView({
+                behavior: reduced.matches ? 'instant' : 'smooth',
+                block: 'start'
+            });
+        }
 
-            stopTotalAnimation();
+        function finishClosing(version) {
+            if (version !== operation || isOpen) return;
 
-            if (reducedMotion.matches) {
-                finishClosing(version);
+            clearTimeout(closeTimer);
+            closeTimer = null;
+            wrapper.hidden = true;
+            panel.hidden = true;
+            wrapper.classList.remove('is-closing', 'is-visible');
+            panel.classList.remove('is-closing', 'is-visible');
+            document.body.classList.remove('calc-open');
+            document.body.style.removeProperty('--panel-height');
+
+            if (pendingReturn) {
+                pendingReturn = false;
+                openButton.scrollIntoView({
+                    behavior: reduced.matches ? 'instant' : 'smooth',
+                    block: 'center'
+                });
+            }
+            syncLayout();
+        }
+
+        function setOpen(next, returnToButton) {
+            operation += 1;
+            var version = operation;
+            clearTimeout(closeTimer);
+            closeTimer = null;
+
+            if (openFrame !== null) {
+                cancelAnimationFrame(openFrame);
+                openFrame = null;
+            }
+
+            isOpen = next;
+            pendingReturn = !next && Boolean(returnToButton);
+            openButton.setAttribute('aria-expanded', String(next));
+            get('calc-button-text').textContent =
+                next ? 'Скрыть расчёт' : 'Рассчитать стоимость';
+
+            if (next) {
+                wrapper.hidden = false;
+                panel.hidden = false;
+                wrapper.removeAttribute('inert');
+                panel.removeAttribute('inert');
+                wrapper.classList.remove('is-closing');
+                panel.classList.remove('is-closing');
+                document.body.classList.add('calc-open');
+                syncLayout();
+
+                openFrame = requestAnimationFrame(function () {
+                    openFrame = requestAnimationFrame(function () {
+                        openFrame = null;
+                        if (version !== operation || !isOpen) return;
+                        wrapper.classList.add('is-visible');
+                        panel.classList.add('is-visible');
+                        scrollToCalculator();
+                    });
+                });
             } else {
-                closeTimer = setTimeout(function () {
+                if (wrapper.contains(document.activeElement) ||
+                    panel.contains(document.activeElement)) {
+                    openButton.focus({ preventScroll: true });
+                }
+
+                wrapper.setAttribute('inert', '');
+                panel.setAttribute('inert', '');
+                wrapper.classList.remove('is-visible');
+                panel.classList.remove('is-visible');
+                wrapper.classList.add('is-closing');
+                panel.classList.add('is-closing');
+                stopTotal();
+
+                if (reduced.matches) finishClosing(version);
+                else closeTimer = setTimeout(function () {
                     finishClosing(version);
-                }, mobileScreen.matches ? 300 : 360);
+                }, 360);
+            }
+            updateMenu();
+        }
+
+        openButton.addEventListener('click', function () {
+            setOpen(!isOpen, false);
+        });
+        get('btn-close-calc').addEventListener('click', function () {
+            setOpen(false, true);
+        });
+        get('btn-reset-calc').addEventListener('click', function () {
+            form.reset();
+            calculate();
+        });
+        get('menu-prices').addEventListener('click', function (event) {
+            event.preventDefault();
+            if (!isOpen) setOpen(true, false);
+            else scrollToCalculator();
+        });
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+        });
+        form.addEventListener('input', calculate);
+
+        [telegramButton, whatsappButton].forEach(function (link) {
+            link.addEventListener('click', function (event) {
+                calculate();
+                if (!form.reportValidity()) event.preventDefault();
+            });
+        });
+
+        /* Размеры и прокрутка: не более одного обновления за кадр */
+        var layoutFrame = null;
+        var scrollFrame = null;
+
+        function scheduleLayout() {
+            if (layoutFrame !== null) return;
+            layoutFrame = requestAnimationFrame(function () {
+                layoutFrame = null;
+                syncLayout();
+            });
+        }
+
+        window.addEventListener('scroll', function () {
+            if (scrollFrame !== null) return;
+            scrollFrame = requestAnimationFrame(function () {
+                scrollFrame = null;
+                updateMenu();
+            });
+        }, { passive: true });
+
+        window.addEventListener('resize', scheduleLayout);
+        window.addEventListener('load', scheduleLayout);
+
+        calculate();
+        syncLayout();
+        openButton.setAttribute('data-site-ready', 'true');
+
+        /* Иконки болей */
+        var cards = Array.prototype.slice.call(
+            document.querySelectorAll('.card[data-motion]')
+        );
+        var iconStops = [];
+
+        cards.forEach(function (card) {
+            var timer = null;
+            var touchStart = null;
+
+            function stop() {
+                clearTimeout(timer);
+                timer = null;
+                card.classList.remove('icon-playing');
+            }
+            iconStops.push(stop);
+
+            function play() {
+                if (reduced.matches ||
+                    card.classList.contains('icon-playing')) return;
+                card.classList.add('icon-playing');
+                timer = setTimeout(stop, 800);
             }
 
-            scheduleMenuUpdate();
+            card.addEventListener('pointerenter', function (event) {
+                if (event.pointerType !== 'touch') play();
+            });
+            card.addEventListener('pointerdown', function (event) {
+                if (event.pointerType === 'touch') {
+                    touchStart = {
+                        x: event.clientX,
+                        y: event.clientY,
+                        id: event.pointerId
+                    };
+                }
+            }, { passive: true });
+            card.addEventListener('pointermove', function (event) {
+                if (!touchStart || touchStart.id !== event.pointerId) return;
+                if (Math.abs(event.clientX - touchStart.x) > 12 ||
+                    Math.abs(event.clientY - touchStart.y) > 12) {
+                    touchStart = null;
+                }
+            }, { passive: true });
+            card.addEventListener('pointerup', function (event) {
+                if (touchStart && touchStart.id === event.pointerId) play();
+                touchStart = null;
+            }, { passive: true });
+            card.addEventListener('pointercancel', function () {
+                touchStart = null;
+            }, { passive: true });
+            card.addEventListener('pointerleave', function () {
+                touchStart = null;
+            }, { passive: true });
+        });
+
+        /* Появление разделов */
+        document.querySelectorAll(
+            '.problems-grid, .info-grid, .workflow-list'
+        ).forEach(function (grid) {
+            Array.prototype.forEach.call(grid.children, function (child, index) {
+                child.style.setProperty('--delay', (index % 3) * 70 + 'ms');
+            });
+        });
+
+        var revealElements = Array.prototype.slice.call(
+            document.querySelectorAll('[data-reveal]')
+        );
+        var revealObserver = null;
+        var revealTimers = [];
+
+        if ('IntersectionObserver' in window && !reduced.matches) {
+            revealObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (!entry.isIntersecting) return;
+                    var element = entry.target;
+                    element.classList.add('shown');
+                    revealObserver.unobserve(element);
+                    revealTimers.push(setTimeout(function () {
+                        element.classList.remove('reveal-pending', 'shown');
+                    }, 1000));
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(function (element) {
+                element.classList.add('reveal-pending');
+            });
+
+            requestAnimationFrame(function () {
+                requestAnimationFrame(function () {
+                    if (reduced.matches) {
+                        revealElements.forEach(function (element) {
+                            element.classList.remove('reveal-pending', 'shown');
+                        });
+                        return;
+                    }
+                    revealElements.forEach(function (element) {
+                        revealObserver.observe(element);
+                    });
+                });
+            });
+        }
+
+        if ('ResizeObserver' in window) {
+            var resizeObserver = new ResizeObserver(scheduleLayout);
+            resizeObserver.observe(header);
+            resizeObserver.observe(panel);
+        }
+
+        function motionChanged() {
+            if (!reduced.matches) return;
+            stopTotal();
+            iconStops.forEach(function (stop) { stop(); });
+            revealTimers.forEach(function (timer) { clearTimeout(timer); });
+            if (revealObserver) revealObserver.disconnect();
+            revealElements.forEach(function (element) {
+                element.classList.remove('reveal-pending', 'shown');
+            });
+            if (!isOpen && !wrapper.hidden) finishClosing(operation);
+        }
+
+        if (reduced.addEventListener) {
+            reduced.addEventListener('change', motionChanged);
+        }
+
+        get('copyright-year').textContent =
+            String(new Date().getFullYear());
+
+        if (window.location.hash === '#calculator-wrapper') {
+            setOpen(true, false);
         }
     }
 
-    openButton.addEventListener('click',
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startSite);
+    } else {
+        startSite();
+    }
+})();
+</script>
+
+</body>
+</html>
