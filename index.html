@@ -11,7 +11,7 @@
     --orange: #ff6600;
     --accent: #ff944d;
     --header-height: 130px;
-    --panel-height: 210px;
+    --panel-height: 240px;
 }
 
 * { box-sizing: border-box; }
@@ -34,10 +34,10 @@ body {
 
 button, input { font: inherit; }
 a { color: inherit; }
-button, a { touch-action: manipulation; }
+button, a, summary { touch-action: manipulation; }
 [hidden] { display: none !important; }
 
-a:focus-visible, button:focus-visible {
+a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: 3px solid var(--accent);
     outline-offset: 4px;
 }
@@ -196,6 +196,18 @@ h2 {
 .button .icon { width: 21px; height: 21px; }
 .button:active, .messenger:active { transform: scale(.97); }
 
+.text-button {
+    border: 0;
+    padding: 8px 4px;
+    min-height: 40px;
+    color: var(--accent);
+    background: transparent;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+}
+
 /* Главный экран */
 .hero {
     display: grid;
@@ -261,7 +273,7 @@ h2 {
 .hero-trust { animation: heroEnter .7s ease .32s both; }
 .hero .button { animation: heroEnter .7s ease .4s backwards; }
 
-/* Боли */
+/* Карточки */
 .problems { padding: 60px 20px; background: #fff; }
 
 .problems-grid, .info-grid {
@@ -312,7 +324,6 @@ h2 {
     color: #c64b00;
     background: #fff0e5;
 }
-
 .pain-icon { position: relative; overflow: hidden; }
 .pain-icon .icon { transform-origin: center; }
 .section-icon { margin: 0 auto 14px; }
@@ -361,7 +372,6 @@ h2 {
     background: #c64b00;
     opacity: 0;
 }
-
 .card.icon-playing[data-motion="clock"] .icon { animation: painClock .7s ease; }
 .card.icon-playing[data-motion="scan"] .pain-icon::after { animation: painScan .7s ease; }
 .card.icon-playing[data-motion="receipt"] .icon { animation: painReceipt .7s ease; }
@@ -390,7 +400,6 @@ h2 {
     background: #f8f9fa;
     transition: transform .26s ease;
 }
-
 .info-card h3, .workflow-list h3 {
     margin: 0 0 12px;
     font-size: 19px;
@@ -437,11 +446,20 @@ h2 {
 .reveal-pending {
     opacity: 0;
     transform: translateY(22px);
-    transition:
-        opacity .6s ease var(--delay, 0ms),
-        transform .6s ease var(--delay, 0ms);
+    transition: opacity .6s ease var(--delay, 0ms),
+                transform .6s ease var(--delay, 0ms);
 }
 .reveal-pending.shown { opacity: 1; transform: none; }
+
+/* Обсуждение поставки */
+.consultation {
+    padding: 48px 20px;
+    background: #fff3e9;
+}
+.consultation .container { max-width: 800px; text-align: center; }
+.consultation h2 { margin-bottom: 16px; }
+.consultation p { margin: 0 auto 24px; max-width: 650px; color: #444; }
+.consultation-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
 
 /* Калькулятор */
 .calculator { padding: 50px 20px; background: #141414; color: #fff; }
@@ -455,22 +473,14 @@ h2 {
     background: #222;
 }
 .calc-container h2 { margin-bottom: 12px; }
-
 .calculator .section-icon, footer .section-icon {
     border-color: #ff944d40;
     color: var(--accent);
     background: #ff944d14;
 }
-
 .intro { margin: 0 0 24px; color: #dedede; text-align: center; }
 .notes, .group-note { color: #dedede; font-size: 14px; line-height: 1.6; }
-
-.notes {
-    margin: 0 0 24px;
-    padding: 14px;
-    border-radius: 8px;
-    background: #303030;
-}
+.notes { margin: 0 0 24px; padding: 14px; border-radius: 8px; background: #303030; }
 .notes p { margin: 6px 0; }
 
 fieldset {
@@ -499,7 +509,6 @@ legend {
     vertical-align: -5px;
 }
 .group-note { clear: both; margin: 0 0 18px; }
-
 .inputs {
     clear: both;
     display: grid;
@@ -514,7 +523,6 @@ legend {
     transition: border-color .22s ease, background-color .22s ease;
 }
 .field.is-filled { border-color: #ff944d70; background: #ff66000d; }
-
 .field label {
     display: block;
     margin-bottom: 8px;
@@ -548,11 +556,62 @@ legend {
 .field input:invalid { border-color: #ff8080; }
 .field-hint { margin: 8px 0 0; color: #c8c8c8; font-size: 14px; line-height: 1.5; }
 
+.special-service {
+    clear: both;
+    margin-top: 20px;
+    padding: 16px;
+    border: 1px solid #444;
+    border-radius: 10px;
+}
+.special-service h3 { margin: 0 0 8px; font-size: 18px; color: #ffd2b5; }
+.special-service p { margin: 0 0 12px; color: #d0d0d0; font-size: 14px; }
+.special-total { margin-top: 10px; color: var(--accent); font-weight: 700; }
+
 .calc-actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
+    margin-top: 24px;
+}
+
+/* Расшифровка */
+.calculation-details {
+    margin-top: 24px;
+    border: 1px solid #555;
+    border-radius: 10px;
+    background: #191919;
+}
+.calculation-details summary {
+    padding: 16px;
+    color: var(--accent);
+    font-weight: 700;
+    cursor: pointer;
+}
+.breakdown-content { padding: 0 16px 18px; }
+.breakdown-list { list-style: none; margin: 0; padding: 0; }
+.breakdown-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #393939;
+}
+.breakdown-title { display: block; font-weight: 600; color: #eee; }
+.breakdown-formula { display: block; margin-top: 3px; font-size: 14px; color: #c8c8c8; }
+.breakdown-cost { display: block; margin-top: 4px; color: var(--accent); font-weight: 700; }
+.breakdown-total { margin: 18px 0 0; font-size: 19px; font-weight: 700; }
+.breakdown-empty { color: #c8c8c8; }
+.manual-copy { margin-top: 16px; }
+.manual-copy textarea {
+    display: block;
+    width: 100%;
+    min-height: 180px;
+    margin-top: 8px;
+    padding: 12px;
+    border: 1px solid #777;
+    border-radius: 8px;
+    color: #fff;
+    background: #303030;
+    font: inherit;
+    font-size: 16px;
 }
 
 /* Итог */
@@ -563,6 +622,8 @@ legend {
     z-index: 100;
     width: 390px;
     max-width: calc(100% - 32px);
+    max-height: calc(100dvh - 20px);
+    overflow-y: auto;
     padding: 16px;
     border: 2px solid var(--orange);
     border-radius: 14px;
@@ -570,12 +631,7 @@ legend {
     color: #fff;
     box-shadow: 0 4px 20px #0004;
 }
-.amount {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
+.amount { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .amount-label { color: #ddd; font-size: 14px; }
 .price {
     min-width: 0;
@@ -586,11 +642,12 @@ legend {
     text-align: right;
     overflow-wrap: anywhere;
 }
-.summary-note { margin: 8px 0; color: #c8c8c8; font-size: 12px; line-height: 1.5; }
-.send-label { margin: 10px 0 8px; color: #dedede; font-size: 14px; }
+.summary-note { margin: 6px 0; color: #c8c8c8; font-size: 12px; line-height: 1.5; }
+.send-label { margin: 6px 0 8px; color: #dedede; font-size: 14px; }
 .send-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
 .send-actions a { min-width: 0; padding: 12px 8px; }
-.status { margin: 8px 0 0; color: #ffd1b3; font-size: 13px; line-height: 1.4; }
+.summary-tools { display: flex; justify-content: space-between; gap: 8px; margin-top: 4px; }
+.status { margin: 6px 0 0; color: #ffd1b3; font-size: 13px; line-height: 1.4; }
 .calc-open { padding-bottom: calc(var(--panel-height) + 24px); }
 
 .calculator, .summary {
@@ -601,20 +658,26 @@ legend {
 .calculator.is-visible, .summary.is-visible { opacity: 1; transform: none; }
 .is-closing { pointer-events: none; }
 
+/* FAQ */
+.faq-section { padding: 56px 20px; background: #f0f2f4; }
+.faq-section .container { max-width: 900px; }
+.faq-item { margin-bottom: 12px; border: 1px solid #dce1e5; border-radius: 10px; background: #fff; }
+.faq-item summary { padding: 18px 20px; font-size: 17px; font-weight: 600; cursor: pointer; }
+.faq-item p { margin: 0; padding: 0 20px 20px; color: #444; }
+.faq-item[open] summary { color: #a33d00; }
+
+@keyframes answerEnter {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: none; }
+}
+.faq-item[open] p { animation: answerEnter .22s ease; }
+
 /* Подвал */
 footer { padding: 36px 20px; background: #111; color: #bbb; font-size: 15px; text-align: center; }
 footer h2 { margin-bottom: 18px; color: #fff; font-size: 26px; }
 footer p { margin: 6px 0; }
 footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 16px; }
-footer nav a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    min-width: 0;
-    padding: 8px;
-    text-decoration: none;
-}
+footer nav a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 0; padding: 8px; text-decoration: none; }
 footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 .contact-text { min-width: 0; overflow-wrap: anywhere; }
 .copyright { margin-top: 24px; font-size: 14px; }
@@ -623,7 +686,6 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
     .card:not(.reveal-pending):hover,
     .info-card:not(.reveal-pending):hover,
     .workflow-list li:not(.reveal-pending):hover { transform: translateY(-4px); }
-
     .info-card:hover .feature-icon { transform: translateY(-3px); }
     .button:hover, .messenger:hover { transform: translateY(-2px); opacity: .94; }
     .button:active, .messenger:active { transform: scale(.97); }
@@ -634,9 +696,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 @media (max-width: 960px) {
     .header-main { flex-wrap: wrap; justify-content: center; }
     .contacts { justify-content: center; }
-    .problems-grid, .info-grid, .workflow-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .problems-grid, .info-grid, .workflow-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 640px) {
@@ -656,11 +716,8 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
     .hero-offer { padding: 12px; font-size: 16px; }
     .hero-trust { font-size: 15px; }
     .hero .button { font-size: 16px; }
-    .hero h1, .hero-location, .hero-description, .hero-offer, .hero-trust, .hero .button {
-        animation-duration: .48s;
-        animation-delay: 0s;
-    }
-    .problems, .info-section { padding: 36px 16px; }
+    .hero h1, .hero-location, .hero-description, .hero-offer, .hero-trust, .hero .button { animation-duration: .48s; animation-delay: 0s; }
+    .problems, .info-section, .faq-section, .consultation { padding: 36px 16px; }
     .problems .container, .info-section .container { max-width: 460px; }
     .problems-grid, .info-grid, .workflow-list { grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .card { padding: 18px; }
@@ -678,24 +735,23 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
     fieldset { margin-bottom: 14px; padding: 16px 10px; }
     .inputs { grid-template-columns: minmax(0, 1fr); gap: 10px; }
     .field { padding: 10px; }
+    .special-service { padding: 12px; }
     .summary {
-        left: 0;
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        max-width: none;
+        left: 0; right: 0; bottom: 0;
+        width: 100%; max-width: none;
         padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px));
-        border: 0;
-        border-top: 2px solid var(--orange);
+        border: 0; border-top: 2px solid var(--orange);
         border-radius: 16px 16px 0 0;
     }
     .summary-inner { max-width: 460px; margin-inline: auto; }
     .price { font-size: 26px; }
-    .summary-note { margin: 5px 0; }
-    .send-label { margin: 6px 0; font-size: 13px; }
-    .send-actions a { font-size: 16px; }
+    .summary-note { margin: 4px 0; }
+    .send-label { margin: 4px 0 6px; font-size: 13px; }
+    .send-actions a { min-height: 44px; font-size: 15px; padding: 10px 8px; }
+    .summary-tools .text-button { font-size: 13px; }
     .calc-actions .button { width: 100%; }
     .calculator, .summary { transition-duration: .26s; }
+    .consultation-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     footer nav { flex-direction: column; gap: 4px; }
 }
 
@@ -705,6 +761,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
     .card { padding: 16px; }
     .site-menu { gap: 0; }
     .site-menu a { font-size: 13px; }
+    .summary-tools { flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -712,9 +769,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal-pending { opacity: 1; transform: none; }
     .card:hover, .info-card:hover, .workflow-list li:hover,
-    .button:hover, .messenger:hover, .info-card:hover .feature-icon {
-        transform: none !important;
-    }
+    .button:hover, .messenger:hover, .info-card:hover .feature-icon { transform: none !important; }
     .card[data-motion="scan"] .pain-icon::after { display: none; }
 }
 </style>
@@ -722,7 +777,6 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
 <body>
 
-<!-- Библиотека встроенных SVG: иконки не создаются JavaScript -->
 <svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
     <symbol id="i-clock" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>
@@ -795,181 +849,249 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 </header>
 
 <main id="home">
-    <section class="hero">
-        <div class="hero-inner">
-            <h1>Фулфилмент для Wildberries и Ozon</h1>
-            <p class="hero-location">Склад в Домодедово</p>
-            <p class="hero-description">
-                Работаем с продавцами из России и стран СНГ.<br>
-                Приёмка, маркировка, упаковка, хранение и подготовка
-                к отгрузке по схемам FBO и FBS.<br>
-                Принимаем партии от 100 единиц.
-            </p>
-            <p class="hero-offer">
-                Первая приёмка — бесплатно<br>
-                при поставке более 1 000 единиц товара.
-            </p>
-            <p class="hero-trust">
-                Работаем в WMS «Целиком».
-                Сроки обработки и ответственность за их нарушение фиксируем в договоре.
-            </p>
-            <button class="button" id="btn-open-calc" type="button" aria-controls="calculator-wrapper" aria-expanded="false">
-                <svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg>
-                <span id="calc-button-text">Рассчитать стоимость</span>
-            </button>
-            <noscript>
-                <p>Для работы калькулятора включите JavaScript. Для заявки используйте контакты в шапке.</p>
-            </noscript>
-        </div>
-    </section>
 
-    <section class="problems">
-        <div class="container">
-            <h2 data-reveal>Что мешает продажам — и как мы помогаем</h2>
-            <div class="problems-grid">
-                <article class="card" data-reveal data-motion="clock">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></div>
-                    <h3>Срываются сроки обработки</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        Согласуем сроки до начала работ и фиксируем ответственность за их нарушение в договоре.</p>
-                </article>
-                <article class="card" data-reveal data-motion="scan">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-barcode"></use></svg></div>
-                    <h3>Пересорт и ошибки комплектации</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        Используем WMS «Целиком» и сканирование штрихкодов при обработке товара.</p>
-                </article>
-                <article class="card" data-reveal data-motion="receipt">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></div>
-                    <h3>Непонятная итоговая стоимость</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        Согласуем перечень работ и стоимость до начала обработки.</p>
-                </article>
-                <article class="card" data-reveal data-motion="message">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
-                    <h3>Некому задать вопрос</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        По вопросам поставок, обработки и отгрузки товара можно связаться с менеджером.</p>
-                </article>
-                <article class="card" data-reveal data-motion="chart">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></div>
-                    <h3>Не хватает мощности в сезон</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        Объём партии и сроки обработки согласуем перед поставкой.</p>
-                </article>
-                <article class="card" data-reveal data-motion="box">
-                    <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
-                    <h3>Долгая приёмка задерживает отгрузку</h3>
-                    <p><span class="solution-check" aria-hidden="true">✓</span>
-                        Принимаем товар и отражаем его в WMS для дальнейшей обработки.</p>
-                </article>
+<section class="hero">
+    <div class="hero-inner">
+        <h1>Фулфилмент для Wildberries и Ozon</h1>
+        <p class="hero-location">Склад в Домодедово</p>
+        <p class="hero-description">
+            Работаем с продавцами из России и стран СНГ.<br>
+            Приёмка, маркировка, упаковка, хранение и подготовка
+            к отгрузке по схемам FBO и FBS.<br>
+            Принимаем партии от 100 единиц.
+        </p>
+        <p class="hero-offer">
+            Первая приёмка — бесплатно<br>
+            при поставке более 1 000 единиц товара.
+        </p>
+        <p class="hero-trust">
+            Работаем в WMS «Целиком».
+            Сроки обработки и ответственность за их нарушение фиксируем в договоре.
+        </p>
+        <button class="button" id="btn-open-calc" type="button" aria-controls="calculator-wrapper" aria-expanded="false">
+            <svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg>
+            <span id="calc-button-text">Рассчитать стоимость</span>
+        </button>
+        <noscript>
+            <p>Для работы калькулятора включите JavaScript. Для заявки используйте контакты в шапке.</p>
+        </noscript>
+    </div>
+</section>
+
+<section class="problems">
+    <div class="container">
+        <h2 data-reveal>Что мешает продажам — и как мы помогаем</h2>
+        <div class="problems-grid">
+            <article class="card" data-reveal data-motion="clock">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"></use></svg></div>
+                <h3>Срываются сроки обработки</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    Согласуем сроки до начала работ и фиксируем ответственность за их нарушение в договоре.</p>
+            </article>
+            <article class="card" data-reveal data-motion="scan">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-barcode"></use></svg></div>
+                <h3>Пересорт и ошибки комплектации</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    Используем WMS «Целиком» и сканирование штрихкодов при обработке товара.</p>
+            </article>
+            <article class="card" data-reveal data-motion="receipt">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-receipt"></use></svg></div>
+                <h3>Непонятная итоговая стоимость</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    Согласуем перечень работ и стоимость до начала обработки.</p>
+            </article>
+            <article class="card" data-reveal data-motion="message">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
+                <h3>Некому задать вопрос</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    По вопросам поставок, обработки и отгрузки товара можно связаться с менеджером.</p>
+            </article>
+            <article class="card" data-reveal data-motion="chart">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-chart"></use></svg></div>
+                <h3>Не хватает мощности в сезон</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    Объём партии и сроки обработки согласуем перед поставкой.</p>
+            </article>
+            <article class="card" data-reveal data-motion="box">
+                <div class="pain-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
+                <h3>Долгая приёмка задерживает отгрузку</h3>
+                <p><span class="solution-check" aria-hidden="true">✓</span>
+                    Принимаем товар и отражаем его в WMS для дальнейшей обработки.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="info-section">
+    <div class="container">
+        <h2 data-reveal>
+            <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></span>
+            Услуги фулфилмента
+        </h2>
+        <div class="info-grid">
+            <article class="info-card" data-reveal>
+                <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
+                <h3>Приёмка и проверка</h3>
+                <p>Пересчёт, сортировка, визуальная проверка и проверка на брак по согласованному заданию.</p>
+            </article>
+            <article class="info-card" data-reveal>
+                <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
+                <h3>Маркировка и упаковка</h3>
+                <p>Этикетки, маркировка «Честный знак», комплектация и упаковка товара.</p>
+            </article>
+            <article class="info-card" data-reveal>
+                <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
+                <h3>Хранение и подготовка к отгрузке</h3>
+                <p>Хранение коробов и паллет, сборка заказов FBS и подготовка партий к отгрузке.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="warehouse" class="info-section info-section-alt">
+    <div class="container narrow">
+        <h2 data-reveal>
+            <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
+            Склад в Домодедово
+        </h2>
+        <p class="section-description" data-reveal>
+            Работаем с продавцами из России и стран СНГ, которые продают товары
+            на Wildberries и Ozon. Используем WMS «Целиком» для складского учёта.
+        </p>
+        <p class="section-description" data-reveal>
+            Перед поставкой согласуйте с менеджером время прибытия,
+            объём партии и перечень работ. Адрес склада и инструкции
+            для заезда направим при согласовании поставки.
+        </p>
+    </div>
+</section>
+
+<section id="workflow" class="info-section">
+    <div class="container">
+        <h2 data-reveal>
+            <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-steps"></use></svg></span>
+            Как работаем
+        </h2>
+        <ol class="workflow-list">
+            <li data-reveal>
+                <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
+                <h3>Согласуем задачу</h3>
+                <p>Уточняем характеристики товара, объём партии и необходимые услуги.</p>
+            </li>
+            <li data-reveal>
+                <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-document"></use></svg></div>
+                <h3>Подтверждаем условия</h3>
+                <p>Согласуем стоимость, сроки и порядок поставки.</p>
+            </li>
+            <li data-reveal>
+                <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
+                <h3>Принимаем и обрабатываем</h3>
+                <p>Принимаем товар, отражаем его в складской системе и выполняем согласованные работы.</p>
+            </li>
+            <li data-reveal>
+                <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-truck"></use></svg></div>
+                <h3>Готовим к отгрузке</h3>
+                <p>Комплектуем, маркируем и упаковываем товар по согласованному заданию.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section class="consultation">
+    <div class="container">
+        <h2>Не знаете, какие услуги нужны?</h2>
+        <p>
+            Напишите, какой товар и в каком объёме планируете поставить.
+            Поможем составить перечень работ.
+        </p>
+        <div class="consultation-actions">
+            <a id="consult-tg" class="messenger telegram" href="https://t.me/F1rstFamilyFulFillment" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a id="consult-wa" class="messenger whatsapp" href="https://wa.me/79776946400" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
+    </div>
+</section>
+
+<section id="calculator-wrapper" class="calculator" aria-labelledby="calc-title" hidden inert>
+    <div class="calc-container">
+        <h2 id="calc-title">
+            <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg></span>
+            Калькулятор обработки партии
+        </h2>
+        <p class="intro">
+            Выберите нужные услуги и укажите количество.
+            Стоимость пересчитывается автоматически.
+            Ненужные поля оставьте пустыми.
+        </p>
+        <div class="notes" id="quantity-note">
+            <p>Расчёт предварительный. Менеджер подтвердит состав работ и итоговую стоимость.</p>
+            <p>
+                Первая приёмка партии более 1 000 единиц — бесплатно.
+                В калькуляторе приёмка рассчитана по стандартному тарифу;
+                применение акции подтвердит менеджер.
+            </p>
+            <p>
+                Вводите целые неотрицательные значения.
+                Для комплектов и хранения заполните оба поля соответствующего блока.
+            </p>
+        </div>
+
+        <form id="calc-form">
+            <div id="service-fields"></div>
+        </form>
+
+        <details id="calculation-details" class="calculation-details">
+            <summary>Показать состав расчёта</summary>
+            <div class="breakdown-content">
+                <p id="breakdown-empty" class="breakdown-empty">Услуги пока не выбраны.</p>
+                <ul id="breakdown-list" class="breakdown-list"></ul>
+                <p id="breakdown-total" class="breakdown-total">Итого: 0 ₽</p>
+                <div id="manual-copy" class="manual-copy" hidden>
+                    <label for="manual-copy-text">Скопируйте текст вручную:</label>
+                    <textarea id="manual-copy-text" readonly></textarea>
+                </div>
             </div>
-        </div>
-    </section>
+        </details>
 
-    <section id="services" class="info-section">
-        <div class="container">
-            <h2 data-reveal>
-                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></span>
-                Услуги фулфилмента
-            </h2>
-            <div class="info-grid">
-                <article class="info-card" data-reveal>
-                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg></span>
-                    <h3>Приёмка и проверка</h3>
-                    <p>Пересчёт, сортировка, визуальная проверка и проверка на брак по согласованному заданию.</p>
-                </article>
-                <article class="info-card" data-reveal>
-                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"></use></svg></span>
-                    <h3>Маркировка и упаковка</h3>
-                    <p>Этикетки, маркировка «Честный знак», комплектация и упаковка товара.</p>
-                </article>
-                <article class="info-card" data-reveal>
-                    <span class="feature-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
-                    <h3>Хранение и подготовка к отгрузке</h3>
-                    <p>Хранение коробов и паллет, сборка заказов FBS и подготовка партий к отгрузке.</p>
-                </article>
-            </div>
+        <div class="calc-actions">
+            <button id="btn-copy-inline" class="button" type="button">Скопировать расчёт</button>
+            <button id="btn-reset-calc" class="button secondary" type="button">Очистить поля</button>
+            <button id="btn-close-calc" class="button secondary" type="button">Закрыть калькулятор</button>
         </div>
-    </section>
+        <p id="inline-status" class="status" role="status"></p>
+    </div>
+</section>
 
-    <section id="warehouse" class="info-section info-section-alt">
-        <div class="container narrow">
-            <h2 data-reveal>
-                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-warehouse"></use></svg></span>
-                Склад в Домодедово
-            </h2>
-            <p class="section-description" data-reveal>
-                Работаем с продавцами из России и стран СНГ, которые продают товары
-                на Wildberries и Ozon. Используем WMS «Целиком» для складского учёта.
-            </p>
-            <p class="section-description" data-reveal>
-                Перед поставкой согласуйте с менеджером время прибытия,
-                объём партии и перечень работ. Адрес склада и инструкции
-                для заезда направим при согласовании поставки.
-            </p>
-        </div>
-    </section>
+<section class="faq-section">
+    <div class="container">
+        <h2>Частые вопросы</h2>
 
-    <section id="workflow" class="info-section">
-        <div class="container">
-            <h2 data-reveal>
-                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-steps"></use></svg></span>
-                Как работаем
-            </h2>
-            <ol class="workflow-list">
-                <li data-reveal>
-                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-message"></use></svg></div>
-                    <h3>Согласуем задачу</h3>
-                    <p>Уточняем характеристики товара, объём партии и необходимые услуги.</p>
-                </li>
-                <li data-reveal>
-                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-document"></use></svg></div>
-                    <h3>Подтверждаем условия</h3>
-                    <p>Согласуем стоимость, сроки и порядок поставки.</p>
-                </li>
-                <li data-reveal>
-                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-box"></use></svg></div>
-                    <h3>Принимаем и обрабатываем</h3>
-                    <p>Принимаем товар, отражаем его в складской системе и выполняем согласованные работы.</p>
-                </li>
-                <li data-reveal>
-                    <div class="step-heading"><svg class="icon" aria-hidden="true"><use href="#i-truck"></use></svg></div>
-                    <h3>Готовим к отгрузке</h3>
-                    <p>Комплектуем, маркируем и упаковываем товар по согласованному заданию.</p>
-                </li>
-            </ol>
-        </div>
-    </section>
+        <details class="faq-item">
+            <summary>С какой партией можно начать?</summary>
+            <p>Принимаем партии от 100 единиц товара. Перед поставкой согласуйте перечень работ и условия приёмки.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Работаете ли вы с продавцами из других регионов?</summary>
+            <p>Да, работаем с продавцами из России и стран СНГ. Наш склад находится в Домодедово.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Когда первая приёмка бесплатная?</summary>
+            <p>При первой поставке более 1 000 единиц товара. Применение акции подтвердит менеджер при согласовании поставки.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Включены ли упаковочные материалы?</summary>
+            <p>Указанные пакеты и упаковочные материалы включены в соответствующие тарифы. В услуге «Упаковка в пакет клиента» используется ваш пакет. Короб 60×40×40 см включён в тариф 150 ₽.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Входит ли паллета в стоимость паллетирования?</summary>
+            <p>Расходные материалы включены в стоимость паллетирования. Сама паллета оплачивается отдельно и не включена в итог калькулятора.</p>
+        </details>
+        <details class="faq-item">
+            <summary>Какие данные нужны для расчёта?</summary>
+            <p>Категория товара, количество, длина, ширина и высота, необходимые операции, схема работы FBO/FBS и планируемые сроки поставки.</p>
+        </details>
+    </div>
+</section>
 
-    <section id="calculator-wrapper" class="calculator" aria-labelledby="calc-title" hidden inert>
-        <div class="calc-container">
-            <h2 id="calc-title">
-                <span class="section-icon"><svg class="icon" aria-hidden="true"><use href="#i-calculator"></use></svg></span>
-                Калькулятор обработки партии
-            </h2>
-            <p class="intro">
-                Выберите нужные услуги и укажите количество.
-                Стоимость пересчитывается автоматически.
-                Ненужные поля оставьте пустыми.
-            </p>
-            <div class="notes" id="quantity-note">
-                <p>Расчёт предварительный. Менеджер подтвердит состав работ и итоговую стоимость.</p>
-                <p>Первая приёмка партии более 1 000 единиц — бесплатно.
-                    В калькуляторе приёмка рассчитана по стандартному тарифу;
-                    применение акции подтвердит менеджер.</p>
-                <p>Указывайте целое неотрицательное количество в единицах выбранной услуги.
-                    Заполненные услуги выделяются оранжевым.</p>
-            </div>
-            <form id="calc-form">
-                <div id="service-fields"></div>
-            </form>
-            <div class="calc-actions">
-                <button id="btn-reset-calc" class="button secondary" type="button">Очистить поля</button>
-                <button id="btn-close-calc" class="button secondary" type="button">Закрыть калькулятор</button>
-            </div>
-        </div>
-    </section>
 </main>
 
 <aside id="sticky-summary" class="summary" aria-label="Итог расчёта и отправка" hidden inert>
@@ -978,7 +1100,11 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
             <span class="amount-label">Итого по выбранным услугам</span>
             <span id="sticky-total-price" class="price">0 ₽</span>
         </div>
-        <p class="summary-note">Предварительный расчёт. Состав работ и итоговую стоимость подтвердит менеджер.</p>
+        <p class="summary-note">Предварительный расчёт. Итоговую стоимость подтвердит менеджер.</p>
+        <div class="summary-tools">
+            <button id="btn-show-details" class="text-button" type="button">Состав расчёта</button>
+            <button id="btn-copy-calc" class="text-button" type="button">Скопировать расчёт</button>
+        </div>
         <p class="send-label">Обсудить расчёт с менеджером:</p>
         <div class="send-actions">
             <a id="btn-tg-calc" class="messenger telegram" href="https://t.me/F1rstFamilyFulFillment" target="_blank" rel="noopener noreferrer">Telegram</a>
@@ -996,6 +1122,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
         </h2>
         <p>4F Fulfillment · Склад в Домодедово</p>
         <p>Фулфилмент для Wildberries и Ozon.<br>Работаем с продавцами из России и стран СНГ.</p>
+
         <nav aria-label="Телефоны и электронная почта">
             <a href="tel:+79776946400">
                 <svg class="icon" aria-hidden="true"><use href="#i-phone"></use></svg>
@@ -1034,26 +1161,24 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
         var telegramButton = get('btn-tg-calc');
         var whatsappButton = get('btn-wa-calc');
         var statusElement = get('calc-status');
+        var inlineStatus = get('inline-status');
         var header = get('site-header');
+        var details = get('calculation-details');
 
-        if (!wrapper || !panel || !openButton || !form ||
-            !fieldsContainer || !priceElement ||
-            !telegramButton || !whatsappButton) {
+        if (!wrapper || !panel || !openButton || !form || !fieldsContainer) {
             console.error('4F: HTML страницы вставлен не полностью.');
             return;
         }
 
         if (openButton.getAttribute('data-site-ready') === 'true') return;
 
-        var reduced = window.matchMedia
-            ? window.matchMedia('(prefers-reduced-motion: reduce)')
-            : { matches: false };
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var mobile = window.matchMedia('(max-width: 640px)');
 
-        var mobile = window.matchMedia
-            ? window.matchMedia('(max-width: 640px)')
-            : { matches: false };
-
-        /* [id, название, цена, единица, пояснение] */
+        /*
+         * Обычная услуга:
+         * [id, название, цена, единица, пояснение]
+         */
         var services = [
             {
                 title: 'Приёмка и проверка',
@@ -1086,10 +1211,6 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                 note: 'Пакеты и упаковочные материалы включены в стоимость, кроме упаковки в пакет клиента. При подборе упаковки учитываем длину, ширину и высоту товара.',
                 items: [
                     ['vlozh', 'Вложение вкладыша', 5, 'шт.', ''],
-                    ['kompl-3', 'Сборка комплекта до 3 единиц', 10, 'комплект',
-                        'Укажите количество всех комплектов, в том числе комплектов более чем из 3 товаров.'],
-                    ['kompl-3plus', 'Дополнительная единица в комплекте сверх 3', 3, 'шт.',
-                        'Для 10 комплектов по 5 товаров укажите 10 комплектов и 20 дополнительных единиц.'],
                     ['paket', 'Упаковка в пакет клиента', 5, 'шт.', ''],
                     ['bopp-25', 'Упаковка в БОПП-пакет до 25 см', 12, 'шт.', ''],
                     ['bopp-45', 'Упаковка в БОПП-пакет до 45 см', 14, 'шт.', ''],
@@ -1097,21 +1218,21 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                     ['zip-25', 'Упаковка в ZIP-пакет 25×30 см', 17, 'шт.', ''],
                     ['pvd-20', 'Упаковка в ПВД-пакет до 20 см', 16, 'шт.', ''],
                     ['vpp-20', 'Упаковка в воздушно-пузырчатый материал до 20 см', 16, 'шт.', '']
-                ]
+                ],
+                special: 'kits'
             },
             {
                 title: 'Короба, паллетирование и хранение',
                 icon: 'warehouse',
-                note: 'Для хранения укажите количество мест × количество суток. Например: 10 коробов на 3 суток — введите 30.',
+                note: '',
                 items: [
                     ['korob-60', 'Упаковка в короб 60×40×40 см', 150, 'короб',
                         'Короб включён в стоимость.'],
                     ['korob-cl', 'Упаковка в короб клиента', 100, 'короб', ''],
                     ['pallet', 'Паллетирование', 750, 'паллету',
-                        'Расходные материалы включены. Сама паллета оплачивается отдельно и не включена в итог калькулятора.'],
-                    ['stor-kor', 'Хранение коробов', 5, 'коробо-сутки', ''],
-                    ['stor-pal', 'Хранение паллет', 50, 'паллето-сутки', '']
-                ]
+                        'Расходные материалы включены. Сама паллета оплачивается отдельно и не включена в итог калькулятора.']
+                ],
+                special: 'storage'
             },
             {
                 title: 'Сборка FBS и забор товара',
@@ -1127,7 +1248,8 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
             }
         ];
 
-        var inputs = [];
+        var allInputs = [];
+        var regularInputs = [];
         var isOpen = false;
         var closeTimer = null;
         var openFrame = null;
@@ -1136,41 +1258,125 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
         var currentTotal = 0;
         var targetTotal = 0;
         var pendingReturn = false;
+        var messageText = '';
+        var calculationValid = true;
+        var selectedCount = 0;
+        var copyVersion = 0;
+
+        function number(value) {
+            return value.toLocaleString('ru-RU');
+        }
 
         function money(value) {
             return Math.round(value).toLocaleString('ru-RU') + ' ₽';
         }
 
         function makeIcon(name) {
-            var namespace = 'http://www.w3.org/2000/svg';
-            var svg = document.createElementNS(namespace, 'svg');
-            var use = document.createElementNS(namespace, 'use');
+            var ns = 'http://www.w3.org/2000/svg';
+            var svg = document.createElementNS(ns, 'svg');
+            var use = document.createElementNS(ns, 'use');
 
             svg.setAttribute('class', 'icon calc-group-icon');
             svg.setAttribute('aria-hidden', 'true');
             use.setAttribute('href', '#i-' + name);
+
             svg.appendChild(use);
             return svg;
         }
 
-        /* Формирование полей */
+        function createField(id, title, hintText, describedBy) {
+            var field = document.createElement('div');
+            var label = document.createElement('label');
+            var input = document.createElement('input');
+            var descriptions = ['quantity-note'];
+
+            field.className = 'field';
+            label.htmlFor = id;
+            label.textContent = title;
+
+            input.id = id;
+            input.name = id;
+            input.type = 'number';
+            input.min = '0';
+            input.max = '1000000';
+            input.step = '1';
+            input.placeholder = '0';
+            input.setAttribute('inputmode', 'numeric');
+
+            if (describedBy) descriptions.push(describedBy);
+
+            field.appendChild(label);
+            field.appendChild(input);
+
+            if (hintText) {
+                var hint = document.createElement('p');
+                hint.id = id + '-hint';
+                hint.className = 'field-hint';
+                hint.textContent = hintText;
+
+                descriptions.push(hint.id);
+                field.appendChild(hint);
+            }
+
+            input.setAttribute('aria-describedby', descriptions.join(' '));
+
+            input.addEventListener('focus', function () {
+                if (input.value === '0') input.select();
+            });
+
+            allInputs.push(input);
+
+            return { field: field, input: input };
+        }
+
+        function specialBlock(parent, id, title, note, fields) {
+            var block = document.createElement('div');
+            var heading = document.createElement('h3');
+            var description = document.createElement('p');
+            var grid = document.createElement('div');
+            var subtotal = document.createElement('div');
+
+            block.className = 'special-service';
+            heading.textContent = title;
+            description.id = id + '-note';
+            description.textContent = note;
+            grid.className = 'inputs';
+
+            fields.forEach(function (field) {
+                var created = createField(
+                    field[0], field[1], '', description.id
+                );
+                grid.appendChild(created.field);
+            });
+
+            subtotal.id = id + '-total';
+            subtotal.className = 'special-total';
+            subtotal.textContent = 'Стоимость: 0 ₽';
+
+            block.appendChild(heading);
+            block.appendChild(description);
+            block.appendChild(grid);
+            block.appendChild(subtotal);
+            parent.appendChild(block);
+        }
+
         fieldsContainer.textContent = '';
 
-        services.forEach(function (group, groupIndex) {
+        services.forEach(function (group, index) {
             var fieldset = document.createElement('fieldset');
             var legend = document.createElement('legend');
             var grid = document.createElement('div');
-            var groupNoteId = 'group-note-' + groupIndex;
+            var noteId = 'group-note-' + index;
 
             legend.appendChild(makeIcon(group.icon));
             legend.appendChild(document.createTextNode(
-                (groupIndex + 1) + '. ' + group.title
+                (index + 1) + '. ' + group.title
             ));
             fieldset.appendChild(legend);
 
             if (group.note) {
                 var note = document.createElement('p');
-                note.id = groupNoteId;
+                note.id = noteId;
                 note.className = 'group-note';
                 note.textContent = group.note;
                 fieldset.appendChild(note);
@@ -1179,54 +1385,60 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
             grid.className = 'inputs';
 
             group.items.forEach(function (item) {
-                var field = document.createElement('div');
-                var label = document.createElement('label');
-                var input = document.createElement('input');
-                var id = 'q-' + item[0];
-                var descriptions = ['quantity-note'];
+                var created = createField(
+                    'q-' + item[0],
+                    item[1] + ' — ' + money(item[2]) + '/' + item[3],
+                    item[4],
+                    group.note ? noteId : ''
+                );
 
-                field.className = 'field';
-                label.htmlFor = id;
-                label.textContent =
-                    item[1] + ' — ' + money(item[2]) + '/' + item[3];
+                created.input.setAttribute('data-price', String(item[2]));
+                created.input.setAttribute('data-label', item[1]);
+                created.input.setAttribute('data-unit', item[3]);
 
-                input.id = id;
-                input.name = id;
-                input.type = 'number';
-                input.min = '0';
-                input.max = '1000000000';
-                input.step = '1';
-                input.placeholder = '0';
-                input.setAttribute('inputmode', 'numeric');
-                input.setAttribute('data-price', String(item[2]));
-                input.setAttribute('data-label', item[1]);
-                input.setAttribute('data-unit', item[3]);
-
-                if (group.note) descriptions.push(groupNoteId);
-
-                field.appendChild(label);
-                field.appendChild(input);
-
-                if (item[4]) {
-                    var hint = document.createElement('p');
-                    hint.id = id + '-hint';
-                    hint.className = 'field-hint';
-                    hint.textContent = item[4];
-                    descriptions.push(hint.id);
-                    field.appendChild(hint);
-                }
-
-                input.setAttribute('aria-describedby', descriptions.join(' '));
-
-                input.addEventListener('focus', function () {
-                    if (input.value === '0') input.select();
-                });
-
-                inputs.push(input);
-                grid.appendChild(field);
+                regularInputs.push(created.input);
+                grid.appendChild(created.field);
             });
 
             fieldset.appendChild(grid);
+
+            if (group.special === 'kits') {
+                specialBlock(
+                    fieldset,
+                    'kits',
+                    'Сборка комплектов',
+                    'До 3 товаров — 10 ₽ за комплект. Каждая дополнительная единица сверх 3 — ещё 3 ₽. Например: комплект из 5 товаров стоит 16 ₽.',
+                    [
+                        ['kits-count', 'Количество комплектов'],
+                        ['kits-items', 'Товаров в одном комплекте']
+                    ]
+                );
+            }
+
+            if (group.special === 'storage') {
+                specialBlock(
+                    fieldset,
+                    'boxes-storage',
+                    'Хранение коробов — 5 ₽ за короб в сутки',
+                    'Укажите количество коробов и срок хранения. Сайт перемножит значения автоматически.',
+                    [
+                        ['boxes-count', 'Количество коробов'],
+                        ['boxes-days', 'Количество суток']
+                    ]
+                );
+
+                specialBlock(
+                    fieldset,
+                    'pallets-storage',
+                    'Хранение паллет — 50 ₽ за паллету в сутки',
+                    'Укажите количество паллет и срок хранения. Сайт перемножит значения автоматически.',
+                    [
+                        ['pallets-count', 'Количество паллет'],
+                        ['pallets-days', 'Количество суток']
+                    ]
+                );
+            }
+
             fieldsContainer.appendChild(fieldset);
         });
 
@@ -1260,88 +1472,313 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
             function tick(time) {
                 if (started === null) started = time;
-
                 var progress = Math.min((time - started) / duration, 1);
                 var eased = 1 - Math.pow(1 - progress, 3);
 
                 currentTotal = startValue + (value - startValue) * eased;
                 priceElement.textContent = money(currentTotal);
 
-                if (progress < 1) {
-                    totalFrame = requestAnimationFrame(tick);
-                } else {
+                if (progress < 1) totalFrame = requestAnimationFrame(tick);
+                else {
                     currentTotal = value;
                     totalFrame = null;
                     priceElement.textContent = money(value);
                 }
             }
+
             totalFrame = requestAnimationFrame(tick);
         }
 
+        function setStatus(text) {
+            statusElement.textContent = text;
+            statusElement.hidden = !text;
+            inlineStatus.textContent = text;
+        }
+
+        function markInvalid(input, text) {
+            input.setCustomValidity(text);
+            input.setAttribute('aria-invalid', 'true');
+        }
+
         function calculate() {
-            var total = 0;
+            var values = {};
             var invalid = false;
             var lines = [];
+            var total = 0;
 
-            inputs.forEach(function (input) {
-                var field = input.parentNode;
-                var quantity = Number(input.value);
-
+            allInputs.forEach(function (input) {
                 input.setCustomValidity('');
                 input.removeAttribute('aria-invalid');
-                field.classList.remove('is-filled');
+                input.parentNode.classList.remove('is-filled');
 
-                if (input.value === '' && !input.validity.badInput) return;
+                var empty = input.value === '' && !input.validity.badInput;
+                var value = empty ? 0 : Number(input.value);
 
-                if (input.validity.badInput || !isFinite(quantity) ||
-                    Math.floor(quantity) !== quantity ||
-                    quantity < 0 || quantity > 1000000000) {
-                    input.setCustomValidity(
-                        'Введите целое число от 0 до 1 000 000 000.'
-                    );
-                    input.setAttribute('aria-invalid', 'true');
+                if (input.validity.badInput || !isFinite(value) ||
+                    Math.floor(value) !== value ||
+                    value < 0 || value > 1000000) {
+                    markInvalid(input, 'Введите целое число от 0 до 1 000 000.');
+                    values[input.id] = null;
                     invalid = true;
                     return;
                 }
 
-                if (quantity === 0) return;
+                values[input.id] = value;
 
-                field.classList.add('is-filled');
+                if (value > 0) input.parentNode.classList.add('is-filled');
+            });
+
+            function addLine(title, formula, cost) {
+                total += cost;
+                lines.push({ title: title, formula: formula, cost: cost });
+            }
+
+            regularInputs.forEach(function (input) {
+                var quantity = values[input.id];
+                if (quantity === null || quantity === 0) return;
 
                 var price = Number(input.getAttribute('data-price'));
-                var cost = quantity * price;
-                total += cost;
 
-                lines.push(
-                    input.getAttribute('data-label') + ': ' +
-                    quantity.toLocaleString('ru-RU') + ' × ' +
-                    money(price) + '/' + input.getAttribute('data-unit') +
-                    ' = ' + money(cost)
+                addLine(
+                    input.getAttribute('data-label'),
+                    number(quantity) + ' × ' + money(price) +
+                    '/' + input.getAttribute('data-unit'),
+                    quantity * price
                 );
             });
 
-            updateTotal(total);
-            statusElement.hidden = !invalid;
-            statusElement.textContent = invalid
-                ? 'Исправьте количество в выделенных полях.' : '';
+            function pair(firstId, secondId, subtotalId, callback) {
+                var first = values[firstId];
+                var second = values[secondId];
+                var output = get(subtotalId);
 
-            var message = [
+                output.textContent = 'Стоимость: 0 ₽';
+
+                if (first === null || second === null) {
+                    output.textContent = 'Проверьте введённые значения.';
+                    return;
+                }
+
+                if (first === 0 && second === 0) return;
+
+                if (first === 0 || second === 0) {
+                    var missing = get(first === 0 ? firstId : secondId);
+
+                    markInvalid(missing, 'Заполните оба поля: значение должно быть больше нуля.');
+                    invalid = true;
+                    output.textContent = 'Для расчёта заполните оба поля.';
+                    return;
+                }
+
+                var cost = callback(first, second);
+                output.textContent = 'Стоимость: ' + money(cost);
+            }
+
+            pair('kits-count', 'kits-items', 'kits-total', function (count, items) {
+                var unitPrice = 10 + Math.max(0, items - 3) * 3;
+                var cost = count * unitPrice;
+
+                addLine(
+                    'Сборка комплектов',
+                    number(count) + ' комплектов × ' +
+                    money(unitPrice) + '/комплект; ' +
+                    number(items) + ' товаров в комплекте',
+                    cost
+                );
+
+                return cost;
+            });
+
+            pair('boxes-count', 'boxes-days', 'boxes-storage-total', function (count, days) {
+                var cost = count * days * 5;
+
+                addLine(
+                    'Хранение коробов',
+                    number(count) + ' коробов × ' +
+                    number(days) + ' суток × 5 ₽',
+                    cost
+                );
+
+                return cost;
+            });
+
+            pair('pallets-count', 'pallets-days', 'pallets-storage-total', function (count, days) {
+                var cost = count * days * 50;
+
+                addLine(
+                    'Хранение паллет',
+                    number(count) + ' паллет × ' +
+                    number(days) + ' суток × 50 ₽',
+                    cost
+                );
+
+                return cost;
+            });
+
+            calculationValid = !invalid;
+            selectedCount = lines.length;
+
+            updateTotal(total);
+
+            var list = get('breakdown-list');
+            list.textContent = '';
+
+            lines.forEach(function (line) {
+                var li = document.createElement('li');
+                var title = document.createElement('span');
+                var formula = document.createElement('span');
+                var cost = document.createElement('span');
+
+                title.className = 'breakdown-title';
+                formula.className = 'breakdown-formula';
+                cost.className = 'breakdown-cost';
+
+                title.textContent = line.title;
+                formula.textContent = line.formula;
+                cost.textContent = money(line.cost);
+
+                li.appendChild(title);
+                li.appendChild(formula);
+                li.appendChild(cost);
+                list.appendChild(li);
+            });
+
+            get('breakdown-empty').hidden = lines.length > 0;
+            get('breakdown-total').textContent =
+                'Итого по выбранным услугам: ' + money(total);
+
+            var textLines = lines.map(function (line) {
+                return line.title + '\n' +
+                    line.formula + ' = ' + money(line.cost);
+            });
+
+            messageText = [
                 'Здравствуйте! Прошу проверить расчёт обработки партии и подтвердить стоимость.',
                 '',
                 'Выбранные услуги:',
-                lines.length ? lines.join('\n') : 'Услуги пока не выбраны.',
+                textLines.length ? textLines.join('\n\n') : 'Услуги пока не выбраны.',
                 '',
                 'Итого по калькулятору: ' + money(total) + '.',
+                '',
+                'Расчёт предварительный. Приёмка рассчитана по стандартному тарифу. Применение акции подтвердит менеджер.',
+                'Паллета, если необходима, оплачивается отдельно.',
                 '',
                 'Подскажите, какие данные о товаре и поставке нужно направить.'
             ].join('\n');
 
-            var encoded = encodeURIComponent(message);
+            var encoded = encodeURIComponent(messageText);
             telegramButton.href =
                 'https://t.me/F1rstFamilyFulFillment?text=' + encoded;
             whatsappButton.href =
                 'https://wa.me/79776946400?text=' + encoded;
+
+            get('manual-copy-text').value = messageText;
+
+            setStatus(invalid
+                ? 'Исправьте выделенные поля. Для комплектов и хранения нужны оба значения.'
+                : '');
         }
+
+        function showDetails(focusSummary) {
+            details.open = true;
+
+            if (focusSummary) {
+                details.querySelector('summary').focus({ preventScroll: true });
+            }
+
+            details.scrollIntoView({
+                behavior: reduced.matches ? 'instant' : 'smooth',
+                block: 'start'
+            });
+        }
+
+        get('btn-show-details').addEventListener('click', function () {
+            showDetails(true);
+        });
+
+        /* Копирование с запасным ручным способом */
+        function showManualCopy() {
+            get('manual-copy').hidden = false;
+            showDetails(false);
+
+            var textarea = get('manual-copy-text');
+            textarea.value = messageText;
+            textarea.focus({ preventScroll: true });
+            textarea.select();
+
+            setStatus('Автоматическое копирование недоступно. Выделенный текст можно скопировать вручную.');
+        }
+
+        function legacyCopy(text) {
+            var previous = document.activeElement;
+            var textarea = document.createElement('textarea');
+
+            textarea.value = text;
+            textarea.readOnly = true;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            textarea.style.top = '0';
+            textarea.style.fontSize = '16px';
+
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, textarea.value.length);
+
+            var success = false;
+
+            try {
+                success = document.execCommand('copy');
+            } catch (error) {
+                success = false;
+            }
+
+            document.body.removeChild(textarea);
+
+            if (previous && previous.focus) {
+                previous.focus({ preventScroll: true });
+            }
+
+            return success;
+        }
+
+        function copyCalculation() {
+            calculate();
+
+            if (!form.reportValidity()) return;
+
+            if (!selectedCount) {
+                setStatus('Сначала выберите хотя бы одну услугу.');
+                return;
+            }
+
+            var text = messageText;
+            var version = ++copyVersion;
+
+            function success() {
+                if (version !== copyVersion) return;
+                setStatus('Расчёт скопирован.');
+            }
+
+            function fallback() {
+                if (version !== copyVersion) return;
+
+                if (legacyCopy(text)) success();
+                else showManualCopy();
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                try {
+                    navigator.clipboard.writeText(text).then(success, fallback);
+                } catch (error) {
+                    fallback();
+                }
+            } else {
+                fallback();
+            }
+        }
+
+        get('btn-copy-calc').addEventListener('click', copyCalculation);
+        get('btn-copy-inline').addEventListener('click', copyCalculation);
 
         /* Меню */
         var menuLinks = Array.prototype.slice.call(
@@ -1391,12 +1828,14 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                 '--header-height',
                 Math.ceil(header.getBoundingClientRect().height) + 'px'
             );
+
             if (!panel.hidden) {
                 document.body.style.setProperty(
                     '--panel-height',
                     Math.ceil(panel.getBoundingClientRect().height) + 'px'
                 );
             }
+
             updateMenu();
         }
 
@@ -1412,10 +1851,12 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
             clearTimeout(closeTimer);
             closeTimer = null;
+
             wrapper.hidden = true;
             panel.hidden = true;
             wrapper.classList.remove('is-closing', 'is-visible');
             panel.classList.remove('is-closing', 'is-visible');
+
             document.body.classList.remove('calc-open');
             document.body.style.removeProperty('--panel-height');
 
@@ -1426,12 +1867,14 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                     block: 'center'
                 });
             }
+
             syncLayout();
         }
 
         function setOpen(next, returnToButton) {
             operation += 1;
             var version = operation;
+
             clearTimeout(closeTimer);
             closeTimer = null;
 
@@ -1442,6 +1885,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
             isOpen = next;
             pendingReturn = !next && Boolean(returnToButton);
+
             openButton.setAttribute('aria-expanded', String(next));
             get('calc-button-text').textContent =
                 next ? 'Скрыть расчёт' : 'Рассчитать стоимость';
@@ -1454,12 +1898,15 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                 wrapper.classList.remove('is-closing');
                 panel.classList.remove('is-closing');
                 document.body.classList.add('calc-open');
+
                 syncLayout();
 
                 openFrame = requestAnimationFrame(function () {
                     openFrame = requestAnimationFrame(function () {
                         openFrame = null;
+
                         if (version !== operation || !isOpen) return;
+
                         wrapper.classList.add('is-visible');
                         panel.classList.add('is-visible');
                         scrollToCalculator();
@@ -1477,26 +1924,35 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                 panel.classList.remove('is-visible');
                 wrapper.classList.add('is-closing');
                 panel.classList.add('is-closing');
+
                 stopTotal();
 
                 if (reduced.matches) finishClosing(version);
-                else closeTimer = setTimeout(function () {
-                    finishClosing(version);
-                }, 360);
+                else {
+                    closeTimer = setTimeout(function () {
+                        finishClosing(version);
+                    }, 360);
+                }
             }
+
             updateMenu();
         }
 
         openButton.addEventListener('click', function () {
             setOpen(!isOpen, false);
         });
+
         get('btn-close-calc').addEventListener('click', function () {
             setOpen(false, true);
         });
+
         get('btn-reset-calc').addEventListener('click', function () {
+            copyVersion += 1;
             form.reset();
+            get('manual-copy').hidden = true;
             calculate();
         });
+
         get('menu-prices').addEventListener('click', function (event) {
             event.preventDefault();
             if (!isOpen) setOpen(true, false);
@@ -1506,21 +1962,44 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
         form.addEventListener('submit', function (event) {
             event.preventDefault();
         });
-        form.addEventListener('input', calculate);
+
+        form.addEventListener('input', function () {
+            copyVersion += 1;
+            calculate();
+        });
 
         [telegramButton, whatsappButton].forEach(function (link) {
             link.addEventListener('click', function (event) {
                 calculate();
-                if (!form.reportValidity()) event.preventDefault();
+
+                if (!form.reportValidity() || !calculationValid) {
+                    event.preventDefault();
+                    return;
+                }
+
+                if (!selectedCount) {
+                    event.preventDefault();
+                    setStatus('Выберите услуги или используйте блок «Не знаете, какие услуги нужны?».');
+                }
             });
         });
 
-        /* Размеры и прокрутка: не более одного обновления за кадр */
+        var consultationMessage = encodeURIComponent(
+            'Здравствуйте! Хочу обсудить поставку на фулфилмент. ' +
+            'Подскажите, какие данные о товаре нужно направить для расчёта.'
+        );
+
+        get('consult-tg').href =
+            'https://t.me/F1rstFamilyFulFillment?text=' + consultationMessage;
+        get('consult-wa').href =
+            'https://wa.me/79776946400?text=' + consultationMessage;
+
         var layoutFrame = null;
         var scrollFrame = null;
 
         function scheduleLayout() {
             if (layoutFrame !== null) return;
+
             layoutFrame = requestAnimationFrame(function () {
                 layoutFrame = null;
                 syncLayout();
@@ -1529,6 +2008,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
         window.addEventListener('scroll', function () {
             if (scrollFrame !== null) return;
+
             scrollFrame = requestAnimationFrame(function () {
                 scrollFrame = null;
                 updateMenu();
@@ -1542,7 +2022,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
         syncLayout();
         openButton.setAttribute('data-site-ready', 'true');
 
-        /* Иконки болей */
+        /* Анимации иконок */
         var cards = Array.prototype.slice.call(
             document.querySelectorAll('.card[data-motion]')
         );
@@ -1557,11 +2037,13 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                 timer = null;
                 card.classList.remove('icon-playing');
             }
+
             iconStops.push(stop);
 
             function play() {
                 if (reduced.matches ||
                     card.classList.contains('icon-playing')) return;
+
                 card.classList.add('icon-playing');
                 timer = setTimeout(stop, 800);
             }
@@ -1569,6 +2051,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
             card.addEventListener('pointerenter', function (event) {
                 if (event.pointerType !== 'touch') play();
             });
+
             card.addEventListener('pointerdown', function (event) {
                 if (event.pointerType === 'touch') {
                     touchStart = {
@@ -1578,20 +2061,25 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                     };
                 }
             }, { passive: true });
+
             card.addEventListener('pointermove', function (event) {
                 if (!touchStart || touchStart.id !== event.pointerId) return;
+
                 if (Math.abs(event.clientX - touchStart.x) > 12 ||
                     Math.abs(event.clientY - touchStart.y) > 12) {
                     touchStart = null;
                 }
             }, { passive: true });
+
             card.addEventListener('pointerup', function (event) {
                 if (touchStart && touchStart.id === event.pointerId) play();
                 touchStart = null;
             }, { passive: true });
+
             card.addEventListener('pointercancel', function () {
                 touchStart = null;
             }, { passive: true });
+
             card.addEventListener('pointerleave', function () {
                 touchStart = null;
             }, { passive: true });
@@ -1616,9 +2104,11 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
             revealObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) return;
+
                     var element = entry.target;
                     element.classList.add('shown');
                     revealObserver.unobserve(element);
+
                     revealTimers.push(setTimeout(function () {
                         element.classList.remove('reveal-pending', 'shown');
                     }, 1000));
@@ -1637,6 +2127,7 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
                         });
                         return;
                     }
+
                     revealElements.forEach(function (element) {
                         revealObserver.observe(element);
                     });
@@ -1652,13 +2143,17 @@ footer nav .icon { width: 19px; height: 19px; color: var(--accent); }
 
         function motionChanged() {
             if (!reduced.matches) return;
+
             stopTotal();
             iconStops.forEach(function (stop) { stop(); });
             revealTimers.forEach(function (timer) { clearTimeout(timer); });
+
             if (revealObserver) revealObserver.disconnect();
+
             revealElements.forEach(function (element) {
                 element.classList.remove('reveal-pending', 'shown');
             });
+
             if (!isOpen && !wrapper.hidden) finishClosing(operation);
         }
 
