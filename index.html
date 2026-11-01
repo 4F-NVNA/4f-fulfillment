@@ -7,17 +7,19 @@
         content="width=device-width, initial-scale=1.0, viewport-fit=cover"
     >
 
-    <title>Фулфилмент для маркетплейсов | Склад в Домодедово | 4F</title>
+    <title>Фулфилмент для Wildberries и Ozon | Склад в Домодедово | 4F</title>
 
     <meta
         name="description"
-        content="Фулфилмент FBO/FBS для Wildberries и Ozon. Склад в Домодедово. Расчёт стоимости обработки партии и связь с менеджером."
+        content="Фулфилмент для Wildberries и Ozon. Склад в Домодедово. Работаем с продавцами из России и стран СНГ. Приёмка, маркировка, упаковка, хранение и сборка FBS."
     >
 
     <style>
         :root {
             --orange: #ff6600;
-            --panel-height: 180px;
+            --orange-light: #ff944d;
+            --panel-height: 190px;
+            --header-height: 140px;
         }
 
         * {
@@ -26,6 +28,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: calc(var(--header-height) + 16px);
             -webkit-text-size-adjust: 100%;
             text-size-adjust: 100%;
         }
@@ -55,7 +58,7 @@
 
         a:focus-visible,
         button:focus-visible {
-            outline: 3px solid #ff944d;
+            outline: 3px solid var(--orange-light);
             outline-offset: 4px;
         }
 
@@ -69,20 +72,39 @@
             margin-inline: auto;
         }
 
+        h1,
+        h2,
+        h3,
+        p {
+            overflow-wrap: break-word;
+        }
+
+        h2 {
+            margin: 0 0 30px;
+            font-size: clamp(26px, 3vw, 36px);
+            line-height: 1.3;
+            text-align: center;
+        }
+
         /* Шапка */
 
-        header {
+        .site-header {
             position: sticky;
             top: 0;
             z-index: 50;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            padding: 14px 20px;
             background: #111;
             color: #fff;
             box-shadow: 0 2px 8px #0003;
+        }
+
+        .header-main {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1440px;
+            margin-inline: auto;
+            padding: 12px 20px;
         }
 
         .logo {
@@ -110,14 +132,30 @@
             justify-content: center;
             align-items: center;
             min-height: 44px;
-            padding: 8px;
-            font-size: 14px;
+            padding: 8px 12px;
+            font-size: 15px;
             font-weight: 600;
             text-decoration: none;
         }
 
-        .contacts .email {
-            color: #ff944d;
+        .site-menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px 20px;
+            padding: 6px 16px;
+            border-top: 1px solid #333;
+        }
+
+        .site-menu a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 6px 8px;
+            color: #e5e5e5;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
         }
 
         /* Кнопки */
@@ -171,7 +209,7 @@
             display: grid;
             place-items: center;
             min-height: 70vh;
-            padding: 80px 20px;
+            padding: 72px 20px;
             background:
                 linear-gradient(#000b, #000b),
                 url("sklad.png") center / cover,
@@ -182,24 +220,47 @@
 
         .hero-inner {
             width: 100%;
-            max-width: 900px;
+            max-width: 940px;
         }
 
         .hero h1 {
-            margin: 0 0 24px;
-            font-size: clamp(28px, 4vw, 44px);
-            line-height: 1.25;
+            margin: 0 0 20px;
+            font-size: clamp(30px, 4.3vw, 48px);
+            line-height: 1.2;
         }
 
-        .hero h1 span {
-            color: #ff944d;
+        .hero-location {
+            margin: 0 0 20px;
+            color: var(--orange-light);
+            font-size: clamp(20px, 2.6vw, 27px);
+            font-weight: 700;
+            line-height: 1.4;
         }
 
-        .hero p {
-            margin: 0 0 28px;
+        .hero-description {
+            max-width: 800px;
+            margin: 0 auto 20px;
             color: #eee;
-            font-size: 20px;
+            font-size: 19px;
             line-height: 1.7;
+        }
+
+        .hero-offer {
+            display: inline-block;
+            margin: 0 0 20px;
+            padding: 12px 18px;
+            border: 1px solid #ff944d80;
+            border-radius: 10px;
+            background: #0005;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .hero-trust {
+            margin: 0 auto 28px;
+            max-width: 760px;
+            color: #ddd;
+            font-size: 16px;
         }
 
         .hero .button {
@@ -213,13 +274,6 @@
         .problems {
             padding: 60px 20px;
             background: #fff;
-        }
-
-        h2 {
-            margin: 0 0 30px;
-            font-size: clamp(26px, 3vw, 36px);
-            line-height: 1.3;
-            text-align: center;
         }
 
         .problems-grid {
@@ -285,13 +339,96 @@
             transform: translateY(0);
         }
 
+        /* Информационные разделы */
+
+        .info-section {
+            padding: 56px 20px;
+            background: #fff;
+        }
+
+        .info-section-alt {
+            background: #f0f2f4;
+        }
+
+        .narrow {
+            max-width: 800px;
+        }
+
+        .section-description {
+            margin: 0 0 16px;
+            color: #444;
+            font-size: 17px;
+            line-height: 1.7;
+            text-align: center;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .info-card {
+            min-width: 0;
+            padding: 24px;
+            border: 1px solid #e3e6e9;
+            border-radius: 12px;
+            background: #f8f9fa;
+        }
+
+        .info-card h3,
+        .workflow-list h3 {
+            margin: 0 0 12px;
+            font-size: 19px;
+            line-height: 1.4;
+        }
+
+        .info-card p,
+        .workflow-list p {
+            margin: 0;
+            color: #444;
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .workflow-list {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: workflow;
+        }
+
+        .workflow-list li {
+            min-width: 0;
+            padding: 22px;
+            border-radius: 12px;
+            background: #f5f6f7;
+            counter-increment: workflow;
+        }
+
+        .workflow-list li::before {
+            content: counter(workflow);
+            display: grid;
+            place-items: center;
+            width: 38px;
+            height: 38px;
+            margin-bottom: 16px;
+            border-radius: 50%;
+            background: var(--orange);
+            color: #111;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
         /* Калькулятор */
 
         .calculator {
             padding: 50px 20px;
             background: #141414;
             color: #fff;
-            scroll-margin-top: 110px;
         }
 
         .calc-container {
@@ -315,17 +452,22 @@
             text-align: center;
         }
 
+        .notes,
+        .group-note {
+            color: #dedede;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
         .notes {
             margin: 0 0 24px;
             padding: 14px;
             border-radius: 8px;
             background: #303030;
-            color: #dedede;
-            font-size: 14px;
         }
 
         .notes p {
-            margin: 5px 0;
+            margin: 6px 0;
         }
 
         fieldset {
@@ -343,9 +485,14 @@
             width: 100%;
             margin: 0 0 18px;
             padding: 0;
-            color: #ff944d;
+            color: var(--orange-light);
             font-size: 18px;
             font-weight: 700;
+        }
+
+        .group-note {
+            clear: both;
+            margin: 0 0 18px;
         }
 
         .inputs {
@@ -395,9 +542,18 @@
             border-color: #ff8080;
         }
 
+        .field-hint {
+            margin: 8px 0 0;
+            color: #c8c8c8;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
         .calc-actions {
             display: flex;
             justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         /* Панель суммы */
@@ -407,7 +563,7 @@
             right: 16px;
             bottom: 16px;
             z-index: 100;
-            width: 380px;
+            width: 390px;
             max-width: calc(100% - 32px);
             padding: 16px;
             border: 2px solid var(--orange);
@@ -431,12 +587,19 @@
 
         .price {
             min-width: 0;
-            color: #ff944d;
+            color: var(--orange-light);
             font-size: 28px;
             font-weight: 800;
             font-variant-numeric: tabular-nums;
             text-align: right;
             overflow-wrap: anywhere;
+        }
+
+        .summary-note {
+            margin: 8px 0;
+            color: #c8c8c8;
+            font-size: 12px;
+            line-height: 1.5;
         }
 
         .send-label {
@@ -486,11 +649,17 @@
         /* Подвал */
 
         footer {
-            padding: 30px 20px;
+            padding: 36px 20px;
             background: #111;
             color: #bbb;
             font-size: 15px;
             text-align: center;
+        }
+
+        footer h2 {
+            margin-bottom: 18px;
+            color: #fff;
+            font-size: 26px;
         }
 
         footer p {
@@ -508,9 +677,13 @@
         footer a {
             padding: 8px;
             text-decoration: none;
+            overflow-wrap: anywhere;
         }
 
-        /* Компьютер с мышью */
+        .copyright {
+            margin-top: 24px;
+            font-size: 14px;
+        }
 
         @media (hover: hover) and (pointer: fine) {
             .card:not(.reveal-pending):hover {
@@ -521,12 +694,16 @@
             .messenger:hover {
                 opacity: 0.9;
             }
+
+            .site-menu a:hover {
+                color: var(--orange-light);
+            }
         }
 
         /* Планшеты */
 
-        @media (max-width: 1100px) {
-            header {
+        @media (max-width: 960px) {
+            .header-main {
                 flex-wrap: wrap;
                 justify-content: center;
             }
@@ -534,10 +711,10 @@
             .contacts {
                 justify-content: center;
             }
-        }
 
-        @media (max-width: 960px) {
-            .problems-grid {
+            .problems-grid,
+            .info-grid,
+            .workflow-list {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
@@ -545,8 +722,15 @@
         /* Смартфоны */
 
         @media (max-width: 640px) {
-            header {
+            html {
+                scroll-padding-top: 16px;
+            }
+
+            .site-header {
                 position: relative;
+            }
+
+            .header-main {
                 display: block;
                 padding: 16px;
             }
@@ -567,23 +751,26 @@
             .contacts a {
                 min-width: 0;
                 padding: 10px 6px;
-                font-size: 13px;
+                font-size: 15px;
                 line-height: 1.4;
             }
 
             .contacts .phone {
+                grid-column: 1 / -1;
                 border-radius: 8px;
                 background: #242424;
+                font-size: 16px;
             }
 
-            .contacts .email {
-                grid-column: 1 / -1;
-                font-size: 15px;
-                overflow-wrap: anywhere;
+            .site-menu {
+                gap: 2px 6px;
+                padding: 8px 12px;
             }
 
-            .contacts .messenger {
-                font-size: 15px;
+            .site-menu a {
+                min-height: 42px;
+                padding: 8px;
+                font-size: 14px;
             }
 
             .hero {
@@ -592,26 +779,43 @@
             }
 
             .hero h1 {
-                font-size: clamp(26px, 6.8vw, 34px);
+                font-size: clamp(28px, 7vw, 36px);
             }
 
-            .hero p {
+            .hero-location {
+                font-size: 21px;
+            }
+
+            .hero-description {
                 font-size: 16px;
+            }
+
+            .hero-offer {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .hero-trust {
+                font-size: 15px;
             }
 
             .hero .button {
                 font-size: 16px;
             }
 
-            .problems {
+            .problems,
+            .info-section {
                 padding: 36px 16px;
             }
 
-            .problems .container {
+            .problems .container,
+            .info-section .container {
                 max-width: 460px;
             }
 
-            .problems-grid {
+            .problems-grid,
+            .info-grid,
+            .workflow-list {
                 grid-template-columns: minmax(0, 1fr);
                 gap: 14px;
             }
@@ -629,6 +833,16 @@
                 font-size: 16px;
             }
 
+            .info-card,
+            .workflow-list li {
+                padding: 20px;
+            }
+
+            .section-description {
+                font-size: 16px;
+                text-align: left;
+            }
+
             .reveal-pending {
                 transform: translateY(12px);
                 transition-duration: 320ms;
@@ -641,7 +855,6 @@
 
             .calculator {
                 padding: 28px 12px;
-                scroll-margin-top: 12px;
             }
 
             .calc-container {
@@ -669,7 +882,7 @@
                 bottom: 0;
                 width: 100%;
                 max-width: none;
-                padding: 12px 16px
+                padding: 10px 16px
                     calc(12px + env(safe-area-inset-bottom, 0px));
                 border: 0;
                 border-top: 2px solid var(--orange);
@@ -683,6 +896,16 @@
 
             .price {
                 font-size: 26px;
+            }
+
+            .summary-note {
+                margin: 5px 0;
+                font-size: 12px;
+            }
+
+            .send-label {
+                margin: 6px 0;
+                font-size: 13px;
             }
 
             .send-actions a {
@@ -700,32 +923,26 @@
         }
 
         @media (max-width: 360px) {
-            .contacts {
-                grid-template-columns: minmax(0, 1fr);
-            }
-
-            .contacts .email {
-                grid-column: auto;
-            }
-
-            .contacts a {
-                font-size: 15px;
-            }
-
             .hero {
                 padding: 36px 16px;
             }
 
             .hero h1 {
-                font-size: 26px;
+                font-size: 28px;
             }
 
             .card {
                 padding: 16px;
             }
-        }
 
-        /* Настройка уменьшения движения */
+            .site-menu {
+                gap: 0;
+            }
+
+            .site-menu a {
+                font-size: 13px;
+            }
+        }
 
         @media (prefers-reduced-motion: reduce) {
             html {
@@ -749,41 +966,43 @@
 
 <body>
 
-<header>
-    <a class="logo" href="#home">
-        4F<span>FULFILLMENT</span>
-    </a>
-
-    <nav class="contacts" aria-label="Контакты">
-        <a class="phone" href="tel:+79776946400">
-            +7 (977) 694-64-00
+<header class="site-header" id="site-header">
+    <div class="header-main">
+        <a class="logo" href="#home">
+            4F<span>FULFILLMENT</span>
         </a>
 
-        <a class="phone" href="tel:+79999906400">
-            +7 (999) 990-64-00
-        </a>
+        <div class="contacts">
+            <a class="phone" href="tel:+79776946400">
+                +7 (977) 694-64-00
+            </a>
 
-        <a class="email" href="mailto:dmd.4f@yandex.ru">
-            dmd.4f@yandex.ru
-        </a>
+            <a
+                class="messenger telegram"
+                href="https://t.me/F1rstFamilyFulFillment"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Telegram
+            </a>
 
-        <a
-            class="messenger telegram"
-            href="https://t.me/F1rstFamilyFulFillment"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Telegram
-        </a>
+            <a
+                class="messenger whatsapp"
+                href="https://wa.me/79776946400"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp
+            </a>
+        </div>
+    </div>
 
-        <a
-            class="messenger whatsapp"
-            href="https://wa.me/79776946400"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            WhatsApp
-        </a>
+    <nav class="site-menu" aria-label="Основное меню">
+        <a href="#services">Услуги</a>
+        <a href="#calculator-wrapper" id="menu-prices">Тарифы</a>
+        <a href="#warehouse">Склад</a>
+        <a href="#workflow">Как работаем</a>
+        <a href="#contacts">Контакты</a>
     </nav>
 </header>
 
@@ -791,16 +1010,28 @@
 
     <section class="hero">
         <div class="hero-inner">
-            <h1>
-                Фулфилмент FBO/FBS<br>
-                <span>в Москве. Склад в Домодедово</span>
-            </h1>
+            <h1>Фулфилмент для Wildberries и Ozon</h1>
 
-            <p>
-                Принимаем товар от 100 единиц.<br>
-                <strong>Первая приемка — БЕСПЛАТНО.</strong><br>
-                Работаем в WMS «Целиком».<br>
-                Штрафы за просрочку — наша ответственность.
+            <p class="hero-location">
+                Склад в Домодедово
+            </p>
+
+            <p class="hero-description">
+                Работаем с продавцами из России и стран СНГ.<br>
+                Приёмка, маркировка, упаковка, хранение и подготовка
+                к отгрузке по схемам FBO и FBS.<br>
+                Принимаем партии от 100 единиц.
+            </p>
+
+            <p class="hero-offer">
+                Первая приёмка — бесплатно<br>
+                при поставке более 1 000 единиц товара.
+            </p>
+
+            <p class="hero-trust">
+                Работаем в WMS «Целиком».
+                Сроки обработки и ответственность за их нарушение
+                фиксируем в договоре.
             </p>
 
             <button
@@ -810,7 +1041,7 @@
                 aria-controls="calculator-wrapper"
                 aria-expanded="false"
             >
-                Открыть калькулятор
+                Рассчитать стоимость
             </button>
 
             <noscript>
@@ -825,88 +1056,176 @@
     <section class="problems" aria-labelledby="pain-title">
         <div class="container">
             <h2 id="pain-title" data-reveal>
-                Боли селлера — и как мы их закрываем
+                Что мешает продажам — и как мы помогаем
             </h2>
 
             <div class="problems-grid">
                 <article class="card" data-reveal style="--delay: 0ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Штрафы за просрочку
+                        Срываются сроки обработки
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Фиксируем сроки в договоре и берем
-                        ответственность на себя.
+                        Согласуем сроки до начала работ и фиксируем
+                        ответственность за их нарушение в договоре.
                     </p>
                 </article>
 
                 <article class="card" data-reveal style="--delay: 70ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Пересорт и возвраты
+                        Пересорт и ошибки комплектации
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Работаем в WMS «Целиком» и сканируем
-                        каждый штрихкод.
+                        Используем WMS «Целиком» и сканирование
+                        штрихкодов при обработке товара.
                     </p>
                 </article>
 
                 <article class="card" data-reveal style="--delay: 140ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Скрытые платежи
+                        Непонятная итоговая стоимость
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Прозрачный прайс. Все услуги прописаны
-                        в договоре.
+                        Согласуем перечень работ и стоимость
+                        до начала обработки.
                     </p>
                 </article>
 
                 <article class="card" data-reveal style="--delay: 0ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Нет ответственного
+                        Некому задать вопрос
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Личный менеджер. Оперативная связь
-                        в Telegram.
+                        По вопросам поставок, обработки и отгрузки
+                        товара можно связаться с менеджером.
                     </p>
                 </article>
 
                 <article class="card" data-reveal style="--delay: 70ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Боитесь пиковых нагрузок
+                        Не хватает мощности в сезон
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Наш склад рассчитан на обработку
-                        до 1000 заказов в день.
+                        Объём партии и сроки обработки
+                        согласуем перед поставкой.
                     </p>
                 </article>
 
                 <article class="card" data-reveal style="--delay: 140ms">
                     <h3>
                         <span aria-hidden="true">✕</span>
-                        Товар стоит без дела
+                        Долгая приёмка задерживает отгрузку
                     </h3>
-
                     <p>
                         <span aria-hidden="true">✓</span>
-                        Приемка за 24 часа. Сразу заводим
-                        товар в систему.
+                        Принимаем товар и отражаем его в WMS
+                        для дальнейшей обработки.
                     </p>
                 </article>
             </div>
+        </div>
+    </section>
+
+    <section id="services" class="info-section">
+        <div class="container">
+            <h2>Услуги фулфилмента</h2>
+
+            <div class="info-grid">
+                <article class="info-card">
+                    <h3>Приёмка и проверка</h3>
+                    <p>
+                        Пересчёт, сортировка, визуальная проверка
+                        и проверка на брак по согласованному заданию.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Маркировка и упаковка</h3>
+                    <p>
+                        Этикетки, маркировка «Честный знак»,
+                        комплектация и упаковка товара.
+                    </p>
+                </article>
+
+                <article class="info-card">
+                    <h3>Хранение и подготовка к отгрузке</h3>
+                    <p>
+                        Хранение коробов и паллет, сборка заказов FBS
+                        и подготовка партий к отгрузке.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section
+        id="warehouse"
+        class="info-section info-section-alt"
+    >
+        <div class="container narrow">
+            <h2>Склад в Домодедово</h2>
+
+            <p class="section-description">
+                Работаем с продавцами из России и стран СНГ,
+                которые продают товары на Wildberries и Ozon.
+                Используем WMS «Целиком» для складского учёта.
+            </p>
+
+            <p class="section-description">
+                Перед поставкой согласуйте с менеджером
+                время прибытия, объём партии и перечень работ.
+                Адрес склада и инструкции для заезда
+                направим при согласовании поставки.
+            </p>
+        </div>
+    </section>
+
+    <section id="workflow" class="info-section">
+        <div class="container">
+            <h2>Как работаем</h2>
+
+            <ol class="workflow-list">
+                <li>
+                    <h3>Согласуем задачу</h3>
+                    <p>
+                        Уточняем характеристики товара,
+                        объём партии и необходимые услуги.
+                    </p>
+                </li>
+
+                <li>
+                    <h3>Подтверждаем условия</h3>
+                    <p>
+                        Согласуем стоимость, сроки
+                        и порядок поставки.
+                    </p>
+                </li>
+
+                <li>
+                    <h3>Принимаем и обрабатываем</h3>
+                    <p>
+                        Принимаем товар, отражаем его в складской
+                        системе и выполняем согласованные работы.
+                    </p>
+                </li>
+
+                <li>
+                    <h3>Готовим к отгрузке</h3>
+                    <p>
+                        Комплектуем, маркируем и упаковываем
+                        товар по согласованному заданию.
+                    </p>
+                </li>
+            </ol>
         </div>
     </section>
 
@@ -922,36 +1241,43 @@
             </h2>
 
             <p class="intro">
-                Введите количество по нужным услугам.
-                Неиспользуемые поля оставьте пустыми.
+                Выберите нужные услуги и укажите количество.
+                Стоимость пересчитывается автоматически.
+                Ненужные поля оставьте пустыми.
             </p>
 
             <div class="notes" id="quantity-note">
                 <p>
-                    Количество — целое неотрицательное число.
-                    Расчёт предварительный.
+                    Расчёт предварительный. Менеджер подтвердит
+                    состав работ и итоговую стоимость.
                 </p>
 
                 <p>
-                    Для хранения вводите количество коробо-суток
-                    или паллето-суток.
-                    Например: 10 коробов × 3 суток = 30.
+                    Первая приёмка партии более 1 000 единиц —
+                    бесплатно. В калькуляторе приёмка рассчитана
+                    по стандартному тарифу; применение акции
+                    подтвердит менеджер.
                 </p>
 
                 <p>
-                    Калькулятор считает приемку по стандартному
-                    тарифу 5 ₽. Применение акции
-                    «Первая приемка бесплатно»
-                    уточните у менеджера.
+                    Указывайте целое неотрицательное количество
+                    в единицах, обозначенных у выбранной услуги.
                 </p>
             </div>
 
             <form id="calc-form">
-                <!-- Поля формируются из единого списка тарифов -->
                 <div id="service-fields"></div>
             </form>
 
             <div class="calc-actions">
+                <button
+                    id="btn-reset-calc"
+                    class="button secondary"
+                    type="button"
+                >
+                    Очистить поля
+                </button>
+
                 <button
                     id="btn-close-calc"
                     class="button secondary"
@@ -974,7 +1300,7 @@
     <div class="summary-inner">
         <div class="amount">
             <span class="amount-label">
-                Предварительная стоимость:
+                Итого по выбранным услугам
             </span>
 
             <span id="sticky-total-price" class="price">
@@ -982,8 +1308,13 @@
             </span>
         </div>
 
+        <p class="summary-note">
+            Предварительный расчёт. Состав работ и итоговую
+            стоимость подтвердит менеджер.
+        </p>
+
         <p class="send-label">
-            Отправить расчёт менеджеру:
+            Обсудить расчёт с менеджером:
         </p>
 
         <div class="send-actions">
@@ -1017,84 +1348,310 @@
     </div>
 </aside>
 
-<footer>
-    <p>© 2026 4F Fulfillment. Склад в Домодедово.</p>
+<footer id="contacts">
+    <div class="container">
+        <h2>Контакты</h2>
 
-    <p>Фулфилмент для Wildberries и Ozon</p>
+        <p>4F Fulfillment · Склад в Домодедово</p>
 
-    <nav aria-label="Контакты в подвале">
-        <a href="tel:+79776946400">
-            +7 (977) 694-64-00
-        </a>
+        <p>
+            Фулфилмент для Wildberries и Ozon.<br>
+            Работаем с продавцами из России и стран СНГ.
+        </p>
 
-        <a href="tel:+79999906400">
-            +7 (999) 990-64-00
-        </a>
+        <nav aria-label="Телефоны и электронная почта">
+            <a href="tel:+79776946400">
+                Основной: +7 (977) 694-64-00
+            </a>
 
-        <a href="mailto:dmd.4f@yandex.ru">
-            dmd.4f@yandex.ru
-        </a>
-    </nav>
+            <a href="tel:+79999906400">
+                Дополнительный: +7 (999) 990-64-00
+            </a>
+
+            <a href="mailto:dmd.4f@yandex.ru">
+                dmd.4f@yandex.ru
+            </a>
+        </nav>
+
+        <nav aria-label="Мессенджеры">
+            <a
+                href="https://t.me/F1rstFamilyFulFillment"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Telegram
+            </a>
+
+            <a
+                href="https://wa.me/79776946400"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp
+            </a>
+        </nav>
+
+        <p class="copyright">
+            © <span id="copyright-year">2026</span>
+            4F Fulfillment
+        </p>
+    </div>
 </footer>
 
 <script>
 (function () {
     'use strict';
 
+    /*
+     * Формат услуги:
+     * [идентификатор, название, цена, единица, пояснение]
+     */
+
     const services = [
         {
-            title: 'Приемка и проверка',
+            title: 'Приёмка и проверка',
+            note: '',
             items: [
-                ['priemka', 'Приемка и пересчет', 5],
-                ['sort', 'Сортировка', 5],
-                ['viz', 'Визуальная проверка', 5],
-                ['brak-pr', 'Проверка брака, прочие', 10],
-                ['brak-teh', 'Проверка брака, техника', 15],
-                ['brak-ob', 'Проверка брака, обувь', 10]
+                [
+                    'priemka',
+                    'Приёмка и пересчёт',
+                    5,
+                    'шт.',
+                    'Стандартный тариф. Применение акции на первую приёмку подтвердит менеджер.'
+                ],
+                [
+                    'sort',
+                    'Сортировка',
+                    5,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'viz',
+                    'Визуальная проверка',
+                    5,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'brak-pr',
+                    'Проверка на брак: другие категории товаров',
+                    10,
+                    'шт.',
+                    'Состав проверки и применимость тарифа уточните у менеджера.'
+                ],
+                [
+                    'brak-teh',
+                    'Проверка на брак: техника',
+                    15,
+                    'шт.',
+                    ''
+                ]
             ]
         },
         {
             title: 'Маркировка и стикерование',
+            note:
+                'Печать, этикетка и нанесение включены в стоимость. ' +
+                'Подготовку и передачу кодов «Честный знак» ' +
+                'согласуйте с менеджером.',
             items: [
-                ['etiketka-58', 'Этикетка 58×40', 5],
-                ['etiketka-75', 'Этикетка 75×120', 7],
-                ['kiz', 'КИЗ «Честный Знак»', 9],
-                ['sovm', 'Совмещенная ШК + ЧЗ', 12]
+                [
+                    'etiketka-58',
+                    'Печать и нанесение этикетки 58×40 мм',
+                    5,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'etiketka-75',
+                    'Печать и нанесение этикетки 75×120 мм',
+                    7,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'kiz',
+                    'Печать и нанесение кода «Честный знак»',
+                    9,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'sovm',
+                    'Совмещённая этикетка: штрихкод и «Честный знак»',
+                    12,
+                    'шт.',
+                    'Печать и нанесение включены в стоимость.'
+                ]
             ]
         },
         {
             title: 'Комплектация и упаковка',
+            note:
+                'Пакеты и упаковочные материалы включены в стоимость, ' +
+                'кроме упаковки в пакет клиента. При подборе упаковки ' +
+                'учитываем длину, ширину и высоту товара.',
             items: [
-                ['vlozh', 'Вложение вкладыша', 5],
-                ['kompl-3', 'Сборка комплекта до 3 ед.', 10],
-                ['kompl-3plus', 'Сборка комплекта свыше 3 ед.', 3],
-                ['paket', 'Пакет клиента', 5],
-                ['bopp-25', 'БОПП до 25 см', 12],
-                ['bopp-45', 'БОПП до 45 см', 14],
-                ['zip-20', 'ZIP 20×25', 16],
-                ['zip-25', 'ZIP 25×30', 17],
-                ['pvd-20', 'ПВД до 20 см', 16],
-                ['vpp-20', 'ВПП до 20 см', 16]
+                [
+                    'vlozh',
+                    'Вложение вкладыша',
+                    5,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'kompl-3',
+                    'Сборка комплекта до 3 единиц',
+                    10,
+                    'комплект',
+                    'Укажите общее количество комплектов, в том числе комплектов более чем из 3 товаров.'
+                ],
+                [
+                    'kompl-3plus',
+                    'Дополнительная единица в комплекте сверх 3',
+                    3,
+                    'шт.',
+                    'Комплект из 5 товаров: 10 ₽ + 2 × 3 ₽ = 16 ₽. Для 10 таких комплектов введите 10 в поле комплектов и 20 в этом поле.'
+                ],
+                [
+                    'paket',
+                    'Упаковка в пакет клиента',
+                    5,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'bopp-25',
+                    'Упаковка в БОПП-пакет до 25 см',
+                    12,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'bopp-45',
+                    'Упаковка в БОПП-пакет до 45 см',
+                    14,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'zip-20',
+                    'Упаковка в ZIP-пакет 20×25 см',
+                    16,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'zip-25',
+                    'Упаковка в ZIP-пакет 25×30 см',
+                    17,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'pvd-20',
+                    'Упаковка в ПВД-пакет до 20 см',
+                    16,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'vpp-20',
+                    'Упаковка в воздушно-пузырчатый материал до 20 см',
+                    16,
+                    'шт.',
+                    ''
+                ]
             ]
         },
         {
-            title: 'Отгрузка и хранение',
+            title: 'Короба, паллетирование и хранение',
+            note:
+                'Для хранения укажите количество мест × количество ' +
+                'суток. Например: 10 коробов на 3 суток — введите 30.',
             items: [
-                ['korob-60', 'Короб 60×40×40', 150],
-                ['korob-cl', 'Короб клиента', 100],
-                ['pallet', 'Паллетирование', 750],
-                ['stor-kor', 'Хранение короба, коробо-сутки', 5],
-                ['stor-pal', 'Хранение паллеты, паллето-сутки', 50]
+                [
+                    'korob-60',
+                    'Упаковка в короб 60×40×40 см',
+                    150,
+                    'короб',
+                    'Короб включён в стоимость.'
+                ],
+                [
+                    'korob-cl',
+                    'Упаковка в короб клиента',
+                    100,
+                    'короб',
+                    ''
+                ],
+                [
+                    'pallet',
+                    'Паллетирование',
+                    750,
+                    'паллету',
+                    'Расходные материалы включены. Сама паллета оплачивается отдельно и не включена в итог калькулятора.'
+                ],
+                [
+                    'stor-kor',
+                    'Хранение коробов',
+                    5,
+                    'коробо-сутки',
+                    'Введите количество коробов × количество суток хранения.'
+                ],
+                [
+                    'stor-pal',
+                    'Хранение паллет',
+                    50,
+                    'паллето-сутки',
+                    'Введите количество паллет × количество суток хранения.'
+                ]
             ]
         },
         {
-            title: 'FBS и забор товара',
+            title: 'Сборка FBS и забор товара',
+            note:
+                'Тариф FBS применяется к одной единице товара. ' +
+                'Объём определяется по её длине, ширине и высоте. ' +
+                'Забор рассчитывается за рейс; маршрут и условия ' +
+                'согласуйте с менеджером. Для партии более 6 м³ ' +
+                'стоимость рассчитывается отдельно.',
             items: [
-                ['fbs-1', 'Сборка FBS до 1 л', 35],
-                ['fbs-5', 'Сборка FBS 1–5 л', 55],
-                ['zabor-1', 'Забор до 1 м³', 1800],
-                ['zabor-3', 'Забор 1–3 м³', 3000],
-                ['zabor-3plus', 'Забор свыше 3 м³', 6000]
+                [
+                    'fbs-1',
+                    'Сборка FBS: товар до 1 л включительно',
+                    35,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'fbs-5',
+                    'Сборка FBS: товар свыше 1 до 5 л включительно',
+                    55,
+                    'шт.',
+                    ''
+                ],
+                [
+                    'zabor-1',
+                    'Забор партии до 1 м³ включительно',
+                    1800,
+                    'рейс',
+                    'Укажите количество рейсов.'
+                ],
+                [
+                    'zabor-3',
+                    'Забор партии свыше 1 до 3 м³ включительно',
+                    3000,
+                    'рейс',
+                    'Укажите количество рейсов.'
+                ],
+                [
+                    'zabor-6',
+                    'Забор партии свыше 3 до 6 м³ включительно',
+                    6000,
+                    'рейс',
+                    'Укажите количество рейсов.'
+                ]
             ]
         }
     ];
@@ -1103,10 +1660,13 @@
         return document.getElementById(id);
     };
 
+    const header = get('site-header');
     const wrapper = get('calculator-wrapper');
     const panel = get('sticky-summary');
     const openButton = get('btn-open-calc');
     const closeButton = get('btn-close-calc');
+    const resetButton = get('btn-reset-calc');
+    const pricesMenuLink = get('menu-prices');
     const form = get('calc-form');
     const fieldsContainer = get('service-fields');
     const priceElement = get('sticky-total-price');
@@ -1136,34 +1696,51 @@
         return formatter.format(value) + ' ₽';
     }
 
-    /* Формирование полей без начального значения 0 */
+    /* Формирование полей */
 
     services.forEach(function (group, groupIndex) {
         const fieldset = document.createElement('fieldset');
         const legend = document.createElement('legend');
         const grid = document.createElement('div');
+        const groupNoteId = 'group-note-' + groupIndex;
 
         legend.textContent =
             (groupIndex + 1) + '. ' + group.title;
 
         grid.className = 'inputs';
+        fieldset.appendChild(legend);
+
+        if (group.note) {
+            const groupNote = document.createElement('p');
+
+            groupNote.className = 'group-note';
+            groupNote.id = groupNoteId;
+            groupNote.textContent = group.note;
+
+            fieldset.appendChild(groupNote);
+        }
 
         group.items.forEach(function (item) {
             const id = 'q-' + item[0];
             const labelText = item[1];
             const price = item[2];
+            const unit = item[3];
+            const hintText = item[4];
 
             const field = document.createElement('div');
             const label = document.createElement('label');
             const input = document.createElement('input');
 
+            const descriptions = ['quantity-note'];
+
             field.className = 'field';
 
             label.htmlFor = id;
             label.textContent =
-                labelText + ' — ' + money(price);
+                labelText + ' — ' + money(price) + '/' + unit;
 
             input.id = id;
+            input.name = id;
             input.type = 'number';
             input.min = '0';
             input.max = '1000000000';
@@ -1171,13 +1748,32 @@
             input.placeholder = '0';
 
             input.setAttribute('inputmode', 'numeric');
-            input.setAttribute(
-                'aria-describedby',
-                'quantity-note'
-            );
 
             input.dataset.price = String(price);
             input.dataset.label = labelText;
+            input.dataset.unit = unit;
+
+            if (group.note) {
+                descriptions.push(groupNoteId);
+            }
+
+            field.append(label, input);
+
+            if (hintText) {
+                const hint = document.createElement('p');
+
+                hint.id = id + '-hint';
+                hint.className = 'field-hint';
+                hint.textContent = hintText;
+
+                descriptions.push(hint.id);
+                field.appendChild(hint);
+            }
+
+            input.setAttribute(
+                'aria-describedby',
+                descriptions.join(' ')
+            );
 
             input.addEventListener('focus', function () {
                 if (input.value === '0') {
@@ -1185,11 +1781,10 @@
                 }
             });
 
-            field.append(label, input);
             grid.appendChild(field);
         });
 
-        fieldset.append(legend, grid);
+        fieldset.appendChild(grid);
         fieldsContainer.appendChild(fieldset);
     });
 
@@ -1197,7 +1792,7 @@
         form.querySelectorAll('input[data-price]')
     );
 
-    /* Плавное изменение суммы */
+    /* Анимация суммы */
 
     function updateTotal(value) {
         targetTotal = value;
@@ -1248,7 +1843,7 @@
         animationFrame = requestAnimationFrame(tick);
     }
 
-    /* Расчёт и ссылки мессенджеров */
+    /* Расчёт */
 
     function calculate() {
         let total = 0;
@@ -1257,6 +1852,7 @@
 
         inputs.forEach(function (input) {
             input.setCustomValidity('');
+            input.removeAttribute('aria-invalid');
 
             if (
                 input.value === '' &&
@@ -1277,6 +1873,7 @@
                     'Введите целое число от 0 до 1 000 000 000.'
                 );
 
+                input.setAttribute('aria-invalid', 'true');
                 hasInvalidValues = true;
                 return;
             }
@@ -1295,6 +1892,8 @@
                 formatter.format(quantity) +
                 ' × ' +
                 money(unitPrice) +
+                '/' +
+                input.dataset.unit +
                 ' = ' +
                 money(cost)
             );
@@ -1305,20 +1904,20 @@
         statusElement.hidden = !hasInvalidValues;
 
         statusElement.textContent = hasInvalidValues
-            ? 'Исправьте выделенные поля перед отправкой расчёта.'
+            ? 'Введите целое неотрицательное количество в выделенных полях.'
             : '';
 
         const message = [
-            'Здравствуйте! Хочу уточнить стоимость услуг 4F Fulfillment.',
+            'Здравствуйте! Прошу проверить расчёт обработки партии и подтвердить стоимость.',
             '',
-            'Расчёт с сайта:',
+            'Выбранные услуги:',
             lines.length
                 ? lines.join('\n')
                 : 'Услуги пока не выбраны.',
             '',
-            'Итого: ' + money(total),
+            'Итого по калькулятору: ' + money(total) + '.',
             '',
-            'Прошу подтвердить стоимость и условия.'
+            'Подскажите, какие данные о товаре и поставке нужно направить.'
         ].join('\n');
 
         const encodedMessage = encodeURIComponent(message);
@@ -1332,24 +1931,40 @@
             encodedMessage;
     }
 
-    /* Место под панель */
+    /* Размеры шапки и панели */
 
-    function syncPanelSpace() {
-        if (!calculatorIsOpen) {
-            return;
+    function syncLayout() {
+        const headerHeight = Math.ceil(
+            header.getBoundingClientRect().height
+        );
+
+        document.documentElement.style.setProperty(
+            '--header-height',
+            headerHeight + 'px'
+        );
+
+        if (calculatorIsOpen) {
+            const panelHeight = Math.ceil(
+                panel.getBoundingClientRect().height
+            );
+
+            document.body.style.setProperty(
+                '--panel-height',
+                panelHeight + 'px'
+            );
         }
-
-        const height = Math.ceil(
-            panel.getBoundingClientRect().height
-        );
-
-        document.body.style.setProperty(
-            '--panel-height',
-            height + 'px'
-        );
     }
 
-    /* Открытие без таймеров отложенного закрытия */
+    /* Открытие и закрытие */
+
+    function scrollToCalculator() {
+        wrapper.scrollIntoView({
+            behavior: reducedMotion.matches
+                ? 'instant'
+                : 'smooth',
+            block: 'start'
+        });
+    }
 
     function setCalculatorOpen(nextState) {
         calculatorIsOpen = nextState;
@@ -1373,28 +1988,21 @@
         );
 
         openButton.textContent = nextState
-            ? 'Скрыть калькулятор'
-            : 'Открыть калькулятор';
+            ? 'Скрыть расчёт'
+            : 'Рассчитать стоимость';
 
         if (nextState) {
             wrapper.classList.add('calc-enter');
             panel.classList.add('calc-enter');
 
-            syncPanelSpace();
+            syncLayout();
 
             openFrame = requestAnimationFrame(function () {
                 openFrame = null;
 
-                if (!calculatorIsOpen) {
-                    return;
+                if (calculatorIsOpen) {
+                    scrollToCalculator();
                 }
-
-                wrapper.scrollIntoView({
-                    behavior: reducedMotion.matches
-                        ? 'instant'
-                        : 'smooth',
-                    block: 'start'
-                });
             });
         } else {
             wrapper.classList.remove('calc-enter');
@@ -1433,6 +2041,27 @@
         });
     });
 
+    pricesMenuLink.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        if (!calculatorIsOpen) {
+            setCalculatorOpen(true);
+        } else {
+            scrollToCalculator();
+        }
+    });
+
+    resetButton.addEventListener('click', function () {
+        form.reset();
+
+        inputs.forEach(function (input) {
+            input.setCustomValidity('');
+            input.removeAttribute('aria-invalid');
+        });
+
+        calculate();
+    });
+
     form.addEventListener('submit', function (event) {
         event.preventDefault();
     });
@@ -1450,28 +2079,29 @@
     });
 
     if ('ResizeObserver' in window) {
-        const panelObserver = new ResizeObserver(
-            syncPanelSpace
-        );
+        const layoutObserver = new ResizeObserver(syncLayout);
 
-        panelObserver.observe(panel);
+        layoutObserver.observe(header);
+        layoutObserver.observe(panel);
     }
 
-    window.addEventListener('resize', syncPanelSpace, {
+    window.addEventListener('resize', syncLayout, {
         passive: true
     });
 
-    /* Анимация карточек при прокрутке */
+    /* Появление карточек при прокрутке */
 
     const revealElements = Array.from(
         document.querySelectorAll('[data-reveal]')
     );
 
+    let revealObserver = null;
+
     if (
         'IntersectionObserver' in window &&
         !reducedMotion.matches
     ) {
-        const revealObserver = new IntersectionObserver(
+        revealObserver = new IntersectionObserver(
             function (entries) {
                 entries.forEach(function (entry) {
                     if (!entry.isIntersecting) {
@@ -1502,6 +2132,10 @@
 
         requestAnimationFrame(function () {
             requestAnimationFrame(function () {
+                if (reducedMotion.matches) {
+                    return;
+                }
+
                 revealElements.forEach(function (element) {
                     revealObserver.observe(element);
                 });
@@ -1522,6 +2156,10 @@
         displayedTotal = targetTotal;
         priceElement.textContent = money(targetTotal);
 
+        if (revealObserver) {
+            revealObserver.disconnect();
+        }
+
         revealElements.forEach(function (element) {
             element.classList.remove(
                 'reveal-pending',
@@ -1537,7 +2175,14 @@
         );
     }
 
+    /* Актуальный год */
+
+    get('copyright-year').textContent = String(
+        new Date().getFullYear()
+    );
+
     calculate();
+    syncLayout();
 })();
 </script>
 
